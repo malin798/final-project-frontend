@@ -20,50 +20,51 @@ export const Login = () => {
   }
 
   return (
+    <section className="login-register-container">
+      <section className="login-register">
 
-    <section className="login-register">
+      < Accountheader title="Sign in to account"/>
 
-    < Accountheader title="Sign in to account"/>
-
-    <form onSubmit={(event) => handleSubmit(event)}>
-      <label for="username">
-        <p>
-          Username
-        </p>
-      
-        <input
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          type="text"
-          id="username"
-          required>
-        </input>
-      </label>
-
-      <label for="password">
-        <p>
-          Password
-        </p>
+      <form onSubmit={(event) => handleSubmit(event)}>
+        <label for="username">
+          <p>
+            Username
+          </p>
         
-        <input
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          type="password"
-          id="password"
-          required>
-        </input>
-      </label>
+          <input
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            type="text"
+            id="username"
+            required>
+          </input>
+        </label>
 
-      {error && 
-        < Errormessage errorMessage="Username and/or password is incorrect!" />
-      }
+        <label for="password">
+          <p>
+            Password
+          </p>
+          
+          <input
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            type="password"
+            id="password"
+            required>
+          </input>
+        </label>
 
-      <button type="submit"> Sign in </button>
-      
-    </form>
+        {error && 
+          < Errormessage errorMessage="Username and/or password is incorrect!" />
+        }
 
-    < Linksection title="New user? " link="/register" linkTitle="Register new account"/>
- 
+        <button type="submit"> Sign in </button>
+        
+      </form>
+
+      < Linksection title="New user? " link="/register" linkTitle="Register new account"/>
+  
+      </section>
     </section>
     
   )
