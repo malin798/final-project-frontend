@@ -67,4 +67,7 @@ export const App = () => {
     </Provider>
     
   );
+
+  )
+
 }
