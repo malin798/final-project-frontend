@@ -1,0 +1,113 @@
+@import './mixin-var.scss';
+
+.login-register-container {
+  @include size(100vw, 100vh);
+  @include display(column, center, center);
+
+  .login-register {
+    @include size(80%, 50%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.48);
+
+    @media (min-width: 667px) {
+      @include size(50%, 40%);
+    }
+  }
+
+  .header-description {
+    text-align: center;
+    font-family: arial;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: ghostwhite;
+    border-bottom: 0.5px solid #d5d4d4;
+
+    @media (min-width: 667px) {
+      font-size: 1.5em;
+    }
+  }
+
+  form {
+    @include display(column, space-evenly, unset);
+    font-size: 14px;
+    height: -webkit-fill-available;
+    max-height: 100%;
+    padding: 10px 10px;
+    background-color: ghostwhite;
+
+    @media (min-width: 1200px) {
+      padding: 20px 60px;
+      font-size: 16px;
+    }
+
+    p {
+      display: inline;
+      margin-right: 5px;
+    }
+  }
+
+  .error-message {
+    font-size: 14px;
+    color: red;
+  }
+
+  label {
+    @include colors(#666666, white);
+    width: 100%;
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    border: 1px solid #a8a8c3;
+  }
+
+  input {
+    @include size(100%, 25px);
+    background-color: white;
+    font-size: 16px;
+    border: none;
+
+    @media (min-width: 1200px) {
+      width: 75%;
+    }
+  }
+
+  button {
+    align-self: center;
+    border: none;
+    font-size: 14px;
+    margin: 10px 0;
+    padding: 5px 30px;
+    border-radius: 5px;
+    background-color: rgb(134, 218, 70);
+
+    @media (min-width: 667px) {
+      font-size: 17px;
+    }
+  }
+
+  .link-section {
+    font-size: 14px;
+    text-align: center;
+    background-color: #dee2ff;
+    margin: 0;
+    padding: 20px;
+
+    @media (min-width: 667px) {
+      font-size: 17px;
+    }
+  }
+
+  a {
+    margin-left: 3px;
+    text-decoration: none;
+    color: cornflowerblue;
+  }
+
+  a:hover {
+    border-bottom: 1px solid coral;
+  }
+}
+
