@@ -1,0 +1,16 @@
+@mixin colors($color, $background) {
+  color: $color;
+  background-color: $background;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin display($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;  
+}
