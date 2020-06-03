@@ -1,17 +1,31 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { user, handleLogin, handleSignup } from '../components/reducers/user';
 import { Accountheader } from '../components/Accountheader' 
 import { Linksection } from '../components/Linksection'
 import { Errormessage } from '../components/Errormessage'
 
 export const Register = () => {
+  const dispatch = useDispatch()
+  const errorMessage = useSelector((store) => store.user.login.errorMessage);
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [confirmedPassword, setConfirmedPassword] = useState()
-  const [errorMessage, setErrorMessage] = useState("")
   const [error, setError] = useState(false)
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (password !== confirmedPassword) {
+      dispatch(user.actions.setErrorMessage({ errorMessage: "Passwords do not match" }))
+      dispatch(user.actions.setError({ error: true }))
+    } else {
+      dispatch(user.actions.setErrorMessage({ errorMessage: null }))
+      dispatch(user.actions.setError({ error: false }))
+      setError(false)
+      dispatch(handleSignup(name, email, password))
+    }
   }
 
   return (
@@ -75,6 +89,10 @@ export const Register = () => {
             required>
           </input>
         </label>
+
+        {errorMessage && 
+          < Errormessage errormessage={errorMessage} />
+        }
 
           <button type="submit"> 
             Create user  

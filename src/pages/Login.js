@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { user, login } from '../components/reducers/user';
+import { user, handleLogin } from '../components/reducers/user'
 import { Linksection } from '../components/Linksection'
 import { Accountheader } from '../components/Accountheader' 
 import { Errormessage} from '../components/Errormessage'
@@ -14,9 +14,9 @@ export const Login = () => {
   const [password, setPassword] = useState()
   const [error, setError] = useState(false)
 
-  const handleSubmit = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
-    dispatch(login(name, password));
+    dispatch(handleLogin(name, password));
   }
 
   return (
@@ -25,7 +25,7 @@ export const Login = () => {
 
       < Accountheader title="Sign in to account"/>
 
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form onSubmit={(event) => handleLogin(event)}>
         <label for="username">
           <p>
             Username
