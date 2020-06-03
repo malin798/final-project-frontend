@@ -1,11 +1,4 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { createSlice } from '@reduxjs/toolkit'
-
-import {createStore, applyMiddleware} from 'redux';
-
-import thunk from 'redux-thunk';
-
 
 const initialState = {
   login: {
@@ -46,29 +39,37 @@ export const user = createSlice({
 export const handleSignup = (name, email, password) => {
   const SIGNUP_URL = 'http://localhost:8080/users'
 
-  return (dispatch) => {
-    fetch(SIGNUP_URL, {
+  return async (dispatch) => {
+    await fetch(SIGNUP_URL, {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'content-Type': 'application/json' },
+      body: JSON.stringify({
+        "name": name,
+        "email": email,
+        "password": password 
+      })
     })
       .then((res) => {
-        if (!res.ok) {
-          throw 'Could not create account.  Try a different username.'
+        if (res.ok) {
+          return res.json();
         }
-        return res.json()
+        dispatch(user.actions.setErrorMessage({ errorMessage: 'Could not create user!' }))
+        throw 'Could not create user!'
       })
       .then((json) => {
-        console.log("handle signup in user.js")
-        // dispatch(
-        //   user.actions.setAccessToken({
-        //     accessToken: json.accessToken,
-        //   })
-        // );
-        // dispatch(user.actions.setUserId({ userId: json.userId }))
+        if (json.errors) {
+          dispatch(user.actions.setErrorMessage({ errorMessage: json.message }))
+        } else {
+          dispatch(
+            user.actions.setAccessToken({
+              accessToken: json.accessToken,
+            })
+          )
+          dispatch(user.actions.setUserId({ userId: json.userId }))
+        }
       })
       .catch((err) => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+        dispatch(user.actions.setErrorMessage({ errorMessage: err.message }))
       })
   }
 }
@@ -85,8 +86,8 @@ export const handleLogin = (name, password) => {
         if (res.ok) {
           return res.json();
         }
-
-        throw 'Unable to sign in. Please check your username and password are correct';
+        dispatch(user.actions.setErrorMessage({ errorMessage: 'Username and/or password is incorrect!' }))
+        throw 'Username and/or password is incorrect!';
       })
       .then((json) => {
         dispatch(
@@ -97,7 +98,7 @@ export const handleLogin = (name, password) => {
         dispatch(user.actions.setUserId({ userId: json.userId }))
       })
       .catch((err) => {
-        dispatch(user.actions.logout())
+        dispatch(logout())
         dispatch(user.actions.setErrorMessage({ errorMessage: err }))
       });
   };

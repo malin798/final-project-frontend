@@ -8,15 +8,15 @@ import { Errormessage} from '../components/Errormessage'
 export const Login = () => {
 
   const dispatch = useDispatch();
+  const errorMessage = useSelector((store) => store.user.login.errorMessage);
   // const accessToken = useSelector((store) => store.users.login.accessToken);
-
+console.log(errorMessage)
   const [name, setName] = useState()
   const [password, setPassword] = useState()
-  const [error, setError] = useState(false)
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    dispatch(handleLogin(name, password));
+  
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    dispatch(handleLogin(name, password))
   }
 
   return (
@@ -25,7 +25,7 @@ export const Login = () => {
 
       < Accountheader title="Sign in to account"/>
 
-      <form onSubmit={(event) => handleLogin(event)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <label for="username">
           <p>
             Username
@@ -54,8 +54,8 @@ export const Login = () => {
           </input>
         </label>
 
-        {error && 
-          < Errormessage errorMessage="Username and/or password is incorrect!" />
+        {errorMessage && 
+          < Errormessage errormessage={errorMessage} />
         }
 
         <button type="submit"> Sign in </button>

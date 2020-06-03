@@ -4,7 +4,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
-import {applyMiddleware} from 'redux'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { user } from './components/reducers/user'
@@ -14,13 +13,10 @@ import { Register } from './pages/Register'
 
 const reducer = combineReducers({ user: user.reducer });
 
-const store = configureStore({reducer:
-  reducer}
-)
+const store = configureStore({ reducer: reducer })
 
 export const App = () => {
   const API_KEY = process.env.REACT_APP_API_KEY
-  console.log(API_KEY)
 
   return (
 
@@ -33,6 +29,10 @@ export const App = () => {
 
           <Route exact path='/signin' >
             < Login />
+          </Route>
+
+          <Route exact path='/register' >
+            < Register />
           </Route>
 
       </Switch>
