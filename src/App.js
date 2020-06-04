@@ -11,6 +11,9 @@ import { Navbar } from './components/Navbar'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import dotenv from 'dotenv'
+import { MovieList } from './pages/MovieList'
+import { Test } from './pages/Test'
+
 
 dotenv.config()
 
@@ -65,8 +68,16 @@ export const App = () => {
             < Login />
           </Route>
 
-          <Route exact path='/register' >
+          <Route exact path='/aregister' >
             < Register />
+          </Route>
+
+          <Route exact path="/startmovies" >
+            < MovieList />
+          </Route>
+
+          <Route exact path="/test" >
+            < Test />
           </Route>
 
         </Switch>

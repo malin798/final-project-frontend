@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { user, login } from '../components/reducers/user';
 import { Linksection } from '../components/Linksection'
-import { Accountheader } from '../components/Accountheader' 
-import { Errormessage} from '../components/Errormessage'
+import { Accountheader } from '../components/Accountheader'
+import { Errormessage } from '../components/Errormessage'
 
 export const Login = () => {
 
@@ -23,48 +23,48 @@ export const Login = () => {
 
     <section className="login-register">
 
-    < Accountheader title="Sign in to account"/>
+      < Accountheader title="Sign in to account" />
 
-    <form onSubmit={(event) => handleSubmit(event)}>
-      <label for="username">
-        <p>
-          Username
+      <form onSubmit={(event) => handleSubmit(event)}>
+        <label for="username">
+          <p>
+            Username
         </p>
-      
-        <input
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          type="text"
-          id="username"
-          required>
-        </input>
-      </label>
 
-      <label for="password">
-        <p>
-          Password
+          <input
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            type="text"
+            id="username"
+            required>
+          </input>
+        </label>
+
+        <label for="password">
+          <p>
+            Password
         </p>
-        
-        <input
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          type="password"
-          id="password"
-          required>
-        </input>
-      </label>
 
-      {error && 
-        < Errormessage errorMessage="Username and/or password is incorrect!" />
-      }
+          <input
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            type="password"
+            id="password"
+            required>
+          </input>
+        </label>
 
-      <button type="submit"> Sign in </button>
-      
-    </form>
+        {error &&
+          < Errormessage errorMessage="Username and/or password is incorrect!" />
+        }
 
-    < Linksection title="New user? " link="/register" linkTitle="Register new account"/>
- 
+        <button type="submit"> Sign in </button>
+
+      </form>
+
+      < Linksection title="New user? " link="/register" linkTitle="Register new account" />
+
     </section>
-    
+
   )
 }
