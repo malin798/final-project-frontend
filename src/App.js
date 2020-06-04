@@ -12,7 +12,17 @@ import { user } from './components/reducers/user'
 import { Navbar } from './components/Navbar'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
-import { Profile } from './pages/Profile' 
+import { Profile } from './pages/Profile'
+import dotenv from 'dotenv'
+import { MovieList } from './pages/MovieList'
+import { Test } from './pages/Test'
+
+dotenv.config()
+
+
+
+// create persisted store
+
 
 const reducer = combineReducers({ user: user.reducer });
 
@@ -21,7 +31,7 @@ const store = configureStore({ reducer: reducer })
 export const App = () => {
   const API_KEY = process.env.REACT_APP_API_KEY
   const [loggedIn, setLoggedIn] = useState(false)
-  
+
   return (
 
     <Provider store={store}>
@@ -32,20 +42,26 @@ export const App = () => {
         <Switch>
 
           <Route exact path='/signin' >
-            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}
+            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
 
-          <Route exact path='/register' >
+          <Route exact path='/aregister' >
             < Register />
           </Route>
 
           <Route exact path='/profile' >
-          {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+            {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+          </Route>
+          <Route exact path="/startmovies" >
+            < MovieList />
           </Route>
 
-      </Switch>
-    </BrowserRouter>
+          <Route exact path="/test" >
+            < Test />
+          </Route>
+
+        </Switch>
+      </BrowserRouter>
     </Provider>
-    
   )
 }

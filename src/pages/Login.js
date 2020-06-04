@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { user, handleLogin } from '../components/reducers/user'
 import { Linksection } from '../components/Linksection'
-import { Accountheader } from '../components/Accountheader' 
-import { Errormessage} from '../components/Errormessage'
+import { Accountheader } from '../components/Accountheader'
+import { Errormessage } from '../components/Errormessage'
 import { createNextState } from '@reduxjs/toolkit'
 
 export const Login = ({ loggedIn, setLoggedIn }) => {
@@ -17,59 +17,61 @@ export const Login = ({ loggedIn, setLoggedIn }) => {
 
   const [name, setName] = useState()
   const [password, setPassword] = useState()
- 
+
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await dispatch(handleLogin(name, password, setLoggedIn))       
+    await dispatch(handleLogin(name, password, setLoggedIn))
   }
 
   return (
     <section className="login-register-container">
+
       <section className="login-register">
 
-      < Accountheader title="Sign in to account"/>
+        < Accountheader title="Sign in to account" />
 
-      <form onSubmit={(event) => handleSubmit(event)}>
-        <label for="username">
-          <p>
-            Username
-          </p>
-        
-          <input
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            type="text"
-            id="username"
-            required>
-          </input>
-        </label>
+        <form onSubmit={(event) => handleSubmit(event)}>
+          <label for="username">
+            <p>
+              Username
+        </p>
 
-        <label for="password">
-          <p>
-            Password
-          </p>
-          
-          <input
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            type="password"
-            id="password"
-            required>
-          </input>
-        </label>
+            <input
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              type="text"
+              id="username"
+              required>
+            </input>
+          </label>
 
-        {errorMessage && 
-          < Errormessage errormessage={errorMessage} />
-        }
+          <label for="password">
+            <p>
+              Password
+        </p>
 
-        <button type="submit"> Sign in </button>
-        
-      </form>
+            <input
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              type="password"
+              id="password"
+              required>
+            </input>
+          </label>
 
-      < Linksection title="New user? " link="/register" linkTitle="Register new account"/>
-  
+          {error &&
+            < Errormessage errorMessage="Username and/or password is incorrect!" />
+          }
+
+          <button type="submit"> Sign in </button>
+
+        </form>
+
+        < Linksection title="New user? " link="/register" linkTitle="Register new account" />
+
       </section>
     </section>
-    
+
+
   )
 }
