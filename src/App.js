@@ -19,11 +19,6 @@ import { Test } from './pages/Test'
 
 dotenv.config()
 
-
-
-// create persisted store
-
-
 const reducer = combineReducers({ user: user.reducer });
 
 const store = configureStore({ reducer: reducer })
