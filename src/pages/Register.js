@@ -1,32 +1,28 @@
 import React, { useState } from 'react'
-import { useHistory } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux'
-import { user, handleLogin, handleSignup } from '../components/reducers/user';
+import { useDispatch } from 'react-redux'
+import { handleSignup } from '../components/reducers/user';
 import { Accountheader } from '../components/Accountheader' 
 import { Linksection } from '../components/Linksection'
 import { Errormessage } from '../components/Errormessage'
 
 export const Register = () => {
-  const history = useHistory()
+ 
   const dispatch = useDispatch()
-  const errorMessage = useSelector((store) => store.user.login.errorMessage);
+
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [confirmedPassword, setConfirmedPassword] = useState()
+  const [errorMessage, setErrorMessage] = useState()
 
   console.log("error message", errorMessage)
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(user.actions.setError({ error: false }))
-    dispatch(user.actions.setErrorMessage({ errorMessage: null }))
-
+        
     if (password !== confirmedPassword) {
-      dispatch(user.actions.setErrorMessage({ errorMessage: "Passwords do not match" }))
-      dispatch(user.actions.setError({ error: true }))
+      setErrorMessage("Passwords do not match!")
     } else {   
-      dispatch(handleSignup(name, email, password))
-      history.push(`/signin`)
+      dispatch(handleSignup(name, email, password, setErrorMessage))
     }
   }
 

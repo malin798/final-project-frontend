@@ -26,21 +26,11 @@ export const user = createSlice({
     setUserName: (state, action) => {
       const { userName } = action.payload
       state.login.userName = userName
-    },
-    setError: (state, action) => {
-      const { error } = action.payload
-      console.log(`Error: ${error}`)
-      state.login.error = error
-    },
-    setErrorMessage: (state, action) => {
-      const { errorMessage } = action.payload
-      console.log(`Error Message: ${errorMessage}`)
-      state.login.errorMessage = errorMessage
-    },
+    }
   },
 })
 
-export const handleSignup = (name, email, password) => {
+export const handleSignup = (name, email, password, setErrorMessage) => {
   const SIGNUP_URL = 'http://localhost:8080/users'
 
   return async (dispatch) => {
@@ -54,15 +44,14 @@ export const handleSignup = (name, email, password) => {
       })
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
+        if (!res.ok) {
+          setErrorMessage('Could not create user!')
         }
-        dispatch(user.actions.setErrorMessage({ errorMessage: 'Could not create user!' }))
-        throw 'Could not create user!'
+        return res.json()
       })
       .then((json) => {
         if (json.errors) {
-          dispatch(user.actions.setErrorMessage({ errorMessage: json.message }))
+          setErrorMessage(json.message)
         } else {
           dispatch(
             user.actions.setAccessToken({
@@ -73,14 +62,14 @@ export const handleSignup = (name, email, password) => {
         }
       })
       .catch((err) => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: err.message }))
+        setErrorMessage(err.message)
       })
   }
 }
 
-export const handleLogin = (name, password, setLoggedIn) => {
+export const handleLogin = (name, password, setErrorMessage, setLoggedIn) => {
   const LOGIN_URL = 'http://localhost:8080/sessions';
-  return (dispatch) => new Promise(function(resolve, reject) {
+  return (dispatch) => {
     fetch(LOGIN_URL, {
       method: 'POST',
       body: JSON.stringify({ name, password }),
@@ -89,7 +78,7 @@ export const handleLogin = (name, password, setLoggedIn) => {
       .then((res) => {
         if (!res.ok) {
           setLoggedIn(false)
-          dispatch(user.actions.setErrorMessage({ errorMessage: 'Username and/or password is incorrect!' }))
+          setErrorMessage('Username and/or password is incorrect!')
           throw 'Username and/or password is incorrect!'
         } 
         return res.json();
@@ -97,8 +86,8 @@ export const handleLogin = (name, password, setLoggedIn) => {
       .then((json) => {
         if (json.errors) {
           setLoggedIn(false)
-          dispatch(user.actions.setErrorMessage({ errorMessage: 'Username and/or password is incorrect!' }))
-          return false
+          dispatch(logout(setLoggedIn))
+          setErrorMessage('Username and/or password is incorrect!')
         } else {
           dispatch(
             user.actions.setAccessToken({
@@ -111,17 +100,16 @@ export const handleLogin = (name, password, setLoggedIn) => {
         } 
       })
       .catch((err) => {
-        dispatch(logout())
-        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+        dispatch(logout(setLoggedIn, setErrorMessage))
+        setErrorMessage('Username and/or password is incorrect!')
       })
     }
-  )
-};
+}
 
-export const logout = (setLoggedIn) => {
-  return (dispatch) => {
+export const logout = (setLoggedIn, setErrorMessage) => {
     setLoggedIn(false)
-    dispatch(user.actions.setErrorMessage({ errorMessage: null }))
+  return (dispatch) => {
+    setErrorMessage()
     dispatch(user.actions.setAccessToken({ accessToken: null }))
     dispatch(user.actions.setUserId({ userId: 0 }))
   };
