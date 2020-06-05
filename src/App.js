@@ -5,7 +5,6 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { user } from './components/reducers/user'
@@ -15,6 +14,8 @@ import { Register } from './pages/Register'
 import { Profile } from './pages/Profile'
 import dotenv from 'dotenv'
 import { MovieList } from './pages/MovieList'
+import { MovieItem } from './pages/MovieItem'
+import { ActorPage } from './pages/ActorPage'
 // import { Test } from './pages/Test'
 
 dotenv.config()
@@ -51,6 +52,14 @@ export const App = () => {
 
           <Route exact path="/startmovies" >
             < MovieList />
+          </Route>
+
+          <Route exact path="/movie/:id" >
+            < MovieItem />
+          </Route>
+
+          <Route exact path="/actor/:id" >
+            < ActorPage API_KEY={API_KEY}/>
           </Route>
 
           {/* <Route exact path="/test" >
