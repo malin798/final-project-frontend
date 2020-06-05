@@ -16,17 +16,17 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
   if (!loggedIn || userId === null || userId === null || accessToken === null) {
     return (
       <div>
-        Please sign in to access your profile! 
+        Please sign in to access your profile!
       </div>
     )
   } else {
     return (
       <div>
-        Welcome { userName }!
+        Welcome { userName}!
 
         <button onClick={handleClick}>Log out</button>
       </div>
     )
   }
- 
+
 }

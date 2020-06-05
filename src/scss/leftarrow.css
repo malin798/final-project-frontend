@@ -1,0 +1,10 @@
+.leftArrowContainer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.leftArrow {
+  width: 24px;
+  height: 24px;
+}

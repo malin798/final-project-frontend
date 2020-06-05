@@ -1,5 +1,5 @@
+
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -23,12 +23,10 @@ const responsive = {
   }
 };
 
-
-export const Test = () => {
+export const ImageSlider = (props) => {
   const [movies, setMovies] = useState([])
 
   // const MOVIES_API = (`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
-
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
@@ -71,37 +69,18 @@ export const Test = () => {
 
       {movies.map(movie => {
         return (
-          <a>
+          <a href={props.link}>
             <img
               draggable={false}
-              alt="movie poster"
+              alt={"movie.original_title"}
+              key={movie.id}
               style={{ width: "100%", height: "100%" }}
-              src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path}`}
-            >
-
-
+              src={props.link}>
             </img>
+            <div className="titleDate"> <h1>{props.title}</h1></div>
           </a>
         )
       })}
-
     </Carousel>
-
-    /*
-    <>
-      <div class="arrows prev"></div>
-      <div className="moviesWrapper">
-        {movies.map((movie) => (
-          <div className="movieWrapper" key={movie.id}>
-            <Link className="movieLink" to={`/movies/${movie.id}`}>
-              <img className="movieImage" src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path}`} alt={"movie.original_title"} />
-            </Link>
-          </div>
-        ))
-        }
-      </div >
-
-      <div class="arrows next"></div>
-    </>*/
   )
 }

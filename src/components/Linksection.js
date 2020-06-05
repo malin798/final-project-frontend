@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 export const Linksection = ({ title, link, linkTitle }) => (
 
   <div className="link-section">
-    <p> 
+    <p>
       {title}
 
-      <Link to={link}> 
+      <Link to={link}>
         {linkTitle}
-      </Link> 
+      </Link>
     </p>
   </div>
 )
