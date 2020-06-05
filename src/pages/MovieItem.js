@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-export const MovieItem = () => {
+export const MovieItem = ({ API_KEY }) => {
 
   const params = useParams()
   const movieId = params.id
   
-  const API_KEY = process.env.REACT_APP_API_KEY
   // const movieId = "419704"
   const URL_MOVIE = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
   const URL_CAST = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+  const URL_SIMILAR = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US`
   
   const [movie, setMovie] = useState([])
   const [cast, setCast] = useState([])
   const [genre, setGenre] = useState([])
-  
+  const [similarMovies, setSimilarMovies] = useState([])
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
+    setLoading(true)
     fetch(URL_MOVIE)
       .then(res => res.json())
       .then(json => {
@@ -23,17 +26,21 @@ export const MovieItem = () => {
         setGenre(json.genres)
       })
 
+      fetch(URL_SIMILAR)
+      .then(res => res.json())
+      .then(json => {
+        setSimilarMovies(json.results)
+      })
+
       fetch(URL_CAST)
       .then(res => res.json())
       .then(json => {
         setCast(json.cast)
+        setLoading(false)
       })
-  }, [URL_MOVIE])
+  }, [movieId])
 
-  console.log("genres", movie.genres)
-  console.log("cast", cast)
-
-  if (!movie) {
+  if (!movie || loading) {
     return (
       <div>
         loading
@@ -76,6 +83,17 @@ export const MovieItem = () => {
         )
       })}
       </div>
+
+      <h3>Similar movies:</h3>
+      {similarMovies.slice(0, 10).map(movie => {
+        return (
+          <Link to={`/movie/${movie.id}`}>
+            {movie.title}
+            <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}>
+              </img>
+          </Link>
+        )
+      })}
       </section>
     )
   }

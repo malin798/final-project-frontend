@@ -55,7 +55,7 @@ export const App = () => {
           </Route>
 
           <Route exact path="/movie/:id" >
-            < MovieItem />
+            < MovieItem API_KEY={API_KEY} />
           </Route>
 
           <Route exact path="/actor/:id" >

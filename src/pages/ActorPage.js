@@ -6,15 +6,16 @@ export const ActorPage = ({ API_KEY }) => {
   const params = useParams()
   const actorId = params.id
   const URL_PAGE = `https://api.themoviedb.org/3/person/${actorId}?api_key=${API_KEY}&language=en-US`
-  const URL_IMAGES = `https://api.themoviedb.org/3/person/${actorId}/tagged_images?api_key=${API_KEY}&language=en-US`
+  const URL_IMAGES = `https://api.themoviedb.org/3/person/${actorId}/images?api_key=${API_KEY}&language=en-US`
   const URL_MOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=${actorId}`
   
   const [actor, setActor] = useState()
   const [images, setImages] = useState([])
   const [popularMovies, setPopularMovies] = useState([])
-  console.log(popularMovies)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     fetch(URL_PAGE)
       .then(res => res.json())
       .then(json => {
@@ -31,10 +32,11 @@ export const ActorPage = ({ API_KEY }) => {
       .then(res => res.json())
       .then(json => {
         setImages(json.profiles)
+        setLoading(false)
       })
-  }, [])
-  console.log(actor)
-  if (!actor) {
+  }, [actorId])
+
+  if (!actor || loading) {
     return (
       <div>
         Loading
@@ -43,14 +45,17 @@ export const ActorPage = ({ API_KEY }) => {
   } else { 
     return (
       <div>
+        <h2>{actor.name}</h2>
+      <h3>Born:</h3>
       {actor.birthday}, {actor.place_of_birth}
-        {actor.name}
 
         <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
         </img>
-
-        {actor.birthday}
+        
+        <h3>Biography:</h3>
         {actor.biography}
+
+        
         {images && images.map(image => {
           return (
           <img src={`https://image.tmdb.org/t/p/w200/${image.file_path}`}>
@@ -58,6 +63,8 @@ export const ActorPage = ({ API_KEY }) => {
           )
         })
         }
+
+        <h3>Also starring in:</h3>
         {popularMovies.map(movie => {
           return (
             <Link to={`/movie/${movie.id}`}>
