@@ -14,8 +14,11 @@ import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Profile } from './pages/Profile'
 import dotenv from 'dotenv'
-import { MovieList } from './pages/MovieList'
 import { Test } from './pages/Test'
+import { Hamburger } from './components/Hamburger'
+import { ImageSlider } from './components/ImageSlider'
+
+
 
 dotenv.config()
 
@@ -24,7 +27,7 @@ const reducer = combineReducers({ user: user.reducer });
 const store = configureStore({ reducer: reducer })
 
 export const App = () => {
-  const API_KEY = process.env.REACT_APP_API_KEY
+  //const API_KEY = process.env.REACT_APP_API_KEY
   const [loggedIn, setLoggedIn] = useState(false)
 
   return (
@@ -40,19 +43,20 @@ export const App = () => {
             {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
 
-          <Route exact path='/aregister' >
+          <Route exact path='/register' >
             < Register />
           </Route>
 
           <Route exact path='/profile' >
             {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
-          <Route exact path="/startmovies" >
-            < MovieList />
-          </Route>
 
           <Route exact path="/test" >
             < Test />
+          </Route>
+
+          <Route exact path="/hamburger" >
+            < Hamburger />
           </Route>
 
         </Switch>
