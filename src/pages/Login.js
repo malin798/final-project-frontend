@@ -1,26 +1,21 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
-import { user, handleLogin } from '../components/reducers/user'
+import { handleLogin } from '../components/reducers/user'
 import { Linksection } from '../components/Linksection'
 import { Accountheader } from '../components/Accountheader' 
 import { Errormessage} from '../components/Errormessage'
-import { createNextState } from '@reduxjs/toolkit'
 
-export const Login = ({ loggedIn, setLoggedIn }) => {
-  const history = useHistory()
+export const Login = ({ setLoggedIn }) => {
+  
   const dispatch = useDispatch();
-
-  const errorMessage = useSelector((store) => store.user.login.errorMessage)
-  const accessToken = useSelector((store) => store.user.login.accessToken)
-  const userId = useSelector((store) => store.user.login.userId)
-
+  const [errorMessage, setErrorMessage] = useState()
   const [name, setName] = useState()
   const [password, setPassword] = useState()
  
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await dispatch(handleLogin(name, password, setLoggedIn))       
+    await dispatch(handleLogin(name, password, setErrorMessage, setLoggedIn))       
   }
 
   return (
