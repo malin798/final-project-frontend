@@ -65,20 +65,21 @@ export const ImageSlider = ({ fetchlink }) => {
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
     >
-
       {movies.map(movie => {
         return (
-          <a href={`/movie/${movie.id}`}>
-            <img
-              draggable={false}
-              alt={"movie.original_title"}
-              key={movie.id}
-              style={{ width: "100%", height: "60%" }}
-              src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path}`}
-            >
-            </img>
-            <div className="titleDate"> <h1>{movie.original_title}</h1></div>
-          </a>
+          <>
+            <a href={`/movie/${movie.id}`}>
+              <img
+                draggable={false}
+                alt={"movie.original_title"}
+                key={movie.id}
+                style={{ width: "100%", height: "60%" }}
+                src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path}`}
+              >
+              </img>
+              <div className="titleDate"> <h1>{movie.original_title}</h1></div>
+            </a>
+          </>
         )
       })}
     </Carousel>

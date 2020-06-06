@@ -17,7 +17,8 @@ import dotenv from 'dotenv'
 import { Hamburger } from './components/Hamburger'
 import { MovieItem } from './pages/MovieItem'
 import { ActorPage } from './pages/ActorPage'
-import { ImageSlider } from './components/ImageSlider'
+import { ImageSliderAndTitle } from './components/ImageSliderAndTitle'
+
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -62,7 +63,8 @@ export const App = () => {
           </Route>
 
           <Route exact path="/startpage" >
-            < ImageSlider fetchlink={`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`} />
+            < ImageSliderAndTitle fetchlink={`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Popular" />
+            < ImageSliderAndTitle fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Upcoming" />
           </Route>
 
           <Route exact path="/hamburger" >
@@ -74,3 +76,4 @@ export const App = () => {
     </Provider>
   )
 }
+
