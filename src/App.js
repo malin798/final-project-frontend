@@ -13,10 +13,13 @@ import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Profile } from './pages/Profile'
 import dotenv from 'dotenv'
-import { Test } from './pages/Test'
+// import { Test } from './pages/Test'
 import { Hamburger } from './components/Hamburger'
+import { MovieItem } from './pages/MovieItem'
+import { ActorPage } from './pages/ActorPage'
+import { ImageSlider } from './components/ImageSlider'
 
-
+const API_KEY = process.env.REACT_APP_API_KEY
 
 dotenv.config()
 
@@ -25,7 +28,7 @@ const reducer = combineReducers({ user: user.reducer });
 const store = configureStore({ reducer: reducer })
 
 export const App = () => {
-  //const API_KEY = process.env.REACT_APP_API_KEY
+  const API_KEY = process.env.REACT_APP_API_KEY
   const [loggedIn, setLoggedIn] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
 
@@ -56,6 +59,10 @@ export const App = () => {
 
           <Route exact path="/actor/:id" >
             < ActorPage API_KEY={API_KEY} />
+          </Route>
+
+          <Route exact path="/startpage" >
+            < ImageSlider fetchlink={`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`} />
           </Route>
 
           <Route exact path="/hamburger" >
