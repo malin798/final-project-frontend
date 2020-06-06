@@ -13,9 +13,10 @@ import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Profile } from './pages/Profile'
 import dotenv from 'dotenv'
-import { Test } from './pages/Test'
+// import { Test } from './pages/Test'
 import { Hamburger } from './components/Hamburger'
-
+import { MovieItem } from './pages/MovieItem'
+import { ActorPage } from './pages/ActorPage'
 
 
 dotenv.config()
@@ -25,7 +26,7 @@ const reducer = combineReducers({ user: user.reducer });
 const store = configureStore({ reducer: reducer })
 
 export const App = () => {
-  //const API_KEY = process.env.REACT_APP_API_KEY
+  const API_KEY = process.env.REACT_APP_API_KEY
   const [loggedIn, setLoggedIn] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
 
