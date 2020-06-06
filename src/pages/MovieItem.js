@@ -71,17 +71,17 @@ export const MovieItem = ({ API_KEY }) => {
       </div>
 
       <div className="cast-container">
-      {cast.slice(0, 10).map(actor => {
-        return (
-          <div>
-            {actor.name} as {actor.character}
-            <Link to={`/actor/${actor.id}`}>
-              <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
-              </img>
-            </Link>
-          </div>
-        )
-      })}
+        {cast.slice(0, 10).map(actor => {
+          return (
+            <div>
+              {actor.name} as {actor.character}
+              <Link to={`/actor/${actor.id}`}>
+                <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
+                </img>
+              </Link>
+            </div>
+          )
+        })}
       </div>
 
       <h3>Similar movies:</h3>

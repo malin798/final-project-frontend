@@ -25,7 +25,6 @@ export const Register = () => {
       dispatch(user.actions.setError({ error: true }))
     } else {
       dispatch(handleSignup(name, email, password))
-      history.push(`/signin`)
     }
   }
 
