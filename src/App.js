@@ -5,7 +5,6 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { user } from './components/reducers/user'
@@ -16,7 +15,6 @@ import { Profile } from './pages/Profile'
 import dotenv from 'dotenv'
 import { Test } from './pages/Test'
 import { Hamburger } from './components/Hamburger'
-import { ImageSlider } from './components/ImageSlider'
 
 
 
@@ -29,6 +27,7 @@ const store = configureStore({ reducer: reducer })
 export const App = () => {
   //const API_KEY = process.env.REACT_APP_API_KEY
   const [loggedIn, setLoggedIn] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false)
 
   return (
 
@@ -40,7 +39,7 @@ export const App = () => {
         <Switch>
 
           <Route exact path='/signin' >
-            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />}
           </Route>
 
           <Route exact path='/register' >
@@ -48,11 +47,15 @@ export const App = () => {
           </Route>
 
           <Route exact path='/profile' >
-            {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+            {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />}
           </Route>
 
-          <Route exact path="/test" >
-            < Test />
+          <Route exact path="/movie/:id" >
+            < MovieItem API_KEY={API_KEY} />
+          </Route>
+
+          <Route exact path="/actor/:id" >
+            < ActorPage API_KEY={API_KEY} />
           </Route>
 
           <Route exact path="/hamburger" >

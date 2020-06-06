@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -69,7 +68,7 @@ export const ImageSlider = (props) => {
 
       {movies.map(movie => {
         return (
-          <a href={props.link}>
+          <a href={props}>
             <img
               draggable={false}
               alt={"movie.original_title"}
@@ -84,3 +83,5 @@ export const ImageSlider = (props) => {
     </Carousel>
   )
 }
+
+

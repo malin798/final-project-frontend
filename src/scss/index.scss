@@ -2,7 +2,9 @@
 @import './navbar.scss';
 //@import './movielist.scss';
 @import './test.scss';
-
+@import './hamburger.scss';
+@import './leftarrow.scss';
+@import './rightarrow.scss';
 
 body {
   background-color: #070707;
@@ -21,4 +23,10 @@ code {
 
 * {
   box-sizing: border-box;
+}
+
+.increase-size:hover {
+  transform: scale(1.1);
+  z-index: 10;
+
 }

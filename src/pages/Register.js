@@ -7,19 +7,18 @@ import { Linksection } from '../components/Linksection'
 import { Errormessage } from '../components/Errormessage'
 
 export const Register = () => {
-  const history = useHistory()
+
   const dispatch = useDispatch()
-  const errorMessage = useSelector((store) => store.user.login.errorMessage);
+
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [confirmedPassword, setConfirmedPassword] = useState()
+  const [errorMessage, setErrorMessage] = useState()
 
   console.log("error message", errorMessage)
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(user.actions.setError({ error: false }))
-    dispatch(user.actions.setErrorMessage({ errorMessage: null }))
 
     if (password !== confirmedPassword) {
       dispatch(user.actions.setErrorMessage({ errorMessage: "Passwords do not match" }))
@@ -83,14 +82,6 @@ export const Register = () => {
               Confirm password
           </p>
 
-<<<<<<< HEAD
-          {errorMessage &&
-            < Errormessage errormessage={errorMessage} />
-          }
-
-          <button type="submit">
-            Create user
-            =======
             <input
               value={confirmedPassword}
               onChange={(event) => setConfirmedPassword(event.target.value)}
@@ -100,9 +91,12 @@ export const Register = () => {
             </input>
           </label>
 
+          {errorMessage &&
+            < Errormessage errormessage={errorMessage} />
+          }
+
           <button type="submit">
             Create user
-            >>>>>>> jennifer_development
           </button>
         </form>
 
