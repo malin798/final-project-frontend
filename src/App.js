@@ -16,7 +16,6 @@ import { Profile } from './pages/Profile'
 import dotenv from 'dotenv'
 import { Test } from './pages/Test'
 import { Hamburger } from './components/Hamburger'
-import { ImageSlider } from './components/ImageSlider'
 
 
 

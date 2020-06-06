@@ -19,8 +19,8 @@ export const Navbar = ({ loggedIn }) => {
           My profile
         </Link>
       }
-      
+
     </div>
-    
+
   )
 }
