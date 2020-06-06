@@ -22,13 +22,13 @@ const responsive = {
   }
 };
 
-export const ImageSlider = (props) => {
+export const ImageSlider = ({ fetchlink }) => {
   const [movies, setMovies] = useState([])
 
   // const MOVIES_API = (`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+    fetch(fetchlink)
       .then((res) => res.json())
       .then((json) => {
         console.log(json)
@@ -68,15 +68,16 @@ export const ImageSlider = (props) => {
 
       {movies.map(movie => {
         return (
-          <a href={props}>
+          <a href={`/movie/${movie.id}`}>
             <img
               draggable={false}
               alt={"movie.original_title"}
               key={movie.id}
-              style={{ width: "100%", height: "100%" }}
-              src={props.link}>
+              style={{ width: "100%", height: "60%" }}
+              src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path}`}
+            >
             </img>
-            <div className="titleDate"> <h1>{props.title}</h1></div>
+            <div className="titleDate"> <h1>{movie.original_title}</h1></div>
           </a>
         )
       })}
