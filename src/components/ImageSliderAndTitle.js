@@ -8,7 +8,7 @@ export const ImageSliderAndTitle = ({ fetchtitle, fetchlink }) => {
 
   return (
     <>
-      <h3>{fetchtitle}</h3>
+      <h4>{fetchtitle}</h4>
       < ImageSlider fetchlink={fetchlink} />
     </>
   )
