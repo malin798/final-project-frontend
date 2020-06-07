@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ImageSliderAndTitle} from '../components/ImageSliderAndTitle'
+import { ImageSliderAndTitle} from '../components/MovieSlider'
 import { ImageSlider } from '../components/ImageSlider'
 
 export const GenreItem = () => {

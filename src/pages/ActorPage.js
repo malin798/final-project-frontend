@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { ImageSliderAndTitle } from '../components/ImageSliderAndTitle'
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import { useParams } from 'react-router-dom'
+import { MovieSlider } from '../components/MovieSlider'
+import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
 
 export const ActorPage = ({ API_KEY }) => {
 
@@ -60,7 +59,7 @@ export const ActorPage = ({ API_KEY }) => {
         })
         }
 
-        < ImageSliderAndTitle fetchlink={URL_POPULARMOVIES} fetchtitle="Also starring in:" />
+        < MovieSlider placeholder={placeholder} />
         
       </div>
     )

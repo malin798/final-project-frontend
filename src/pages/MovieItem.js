@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ImageSliderAndTitle} from '../components/ImageSliderAndTitle'
+import { MovieSlider } from '../components/MovieSlider'
 import { ImageSlider } from '../components/ImageSlider'
 import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
 
@@ -17,8 +17,9 @@ export const MovieItem = ({ API_KEY }) => {
   const [cast, setCast] = useState([])
   const [genre, setGenre] = useState([])
   const [loading, setLoading] = useState(false)
-  console.log("genre", genre)
 
+  console.log(genre.map(genre => genre.name).join(", "))
+ 
   useEffect(() => {
     setLoading(true)
     fetch(URL_MOVIE)
@@ -56,14 +57,17 @@ export const MovieItem = ({ API_KEY }) => {
         {movie.overview}
       </div>
 
-      <div>
-        {genre.map(genre => {
-          return (
-            <Link to={`/genres/${genre.id}`}>
-              {genre.name}
+      <div className="movie-genre">
+        {genre.map((item, index) => (
+            <>
+            <Link to={`/genres/${item.id}`}>
+              {item.name}
             </Link>
-          )
-        })}
+              <span>
+                {(genre.length-1 > index) ? ", " : ""}
+              </span>
+            </>
+        ))}
       </div>
 
       <ImageSlider>
@@ -91,8 +95,8 @@ export const MovieItem = ({ API_KEY }) => {
         })}
       </ImageSlider> 
 
-      < ImageSliderAndTitle fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" />
-     
+      < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} />
+
       </section>
     )
   }

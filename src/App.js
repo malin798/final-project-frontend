@@ -17,8 +17,8 @@ import dotenv from 'dotenv'
 import { Hamburger } from './components/Hamburger'
 import { MovieItem } from './pages/MovieItem'
 import { ActorPage } from './pages/ActorPage'
-import { ImageSliderAndTitle } from './components/ImageSliderAndTitle'
-
+import { MovieSlider } from './components/MovieSlider'
+import placeholder from './images/elijah-flores-44se2xSCo00-unsplash.jpg'
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -71,9 +71,9 @@ export const App = () => {
           </Route>
 
           <Route exact path="/startpage" >
-            < ImageSliderAndTitle fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Now playing" />
-            < ImageSliderAndTitle fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Top rated" />
-            < ImageSliderAndTitle fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Upcoming" />
+            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Now playing" placeholder={placeholder} />
+            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Top rated" placeholder={placeholder} />
+            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Upcoming" placeholder={placeholder} />
           </Route>
 
           <Route exact path="/hamburger" >
