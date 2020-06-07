@@ -3,13 +3,10 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Link } from 'react-router-dom'
 
-
-const API_KEY = process.env.REACT_APP_API_KEY
-
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 7,
+    items: 6,
     slidesToSlide: 5 
   },
   tablet: {
@@ -24,13 +21,9 @@ const responsive = {
   }
 }
 
-
-
 export const ImageSliderAndTitle = ({ fetchtitle, fetchlink }) => {
 
   const [movies, setMovies] = useState([])
-
-  // const MOVIES_API = (`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
 
   useEffect(() => {
     fetch(fetchlink)
@@ -71,7 +64,6 @@ export const ImageSliderAndTitle = ({ fetchtitle, fetchlink }) => {
               >
               </img>
               <div className="titleDate"> <h5>{movie.original_title}</h5> <p>Released {movie.release_date}</p></div>
-
             </Link>
           </div>
         )

@@ -1,0 +1,47 @@
+.react-multi-carousel-item {
+  margin: 0 3px;
+  position: relative;
+
+  &:hover .movieImage {
+    opacity: 0.2;
+    transition: 0.2s ease-in-out;
+  }
+
+  &:hover .titleDate {
+    opacity: 1;
+    transition: 0.2s ease-in-out;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h5 {
+    font-size: 17px;
+    color: white;
+    margin-bottom: 0px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-top: 2px;
+  }
+
+  .titleDate {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    color: white;
+    width: 90%;
+    height: auto;
+    opacity: 0;
+    padding-left: 12px;
+    padding-bottom: 2px;
+  }
+}
+
+
+
