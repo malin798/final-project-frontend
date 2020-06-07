@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ImageSliderAndTitle} from '../components/ImageSliderAndTitle'
 import { ImageSlider } from '../components/ImageSlider'
+import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
 
 export const MovieItem = ({ API_KEY }) => {
 
@@ -16,6 +17,7 @@ export const MovieItem = ({ API_KEY }) => {
   const [cast, setCast] = useState([])
   const [genre, setGenre] = useState([])
   const [loading, setLoading] = useState(false)
+  console.log(cast)
 
   useEffect(() => {
     setLoading(true)
@@ -66,16 +68,23 @@ export const MovieItem = ({ API_KEY }) => {
 
       <ImageSlider>
         {cast.slice(0, 10).map(actor => {
+            
+          let src = `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+   
+          if (actor.profile_path == null || actor.profile_path === undefined ) {
+            src = placeholder
+          } 
+         
           return (
-            <div className="movieWrapper">
-              <Link className="movieLink" to={`/actor/${actor.id}`}>
+            <div className="movie-wrapper">
+              <Link to={`/actor/${actor.id}`}>
                 <img 
-                  className="movieImage"
-                  src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`} 
-                  style={{ width: "100%" }}
+                  className="movie-image"
+                  style={{height: "470px"}}
+                  src={src} 
                 >
                 </img>
-                <div className="titleDate"> <h5>{actor.name}</h5> <p>as {actor.character}</p></div>
+                <div className="movie-details"> <h5>{actor.name}</h5> <p>as {actor.character}</p></div>
               </Link>
             </div>
           )

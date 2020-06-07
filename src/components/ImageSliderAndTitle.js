@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import { Link } from 'react-router-dom'
+import placeholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 
 const responsive = {
   desktop: {
@@ -52,18 +53,24 @@ export const ImageSliderAndTitle = ({ fetchtitle, fetchlink }) => {
       customTransition="all 1.5s ease-in-out"
     >
       {movies.map(movie => {
+
+        let src = `https://image.tmdb.org/t/p/w342/${movie.backdrop_path}`
+          
+        if (movie.backdrop_path == null || movie.backdrop_path === undefined ) {
+          src = placeholder
+        } 
         return (
-          <div className="movieWrapper" key={movie.id}>
-            <Link className="movieLink" to={`/movie/${movie.id}`}>
+          <div className="movie-wrapper" key={movie.id}>
+            <Link className="movie-link" to={`/movie/${movie.id}`}>
               <img
-                className="movieImage"
+                className="movie-image"
                 draggable={false}
                 alt={movie.original_title}
-                style={{ width: "100%" }}
-                src={`https://image.tmdb.org/t/p/w342${movie.backdrop_path}`}
+                style={{height: "180px"}}
+                src={src}
               >
               </img>
-              <div className="titleDate"> <h5>{movie.original_title}</h5> <p>Released {movie.release_date}</p></div>
+              <div className="movie-details"> <h5>{movie.original_title}</h5> <p>Released {movie.release_date}</p></div>
             </Link>
           </div>
         )
