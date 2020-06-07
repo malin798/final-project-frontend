@@ -4,7 +4,7 @@ import { ImageSliderAndTitle} from '../components/ImageSliderAndTitle'
 import { ImageSlider } from '../components/ImageSlider'
 
 export const GenreItem = () => {
-//fetcha en specifik genre från movielänken..
+//fetcha en specifik genre från movielänken.. 
   const params = useParams()
   const genreId = params.id
 
