@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { MovieSlider } from '../components/MovieSlider'
+import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
 
 export const ActorPage = ({ API_KEY }) => {
 
@@ -7,11 +9,10 @@ export const ActorPage = ({ API_KEY }) => {
   const actorId = params.id
   const URL_PAGE = `https://api.themoviedb.org/3/person/${actorId}?api_key=${API_KEY}&language=en-US`
   const URL_IMAGES = `https://api.themoviedb.org/3/person/${actorId}/images?api_key=${API_KEY}&language=en-US`
-  const URL_MOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=${actorId}`
+  const URL_POPULARMOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=${actorId}`
   
   const [actor, setActor] = useState()
   const [images, setImages] = useState([])
-  const [popularMovies, setPopularMovies] = useState([])
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -20,12 +21,6 @@ export const ActorPage = ({ API_KEY }) => {
       .then(res => res.json())
       .then(json => {
         setActor(json)
-      })
-
-      fetch(URL_MOVIES)
-      .then(res => res.json())
-      .then(json => {
-        setPopularMovies(json.results)
       })
 
       fetch(URL_IMAGES)
@@ -46,8 +41,8 @@ export const ActorPage = ({ API_KEY }) => {
     return (
       <div>
         <h2>{actor.name}</h2>
-      <h3>Born:</h3>
-      {actor.birthday}, {actor.place_of_birth}
+        <h3>Born:</h3>
+        {actor.birthday}, {actor.place_of_birth}
 
         <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
         </img>
@@ -64,14 +59,8 @@ export const ActorPage = ({ API_KEY }) => {
         })
         }
 
-        <h3>Also starring in:</h3>
-        {popularMovies.map(movie => {
-          return (
-            <Link to={`/movie/${movie.id}`}>
-              {movie.title}
-            </Link>
-          )
-        })}
+        < MovieSlider fetchlink= {URL_POPULARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} />
+        
       </div>
     )
   }

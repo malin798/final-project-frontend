@@ -1,19 +1,24 @@
 @import './login-register.scss';
 @import './navbar.scss';
-//@import './movielist.scss';
-@import './test.scss';
 @import './movie-item.scss';
 @import './hamburger.scss';
+<<<<<<< HEAD
 @import './leftarrow.scss';
 @import './rightarrow.scss';
 @import './startpage.scss';
+@import './listbutton.scss';
+=======
+@import './imageslider.scss';
+>>>>>>> cecc6c1b1d8084952d6b9cef9bb12011028c43a4
 
 body {
+  padding: 10px;
+  color: white;
   background-color: #070707;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif, 'Comfortaa', 'Monoton', 'Raleway Dots';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,10 +30,4 @@ code {
 
 * {
   box-sizing: border-box;
-}
-
-.increase-size:hover {
-  transform: scale(1.1);
-  z-index: 10;
-
 }

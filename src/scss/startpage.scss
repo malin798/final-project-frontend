@@ -20,14 +20,9 @@ p {
   text-align: left;
 }
 
-.movieWrapper:hover .movieImage {
-  opacity: 0.2;
-}
-
 .titleDate {
   position: absolute;
-  top: 0%;
-  bottom: 0;
+  bottom: 22px;
   left: 0;
   right: 0;
   opacity: 0;
@@ -37,19 +32,17 @@ p {
   -o-transition: opacity 0.8s ease-in-out;
   transition: opacity 0.4s ease-in-out;
   width: 90%;
-  height: auto;
   opacity: 0;
   padding-left: 12px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 2px;
+}
+
+.movieWrapper:hover .movieImage {
+  opacity: 0.2;
 }
 
 .movieWrapper:hover .titleDate {
   opacity: 1;
-}
-
-.movieLink {
-  text-decoration: none;
 }

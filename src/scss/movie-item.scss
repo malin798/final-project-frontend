@@ -1,7 +1,16 @@
 .movie-item {
   color: white;
+
+  .movie-genre {
+
+    a {
+      color:white;
+      text-decoration: none;
+
+      &:hover {
+        color: cornflowerblue;
+      }
+    }
+  }
 }
 
-.cast-container {
-  display: flex;
-}
