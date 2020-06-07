@@ -63,7 +63,8 @@ export const App = () => {
           </Route>
 
           <Route exact path="/startpage" >
-            < ImageSliderAndTitle fetchlink={`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Popular" />
+            < ImageSliderAndTitle fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Now playing" />
+            < ImageSliderAndTitle fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Top rated" />
             < ImageSliderAndTitle fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Upcoming" />
           </Route>
 
