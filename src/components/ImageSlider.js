@@ -22,20 +22,16 @@ const responsive = {
 
 export const ImageSlider = (props) => {
 
-  useEffect(() => {
-  }, [])
-
   return (
 
     <Carousel
-      swipeable={false}
+      swipeable={true}
       draggable={false}
       minimumTouchDrag={80}
-      partialVisible
       arrows={true}
       responsive={responsive}
       ssr={true}
-      infinite={true}
+      infinite={false}
       autoPlaySpeed={1000}
       keyBoardControl={true}
       customTransition="all 1.5s ease-in-out"

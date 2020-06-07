@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
 import { ImageSlider } from '../components/ImageSlider'
-import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
+import actorPlaceholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
+import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
+
 
 export const MovieItem = ({ API_KEY }) => {
 
@@ -76,7 +78,7 @@ export const MovieItem = ({ API_KEY }) => {
           let src = `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
    
           if (actor.profile_path == null || actor.profile_path === undefined ) {
-            src = placeholder
+            src = actorPlaceholder
           } 
          
           return (
@@ -88,14 +90,23 @@ export const MovieItem = ({ API_KEY }) => {
                   src={src} 
                 >
                 </img>
-                <div className="movie-details"> <h5>{actor.name}</h5> <p>as {actor.character}</p></div>
+                <div className="movie-details"> 
+                  <div>
+                    <h5>
+                      {actor.name}
+                    </h5> 
+                    <p>
+                      as {actor.character}
+                    </p>
+                  </div>
+                </div>
               </Link>
             </div>
           )
         })}
       </ImageSlider> 
 
-      < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} />
+      < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={moviePlaceholder}/>
 
       </section>
     )

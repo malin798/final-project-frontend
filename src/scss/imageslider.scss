@@ -1,5 +1,5 @@
 .react-multi-carousel-item {
-  margin: 0 3px;
+  padding: 0 3px;
   position: relative;
   width: 317px;
   overflow: hidden;
@@ -43,10 +43,15 @@
     opacity: 0;
     color: white;
     width: 90%;
-    height: auto;
+    height: 100%;
     opacity: 0;
-    padding-left: 12px;
-    padding-bottom: 2px;
+    padding: 5px 10px;
+
+    button {
+      position: absolute;
+      top: 10px;
+      right: -10px;
+    }
   }
 }
 

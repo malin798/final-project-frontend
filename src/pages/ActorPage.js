@@ -41,8 +41,8 @@ export const ActorPage = ({ API_KEY }) => {
     return (
       <div>
         <h2>{actor.name}</h2>
-      <h3>Born:</h3>
-      {actor.birthday}, {actor.place_of_birth}
+        <h3>Born:</h3>
+        {actor.birthday}, {actor.place_of_birth}
 
         <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
         </img>
@@ -59,7 +59,7 @@ export const ActorPage = ({ API_KEY }) => {
         })
         }
 
-        < MovieSlider placeholder={placeholder} />
+        < MovieSlider fetchlink= {URL_POPULARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} />
         
       </div>
     )

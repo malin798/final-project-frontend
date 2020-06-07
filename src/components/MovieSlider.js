@@ -1,28 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ImageSlider } from '../components/ImageSlider'
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 6,
-    slidesToSlide: 5 
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3,
-    slidesToSlide: 2 
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1 
-  }
-}
+import { setActiveLink } from 'react-scroll/modules/mixins/scroller'
 
 export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
 
   const [movies, setMovies] = useState([])
+  const [active, setActive] = useState(false)
+
+  const addToList = (event) => {
+    event.preventDefault()
+    //Add to redux/reducers
+    //fetch (put) to users/:id/watchlist
+    //header Authorization: accesstoken
+    // body: "title": "movietitle",
+    // showId: "movieId"
+    //change color of button if added to watchlist?
+  }
 
   useEffect(() => {
     fetch(fetchlink)
@@ -56,7 +50,24 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
                   src={src}
                 >
                 </img>
-                <div className="movie-details"> <h5>{movie.original_title}</h5> <p>Released {movie.release_date}</p></div>
+                
+                <div className='movie-details'> 
+                  <div>
+                  <button
+                    onMouseOver={event => setActive(!active)}
+                    onMouseOut={event => setActive(!active)}  
+                    onClick={event => addToList(event)}
+                  >
+                    + {active && "Add to watchlist"}
+                  </button>
+                    <h5>
+                      {movie.original_title}
+                    </h5> 
+                    <p>
+                      Released {movie.release_date}
+                    </p>
+                  </div>
+                </div>
               </Link>
             </div>
           )
