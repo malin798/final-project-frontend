@@ -1,11 +1,7 @@
 @import './login-register.scss';
 @import './navbar.scss';
-//@import './movielist.scss';
-// @import './test.scss';
 @import './movie-item.scss';
 @import './hamburger.scss';
-// @import './leftarrow.scss';
-// @import './rightarrow.scss';
 @import './imageslider.scss';
 
 body {
@@ -28,9 +24,3 @@ code {
 * {
   box-sizing: border-box;
 }
-
-// .react-multi-carousel-item:hover {
-//   transform: scale(1.05);
-//   z-index: 10;
-
-// }

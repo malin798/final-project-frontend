@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ImageSlider } from '../components/ImageSlider'
-import { setActiveLink } from 'react-scroll/modules/mixins/scroller'
+// import actorPlaceholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
+// import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 
 export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
 

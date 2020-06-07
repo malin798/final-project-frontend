@@ -108,8 +108,8 @@ export const handleLogin = (name, password, setErrorMessage, setLoggedIn) => {
 
 export const logout = (setLoggedIn, setErrorMessage) => {
     setLoggedIn(false)
-  return (dispatch) => {
     setErrorMessage()
+  return (dispatch) => {
     dispatch(user.actions.setAccessToken({ accessToken: null }))
     dispatch(user.actions.setUserId({ userId: 0 }))
   };
