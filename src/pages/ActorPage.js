@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { ImageSliderAndTitle } from '../components/ImageSliderAndTitle'
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import { useParams } from 'react-router-dom'
+import { MovieSlider } from '../components/MovieSlider'
+import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
 
 export const ActorPage = ({ API_KEY }) => {
 
@@ -42,8 +41,8 @@ export const ActorPage = ({ API_KEY }) => {
     return (
       <div>
         <h2>{actor.name}</h2>
-      <h3>Born:</h3>
-      {actor.birthday}, {actor.place_of_birth}
+        <h3>Born:</h3>
+        {actor.birthday}, {actor.place_of_birth}
 
         <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
         </img>
@@ -60,7 +59,7 @@ export const ActorPage = ({ API_KEY }) => {
         })
         }
 
-        < ImageSliderAndTitle fetchlink={URL_POPULARMOVIES} fetchtitle="Also starring in:" />
+        < MovieSlider fetchlink= {URL_POPULARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} />
         
       </div>
     )

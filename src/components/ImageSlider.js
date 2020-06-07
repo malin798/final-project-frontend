@@ -5,8 +5,13 @@ import 'react-multi-carousel/lib/styles.css';
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
+<<<<<<< HEAD
     items: 7,
     slidesToSlide: 5
+=======
+    items: 6,
+    slidesToSlide: 5 
+>>>>>>> cecc6c1b1d8084952d6b9cef9bb12011028c43a4
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -22,20 +27,16 @@ const responsive = {
 
 export const ImageSlider = (props) => {
 
-  useEffect(() => {
-  }, [])
-
   return (
 
     <Carousel
       swipeable={true}
       draggable={false}
       minimumTouchDrag={80}
-      partialVisible
       arrows={true}
       responsive={responsive}
       ssr={true}
-      infinite={true}
+      infinite={false}
       autoPlaySpeed={1000}
       keyBoardControl={true}
       customTransition="all 1.5s ease-in-out"

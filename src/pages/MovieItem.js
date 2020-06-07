@@ -1,27 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ImageSliderAndTitle} from '../components/ImageSliderAndTitle'
+import { MovieSlider } from '../components/MovieSlider'
 import { ImageSlider } from '../components/ImageSlider'
-// import Carousel from 'react-multi-carousel';
-// import 'react-multi-carousel/lib/styles.css';
+import actorPlaceholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
+import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 
-// const responsive = {
-//   desktop: {
-//     breakpoint: { max: 3000, min: 1024 },
-//     items: 7,
-//     slidesToSlide: 5 
-//   },
-//   tablet: {
-//     breakpoint: { max: 1024, min: 464 },
-//     items: 3,
-//     slidesToSlide: 2 
-//   },
-//   mobile: {
-//     breakpoint: { max: 464, min: 0 },
-//     items: 1,
-//     slidesToSlide: 1 
-//   }
-// }
 
 export const MovieItem = ({ API_KEY }) => {
 
@@ -37,6 +20,8 @@ export const MovieItem = ({ API_KEY }) => {
   const [genre, setGenre] = useState([])
   const [loading, setLoading] = useState(false)
 
+  console.log(genre.map(genre => genre.name).join(", "))
+ 
   useEffect(() => {
     setLoading(true)
     fetch(URL_MOVIE)
@@ -74,34 +59,55 @@ export const MovieItem = ({ API_KEY }) => {
         {movie.overview}
       </div>
 
-      <div>
-        {genre.map(genre => {
-          return (
-            <div>
-              {genre.name}
-            </div>
-          )
-        })}
+      <div className="movie-genre">
+        {genre.map((item, index) => (
+            <>
+            <Link to={`/genres/${item.id}`}>
+              {item.name}
+            </Link>
+              <span>
+                {(genre.length-1 > index) ? ", " : ""}
+              </span>
+            </>
+        ))}
       </div>
 
       <ImageSlider>
         {cast.slice(0, 10).map(actor => {
+            
+          let src = `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+   
+          if (actor.profile_path == null || actor.profile_path === undefined ) {
+            src = actorPlaceholder
+          } 
+         
           return (
-            <div className="movieWrapper">
-            <div>
-              {actor.name} as {actor.character}
-              <Link className="movieLink" to={`/actor/${actor.id}`}>
-                <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
+            <div className="movie-wrapper">
+              <Link to={`/actor/${actor.id}`}>
+                <img 
+                  className="movie-image"
+                  style={{height: "470px"}}
+                  src={src} 
+                >
                 </img>
+                <div className="movie-details"> 
+                  <div>
+                    <h5>
+                      {actor.name}
+                    </h5> 
+                    <p>
+                      as {actor.character}
+                    </p>
+                  </div>
+                </div>
               </Link>
-            </div>
             </div>
           )
         })}
       </ImageSlider> 
 
-      < ImageSliderAndTitle fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" />
-     
+      < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={moviePlaceholder}/>
+
       </section>
     )
   }
