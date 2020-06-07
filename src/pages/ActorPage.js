@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { ImageSliderAndTitle } from '../components/ImageSliderAndTitle'
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 export const ActorPage = ({ API_KEY }) => {
 
@@ -7,11 +10,10 @@ export const ActorPage = ({ API_KEY }) => {
   const actorId = params.id
   const URL_PAGE = `https://api.themoviedb.org/3/person/${actorId}?api_key=${API_KEY}&language=en-US`
   const URL_IMAGES = `https://api.themoviedb.org/3/person/${actorId}/images?api_key=${API_KEY}&language=en-US`
-  const URL_MOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=${actorId}`
+  const URL_POPULARMOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=${actorId}`
   
   const [actor, setActor] = useState()
   const [images, setImages] = useState([])
-  const [popularMovies, setPopularMovies] = useState([])
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -20,12 +22,6 @@ export const ActorPage = ({ API_KEY }) => {
       .then(res => res.json())
       .then(json => {
         setActor(json)
-      })
-
-      fetch(URL_MOVIES)
-      .then(res => res.json())
-      .then(json => {
-        setPopularMovies(json.results)
       })
 
       fetch(URL_IMAGES)
@@ -64,14 +60,8 @@ export const ActorPage = ({ API_KEY }) => {
         })
         }
 
-        <h3>Also starring in:</h3>
-        {popularMovies.map(movie => {
-          return (
-            <Link to={`/movie/${movie.id}`}>
-              {movie.title}
-            </Link>
-          )
-        })}
+        < ImageSliderAndTitle fetchlink={URL_POPULARMOVIES} fetchtitle="Also starring in:" />
+        
       </div>
     )
   }

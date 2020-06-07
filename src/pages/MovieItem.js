@@ -1,20 +1,40 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { ImageSliderAndTitle} from '../components/ImageSliderAndTitle'
+import { ImageSlider } from '../components/ImageSlider'
+// import Carousel from 'react-multi-carousel';
+// import 'react-multi-carousel/lib/styles.css';
+
+// const responsive = {
+//   desktop: {
+//     breakpoint: { max: 3000, min: 1024 },
+//     items: 7,
+//     slidesToSlide: 5 
+//   },
+//   tablet: {
+//     breakpoint: { max: 1024, min: 464 },
+//     items: 3,
+//     slidesToSlide: 2 
+//   },
+//   mobile: {
+//     breakpoint: { max: 464, min: 0 },
+//     items: 1,
+//     slidesToSlide: 1 
+//   }
+// }
 
 export const MovieItem = ({ API_KEY }) => {
 
   const params = useParams()
   const movieId = params.id
-  
   // const movieId = "419704"
   const URL_MOVIE = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
   const URL_CAST = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
-  const URL_SIMILAR = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US`
+  const URL_SIMILARMOVIES = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US`
   
   const [movie, setMovie] = useState([])
   const [cast, setCast] = useState([])
   const [genre, setGenre] = useState([])
-  const [similarMovies, setSimilarMovies] = useState([])
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -24,12 +44,6 @@ export const MovieItem = ({ API_KEY }) => {
       .then(json => {
         setMovie(json)
         setGenre(json.genres)
-      })
-
-      fetch(URL_SIMILAR)
-      .then(res => res.json())
-      .then(json => {
-        setSimilarMovies(json.results)
       })
 
       fetch(URL_CAST)
@@ -70,30 +84,24 @@ export const MovieItem = ({ API_KEY }) => {
         })}
       </div>
 
-      <div className="cast-container">
+      <ImageSlider>
         {cast.slice(0, 10).map(actor => {
           return (
+            <div className="movieWrapper">
             <div>
               {actor.name} as {actor.character}
-              <Link to={`/actor/${actor.id}`}>
+              <Link className="movieLink" to={`/actor/${actor.id}`}>
                 <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
                 </img>
               </Link>
             </div>
+            </div>
           )
         })}
-      </div>
+      </ImageSlider> 
 
-      <h3>Similar movies:</h3>
-      {similarMovies.slice(0, 10).map(movie => {
-        return (
-          <Link to={`/movie/${movie.id}`}>
-            {movie.title}
-            <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}>
-              </img>
-          </Link>
-        )
-      })}
+      < ImageSliderAndTitle fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" />
+     
       </section>
     )
   }
