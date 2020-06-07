@@ -17,7 +17,7 @@ export const MovieItem = ({ API_KEY }) => {
   const [cast, setCast] = useState([])
   const [genre, setGenre] = useState([])
   const [loading, setLoading] = useState(false)
-  console.log(cast)
+  console.log("genre", genre)
 
   useEffect(() => {
     setLoading(true)
@@ -59,9 +59,9 @@ export const MovieItem = ({ API_KEY }) => {
       <div>
         {genre.map(genre => {
           return (
-            <div>
+            <Link to={`/genres/${genre.id}`}>
               {genre.name}
-            </div>
+            </Link>
           )
         })}
       </div>

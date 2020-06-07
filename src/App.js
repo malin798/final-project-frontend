@@ -54,6 +54,14 @@ export const App = () => {
             {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />}
           </Route>
 
+          <Route exact path='/genres' >
+            
+          </Route>
+
+          <Route exact path='/genres/:id' >
+            
+          </Route>
+
           <Route exact path="/movie/:id" >
             < MovieItem API_KEY={API_KEY} />
           </Route>
