@@ -43,7 +43,6 @@ export const GenreItem = () => {
     .then(res => {
       setAllPages(res.total_pages)
       setGenre(res.results)
-      console.log(res)
     })
   }, [genreId])
   // }, [genreId, page])
