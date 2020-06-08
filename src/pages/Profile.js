@@ -20,11 +20,13 @@ export const Profile = ({ loggedIn, setLoggedIn, setErrorMessage }) => {
     )
   } else {
     return (
-      <div>
-        Welcome { userName}!
-
-        <button onClick={handleClick}>Log out</button>
-      </div>
+      <section class="welcome-container">
+        <div className="welcome">
+          Welcome {userName}!</div>
+        <div className="logout">
+          <button onClick={handleClick}>LOG OUT</button>
+        </div>
+      </section>
     )
   }
 
