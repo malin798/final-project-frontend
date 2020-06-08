@@ -9,5 +9,14 @@
       color: cornflowerblue;
     }
   }
+
+  .imdbRatingPlugin {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin-right: 5px;
+    }
+  }
 }
 

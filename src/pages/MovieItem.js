@@ -73,7 +73,7 @@ export const MovieItem = ({ API_KEY }) => {
       }
       })[0]}
 
-      <span 
+      <div
         class="imdbRatingPlugin" 
         data-title={movie.imdb_id} 
         data-style="p2"
@@ -86,9 +86,11 @@ export const MovieItem = ({ API_KEY }) => {
           <img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_38x18.png" alt={`${movie.title} on IMDb`} 
           />
         </a>
-        {movie.vote_average}/10 ⭐
-      </span>
-      
+        {movie.vote_average !== 0 &&
+          <p>{movie.vote_average}/10 ⭐</p>
+        }
+      </div>
+
       <h2>
         {movie.original_title}
       </h2>
