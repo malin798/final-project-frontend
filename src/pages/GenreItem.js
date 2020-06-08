@@ -77,13 +77,17 @@ export const GenreItem = () => {
           )
         })}
 
-        <button onClick={(event) => showMoreMovies(event)}>
-          Show more
-        </button>
-      <p>{page} / {allPages} </p>
+        <section className="pagination">
+          <button onClick={(event) => showMoreMovies(event)}>
+            Show more
+          </button>
+        
+          <p className="pagination-page-indicator"> 
+            {page} / {allPages} 
+          </p>
+        </section>
 
       </div>
-
      
     </>
    
