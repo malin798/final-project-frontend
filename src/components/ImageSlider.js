@@ -10,7 +10,7 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 3,
+    items: 4,
     slidesToSlide: 2
   },
   mobile: {
@@ -25,24 +25,15 @@ export const ImageSlider = (props) => {
   return (
 
     <Carousel
-<<<<<<< HEAD
       centerMode
-=======
->>>>>>> modified carousel
       swipeable={true}
       draggable={false}
       minimumTouchDrag={80}
       arrows={true}
-<<<<<<< HEAD
-      responsive={responsive}
-      ssr={true}
-      infinite={false}
-=======
       slidesToSlide={3}
       responsive={responsive}
       ssr={true} // means to render carousel on server-side.
       infinite={true}
->>>>>>> modified carousel
       autoPlaySpeed={1000}
       keyBoardControl={true}
       customTransition="all 1.5s ease-in-out"
