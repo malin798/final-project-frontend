@@ -27,17 +27,17 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
 
   return (
     <>
-    {movies.length > 0 &&
-      <h4>{fetchtitle}</h4>}
+      {movies.length > 0 &&
+        <h4>{fetchtitle}</h4>}
 
       <ImageSlider>
         {movies.map(movie => {
 
           let src = `https://image.tmdb.org/t/p/w342/${movie.backdrop_path}`
-            
-          if (movie.backdrop_path == null || movie.backdrop_path === undefined ) {
+
+          if (movie.backdrop_path == null || movie.backdrop_path === undefined) {
             src = placeholder
-          } 
+          }
           return (
             <div className="movie-wrapper" key={movie.id}>
               <Link className="movie-link" to={`/movie/${movie.id}`}>
@@ -45,23 +45,23 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
                   className="movie-image"
                   draggable={false}
                   alt={movie.original_title}
-                  // style={{height: "180px"}}
+                  style={{ width: "100%" }}
                   src={src}
                 >
                 </img>
-                
-                <div className='movie-details'> 
+
+                <div className='movie-details'>
                   <div>
-                  <button
-                    onMouseOver={event => setActive(!active)}
-                    onMouseOut={event => setActive(!active)}  
-                    onClick={event => addToList(event)}
-                  >
-                    + {active && "Add to watchlist"}
-                  </button>
+                    <button
+                      onMouseOver={event => setActive(!active)}
+                      onMouseOut={event => setActive(!active)}
+                      onClick={event => addToList(event)}
+                    >
+                      + {active && "Add to watchlist"}
+                    </button>
                     <h5>
                       {movie.original_title}
-                    </h5> 
+                    </h5>
                     <p>
                       Release {movie.release_date}
                     </p>
@@ -72,8 +72,8 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
           )
         })}
 
-    </ImageSlider >
-    
+      </ImageSlider >
+
     </>
   )
 }
