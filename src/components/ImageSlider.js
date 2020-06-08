@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 
 const responsive = {
   desktop: {
@@ -14,7 +14,7 @@ const responsive = {
     slidesToSlide: 2
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 670, min: 0 },
     items: 1,
     slidesToSlide: 1
   }
@@ -25,6 +25,7 @@ export const ImageSlider = (props) => {
   return (
 
     <Carousel
+      centerMode
       swipeable={true}
       draggable={false}
       minimumTouchDrag={80}

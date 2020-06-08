@@ -5,6 +5,7 @@
   @include display(column, center, center);
 
   .login-register {
+    margin-top: -211px;
     @include size(80%, 50%);
     display: flex;
     flex-direction: column;
@@ -17,15 +18,16 @@
 
   .header-description {
     text-align: center;
-    font-family: arial;
+    font-family: Helvetica Neue, sans-serif;
     font-size: 1em;
     font-weight: 500;
     letter-spacing: 1px;
-    background-color: ghostwhite;
-    border-bottom: 0.5px solid #d5d4d4;
+    background-color: rgb(29, 33, 33);
+    border-bottom: 0.5px solid #6997c7;
+    color: rgb(255, 255, 255);
 
     @media (min-width: 667px) {
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
   }
 
@@ -35,7 +37,7 @@
     height: -webkit-fill-available;
     max-height: 100%;
     padding: 10px 10px;
-    background-color: ghostwhite;
+    background-color: rgb(29, 33, 33);
 
     @media (min-width: 1200px) {
       padding: 20px 60px;
@@ -54,13 +56,14 @@
   }
 
   label {
+    align-self: center;
     @include colors(#666666, white);
-    width: 100%;
+    width: 90%;
     padding: 5px 15px;
-    border-radius: 10px;
+    border-radius: 3px;
     margin-bottom: 5px;
-    font-weight: 600;
-    border: 1px solid #a8a8c3;
+    font-weight: 400;
+    font-size: 12px;
   }
 
   input {
@@ -79,9 +82,9 @@
     border: none;
     font-size: 14px;
     margin: 10px 0;
-    padding: 5px 30px;
+    padding: 5px 60px;
     border-radius: 5px;
-    background-color: rgb(134, 218, 70);
+    background-color: rgb(105, 146, 196);
 
     @media (min-width: 667px) {
       font-size: 17px;
@@ -91,9 +94,9 @@
   .link-section {
     font-size: 14px;
     text-align: center;
-    background-color: #dee2ff;
+    background-color: #0bc4b8;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
 
     @media (min-width: 667px) {
       font-size: 17px;
@@ -103,11 +106,10 @@
   a {
     margin-left: 3px;
     text-decoration: none;
-    color: cornflowerblue;
+    color: rgb(34, 70, 111);
   }
 
   a:hover {
     border-bottom: 1px solid coral;
   }
 }
-

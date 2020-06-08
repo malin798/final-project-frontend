@@ -2,21 +2,21 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export const Navbar = ({ loggedIn }) => {
+
   return (
     <div className="navbar">
-
       <Link to="/">
-        Home
+        <h3><span>I</span><span className="find">FIND</span><span>MOVIES</span></h3>
       </Link>
       {!loggedIn &&
-        <Link to="/signin">
-          Signin
+        <Link className="signin" to="/signin">
+          SIGNIN
         </Link>
       }
 
       {loggedIn &&
-        <Link to="/profile">
-          My profile
+        <Link className="signin" to="/profile">
+          MY PROFILE
         </Link>
       }
 

@@ -1,15 +1,21 @@
 .movie-item {
   color: white;
 
-  .movie-genre {
+  a {
+    color:white;
+    text-decoration: none;
+
+    &:hover {
+      color: cornflowerblue;
+    }
+  }
+
+  .imdbRatingPlugin {
+    display: flex;
+    align-items: center;
 
     a {
-      color:white;
-      text-decoration: none;
-
-      &:hover {
-        color: cornflowerblue;
-      }
+      margin-right: 5px;
     }
   }
 }
