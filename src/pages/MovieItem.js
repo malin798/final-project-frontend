@@ -23,7 +23,7 @@ export const MovieItem = ({ API_KEY }) => {
   const [trailer, setTrailer] = useState([])
   const [loading, setLoading] = useState(false)
   console.log(movie)
- 
+  
   useEffect(() => {
     setLoading(true)
     fetch(URL_MOVIE)
@@ -46,7 +46,7 @@ export const MovieItem = ({ API_KEY }) => {
         setTrailer(json.results)
         setLoading(false)
       })
-  }, [movieId])
+  }, [URL_MOVIE])
 
   if (!movie || loading) {
     return (
@@ -71,11 +71,24 @@ export const MovieItem = ({ API_KEY }) => {
           </iframe>
         )
       }
-      })}
-        {/* {trailer.site === "YouTube" &&
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/sowGYbxTPgU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        } */}
+      })[0]}
 
+      <span 
+        class="imdbRatingPlugin" 
+        data-title={movie.imdb_id} 
+        data-style="p2"
+      >
+        <a 
+          href={`https://www.imdb.com/title/${movie.imdb_id}/?ref_=plg_rt_1`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_38x18.png" alt={`${movie.title} on IMDb`} 
+          />
+        </a>
+        {movie.vote_average}/10 ⭐
+      </span>
+      
       <h2>
         {movie.original_title}
       </h2>
@@ -92,21 +105,12 @@ export const MovieItem = ({ API_KEY }) => {
 
         {productionCompany.map((company, index) => (
           <>
-            {/* {company.logo_path != null && 
-              <img src={`https://image.tmdb.org/t/p/original/${company.logo_path}`}>
-              </img>
-            } */}
             <Link to="">
               {company.name}
             </Link>
             {productionCompany.length -1 > index && ", "}
           </>
         ))}
-      </div>
-
-      <div>
-        Rating:
-        {movie.vote_average}
       </div>
 
       <div className="movie-genre">
