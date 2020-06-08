@@ -41,7 +41,7 @@ export const ActorPage = ({ API_KEY }) => {
     )
   } else { 
     return (
-      <div>
+      <div className="actor-page-container">
         <h2>{actor.name}</h2>
         <h3>Born:</h3>
         {actor.birthday}, {actor.place_of_birth}
@@ -49,8 +49,12 @@ export const ActorPage = ({ API_KEY }) => {
         <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
         </img>
         
-        <h3>Biography:</h3>
-        {actor.biography}
+        {actor.biography &&
+          <section>
+            <h3>Biography:</h3>
+            <p>{actor.biography}</p>
+          </section>
+        }
 
         {images && images.length > 1 &&
           <div>
