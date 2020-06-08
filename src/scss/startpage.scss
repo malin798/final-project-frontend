@@ -1,0 +1,48 @@
+body {
+  padding-left: 10px;
+}
+
+h4 {
+  color: white;
+  margin-bottom: 4px;
+}
+
+h5 {
+  color: white;
+  text-decoration: none;
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 2px;
+  font-size: 8px;
+  text-align: left;
+}
+
+.titleDate {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  color: white;
+  -webkit-transition: opacity 0.8s ease-in-out;
+  -moz-transition: opacity 0.8s ease-in-out;
+  -o-transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+  width: 90%;
+  opacity: 0;
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.movieWrapper:hover .movieImage {
+  opacity: 0.2;
+}
+
+.movieWrapper:hover .titleDate {
+  opacity: 1;
+}

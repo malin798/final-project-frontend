@@ -5,18 +5,23 @@ import 'react-multi-carousel/lib/styles.css'
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
+<<<<<<< HEAD
+    items: 7,
+    slidesToSlide: 5
+=======
     items: 6,
     slidesToSlide: 5 
+>>>>>>> cecc6c1b1d8084952d6b9cef9bb12011028c43a4
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 3,
-    slidesToSlide: 2 
+    items: 4,
+    slidesToSlide: 2
   },
   mobile: {
     breakpoint: { max: 670, min: 0 },
     items: 1,
-    slidesToSlide: 1 
+    slidesToSlide: 1
   }
 }
 
