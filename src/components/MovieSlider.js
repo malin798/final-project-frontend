@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ImageSlider } from '../components/ImageSlider'
-// import actorPlaceholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
-// import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 
 export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
 
@@ -47,7 +45,7 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
                   className="movie-image"
                   draggable={false}
                   alt={movie.original_title}
-                  style={{height: "180px"}}
+                  // style={{height: "180px"}}
                   src={src}
                 >
                 </img>
@@ -65,7 +63,7 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
                       {movie.original_title}
                     </h5> 
                     <p>
-                      Released {movie.release_date}
+                      Release {movie.release_date}
                     </p>
                   </div>
                 </div>
