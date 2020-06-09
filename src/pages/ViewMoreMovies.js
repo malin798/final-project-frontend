@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { WatchlistButton } from '../components/WatchlistButton'
 
-export const ViewMoreMovies = ({ fetchlink , fetchtitle, moviePlaceholder, loggedIn }) => {
+export const ViewMoreMovies = ({ API_KEY, fetchlink , fetchtitle, moviePlaceholder, loggedIn }) => {
 
   const params = useParams()
   const genreId = params.id
@@ -12,11 +12,11 @@ export const ViewMoreMovies = ({ fetchlink , fetchtitle, moviePlaceholder, logge
   const [allPages, setAllPages] = useState();
   const [active, setActive] = useState(false)
 
-  let URL = `${fetchlink}${page}`
+  //let URL = `${fetchlink}${page}`
  
   if (genreId) {
     fetchtitle = genreName
-    URL = `https://api.themoviedb.org/3/discover/movie?api_key=3d60d24f587752713f5e7b71902de8f8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
+    URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
   }
   
   const showMoreMovies = (event) => {

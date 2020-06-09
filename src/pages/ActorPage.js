@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
-import actorPlaceholder from '../images/placeholderS.png'
 import { ImageSlider } from '../components/ImageSlider'
+import standingPlaceholder from '../images/placeholderS.png'
+import layingPlaceholder from '../images/placeholderL.png'
 
 export const ActorPage = ({ API_KEY, loggedIn }) => {
 
@@ -70,7 +71,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
           </div>
         }
 
-        < MovieSlider fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={actorPlaceholder} loggedIn={loggedIn} />
+        < MovieSlider fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={layingPlaceholder} loggedIn={loggedIn} />
 
       </div>
     )

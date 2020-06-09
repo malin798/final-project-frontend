@@ -69,6 +69,15 @@ export const App = () => {
               placeholder={layingPlaceholder} 
               titlelink="/upcoming"
               />
+
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=1`}
+              fetchtitle="Trending" 
+              imageOrientation={"laying"}
+              placeholder={standingPlaceholder} 
+              titlelink="/trending"
+              />
           </Route>
 
           <Route exact path='/now-playing' >
@@ -98,6 +107,16 @@ export const App = () => {
               fetchtitle="Top&nbsp;rated" 
               placeholder={standingPlaceholder} 
               fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=`}
+            />
+          </Route>
+
+          <Route exact path='/trending' >
+            < ViewMoreMovies
+              API_KEY={API_KEY} 
+              loggedIn={loggedIn}
+              fetchtitle="Trending" 
+              placeholder={standingPlaceholder} 
+              fetchlink={`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=`}
             />
           </Route>
 
