@@ -18,15 +18,13 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
 
   return (
     <>
-      {movies.length > 0 &&
-        <section classname="titleArrow">
-          <h4>{fetchtitle}</h4>
-          <div className="rightArrowContainer">
-            <RightArrow />
-          </div>
-        </section>
-      }
-
+      <div className="titleArrow">
+        {movies.length > 0 &&
+          <h4>{fetchtitle}</h4>}
+        <div className="rightArrowContainer">
+          <RightArrow />
+        </div>
+      </div>
       <ImageSlider>
         {movies.map(movie => {
 
@@ -50,9 +48,9 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
                 <div className='movie-details'>
                   <div>
 
-                  {loggedIn && 
-                    < WatchlistButton active={active} setActive={setActive} item={movie}/>
-                  }
+                    {loggedIn &&
+                      < WatchlistButton active={active} setActive={setActive} item={movie} />
+                    }
 
                     <h5>
                       {movie.original_title}

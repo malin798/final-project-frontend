@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
-import placeholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
+//import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
+import actorPlaceholder from '../images/placeholderS.png'
 import { ImageSlider } from '../components/ImageSlider'
 
 export const ActorPage = ({ API_KEY, loggedIn }) => {
@@ -11,7 +12,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
   const URL_PAGE = `https://api.themoviedb.org/3/person/${actorId}?api_key=${API_KEY}&language=en-US`
   const URL_IMAGES = `https://api.themoviedb.org/3/person/${actorId}/images?api_key=${API_KEY}`
   const URL_SIMILARMOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=${actorId}`
-  
+
   const [actor, setActor] = useState()
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(false)
@@ -24,7 +25,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
         setActor(json)
       })
 
-      fetch(URL_IMAGES)
+    fetch(URL_IMAGES)
       .then(res => res.json())
       .then(json => {
         setImages(json.profiles)
@@ -38,7 +39,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
         Loading
       </div>
     )
-  } else { 
+  } else {
     return (
       <div className="actor-page-container">
         <h2>{actor.name}</h2>
@@ -47,7 +48,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
 
         <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
         </img>
-        
+
         {actor.biography &&
           <section>
             <h3>Biography:</h3>
@@ -61,8 +62,8 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
             <ImageSlider>
               {images.map(image => {
                 return (
-                <img src={`https://image.tmdb.org/t/p/w200/${image.file_path}`}>
-                </img>
+                  <img src={`https://image.tmdb.org/t/p/w200/${image.file_path}`}>
+                  </img>
                 )
               })
               }
@@ -70,8 +71,8 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
           </div>
         }
 
-        < MovieSlider fetchlink= {URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} loggedIn={loggedIn}/>
-        
+        < MovieSlider fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} loggedIn={loggedIn} />
+
       </div>
     )
   }

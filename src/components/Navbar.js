@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { UserImage } from '../components/UserImage'
+
 
 export const Navbar = ({ loggedIn }) => {
+  const userName = useSelector((store) => store.user.login.userName)
 
   return (
     <div className="navbar">
@@ -15,12 +19,14 @@ export const Navbar = ({ loggedIn }) => {
       }
 
       {loggedIn &&
-        <Link className="signin" to="/profile">
-          MY PROFILE
-        </Link>
+        <section className="signin">
+          <UserImage />
+          {userName.toUpperCase()}
+        </section>
       }
 
     </div>
 
   )
 }
+

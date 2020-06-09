@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
 import { ImageSlider } from '../components/ImageSlider'
-import { ThumbnailGallery } from '../components/ThumbnailGallery'
-import { IMDBRatingPlugin } from '../components/IMDBRatingPlugin'
-import actorPlaceholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
-import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
-
+//import actorPlaceholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
+//import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
+import actorPlaceholder from '../images/placeholderS.png'
+import moviePlaceholder from '../images/placeholderL.png'
 
 export const MovieItem = ({ API_KEY, loggedIn }) => {
 
@@ -28,7 +27,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
   const [loading, setLoading] = useState(false)
 
   console.log("movie item", loggedIn)
-    
+
   useEffect(() => {
     setLoading(true)
     fetch(URL_MOVIE)
@@ -39,19 +38,19 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
         setGenre(json.genres)
       })
 
-      fetch(URL_CAST)
+    fetch(URL_CAST)
       .then(res => res.json())
       .then(json => {
         setCast(json.cast)
       })
 
-      fetch(URL_THUMB)
+    fetch(URL_THUMB)
       .then(res => res.json())
       .then(json => {
         setThumbNails(json.backdrops)
       })
 
-      fetch(URL_TRAILER)
+    fetch(URL_TRAILER)
       .then(res => res.json())
       .then(json => {
         setTrailer(json.results)
@@ -67,112 +66,112 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
     )
   } else {
     return (
- 
+
       <section className="movie-item">
 
-      <h2>
-        {movie.original_title} &#40;{movie.release_date}&#41;
+        <h2>
+          {movie.original_title} &#40;{movie.release_date}&#41;
       </h2>
 
-      {thumbNails.length > 2 ?
-        < ThumbnailGallery 
-          thumbnailArray={thumbNails.slice(0, 10)} 
-          thumbnailDefault={thumbNails.map(item => item.file_path)[0]} 
+        {thumbNails.length > 2 ?
+          < ThumbnailGallery
+            thumbnailArray={thumbNails.slice(0, 10)}
+            thumbnailDefault={thumbNails.map(item => item.file_path)[0]}
           />
-          : 
-          <img 
+          :
+          <img
             className="movie-poster"
             src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}>
           </img>
-       }
+        }
 
-      < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
+        < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
 
-      <h4>Movie overview:</h4>
+        <h4>Movie overview:</h4>
 
-      <div>
-        {movie.overview}
-      </div>
+        <div>
+          {movie.overview}
+        </div>
 
-      {trailer.map((item) => {
-        if (item.site === "YouTube") {
-          return (
-            <iframe 
-              width="560" height="315" 
-              src={`https://www.youtube.com/embed/${item.key}`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-            >
-            </iframe>
-          )}
-      })[0]}
-  
-      <div>
+        {trailer.map((item) => {
+          if (item.site === "YouTube") {
+            return (
+              <iframe
+                width="560" height="315"
+                src={`https://www.youtube.com/embed/${item.key}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              >
+              </iframe>
+            )
+          }
+        })[0]}
 
-      <h4>Produced by:</h4>
-        {productionCompany.map((company, index) => (
-          <>
-            <Link to="">
-              {company.name}
-            </Link>
-            {productionCompany.length -1 > index && ", "}
-          </>
-        ))}
-      </div>
-      
+        <div>
 
-      <h4>Genre:</h4>
-      <div className="movie-genre">
-        {genre.map((item, index) => (
+          <h4>Produced by:</h4>
+          {productionCompany.map((company, index) => (
             <>
-            <Link to={`/genres/${item.id}`}>
-              {item.name}
-            </Link>
+              <Link to="">
+                {company.name}
+              </Link>
+              {productionCompany.length - 1 > index && ", "}
+            </>
+          ))}
+        </div>
+
+
+        <h4>Genre:</h4>
+        <div className="movie-genre">
+          {genre.map((item, index) => (
+            <>
+              <Link to={`/genres/${item.id}`}>
+                {item.name}
+              </Link>
               <span>
-                {(genre.length-1 > index) ? ", " : ""}
+                {(genre.length - 1 > index) ? ", " : ""}
               </span>
             </>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <h4>Cast: </h4>
+        <h4>Cast: </h4>
 
-      <ImageSlider>
+        <ImageSlider>
 
-        {cast.slice(0, 10).map(actor => {
-            
-          let src = `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
-  
-          if (actor.profile_path == null || actor.profile_path === undefined ) {
-            src = actorPlaceholder
-          } 
-        
-          return (
-            <div className="movie-wrapper">
-              <Link to={`/actor/${actor.id}`}>
-                <img 
-                  className="movie-image"
-                  // style={{height: "470px"}}
-                  src={src} 
-                >
-                </img>
-                <div className="movie-details"> 
-                  <div>
-                    <h5>
-                      {actor.name}
-                    </h5> 
-                    <p>
-                      as {actor.character}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          )
-        })}
-      </ImageSlider> 
+          {cast.slice(0, 10).map(actor => {
 
-      < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={moviePlaceholder} loggedIn={loggedIn}/>
+            let src = `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+
+            if (actor.profile_path == null || actor.profile_path === undefined) {
+              src = actorPlaceholder
+            }
+
+            return (
+              <div className="movie-wrapper">
+                <Link to={`/actor/${actor.id}`}>
+                  <img
+                    className="movie-image"
+                    // style={{height: "470px"}}
+                    src={src}
+                  >
+                  </img>
+                  <div className="movie-details">
+                    <div>
+                      <h5>
+                        {actor.name}
+                      </h5>
+                      <p>
+                        as {actor.character}
+                      </p>
+                    </div>
+                </Link>
+              </div>
+            )
+          })}
+        </ImageSlider>
+
+              < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={moviePlaceholder} loggedIn={loggedIn} />
 
       </section>
     )
