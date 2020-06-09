@@ -47,6 +47,24 @@ export const App = () => {
           <Route exact path="/" >
             < MovieSlider
               loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=1`}
+              fetchtitle="Trending today" 
+              imageOrientation={"standing"}
+              placeholder={standingPlaceholder} 
+              titlelink="/trending-today"
+              />
+
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=1`}
+              fetchtitle="Trending this week" 
+              imageOrientation={"laying"}
+              placeholder={layingPlaceholder} 
+              titlelink="/trending-week"
+              />
+
+            < MovieSlider
+              loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} 
               fetchtitle="Now&nbsp;playing" 
               placeholder={layingPlaceholder} 
@@ -57,7 +75,7 @@ export const App = () => {
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} 
               fetchtitle="Top&nbsp;rated" 
-              placeholder={layingPlaceholder} 
+              placeholder={standingPlaceholder} 
               imageOrientation={"standing"}
               titlelink="/top-rated"
               />
@@ -68,15 +86,6 @@ export const App = () => {
               imageOrientation={"laying"}
               placeholder={layingPlaceholder} 
               titlelink="/upcoming"
-              />
-
-            < MovieSlider
-              loggedIn={loggedIn}
-              fetchlink={`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=1`}
-              fetchtitle="Trending" 
-              imageOrientation={"laying"}
-              placeholder={standingPlaceholder} 
-              titlelink="/trending"
               />
           </Route>
 
@@ -110,7 +119,7 @@ export const App = () => {
             />
           </Route>
 
-          <Route exact path='/trending' >
+          <Route exact path='/trending-week' >
             < ViewMoreMovies
               API_KEY={API_KEY} 
               loggedIn={loggedIn}
@@ -118,6 +127,17 @@ export const App = () => {
               placeholder={standingPlaceholder} 
               fetchlink={`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=`}
             />
+          </Route>
+
+          <Route exact path='/trending-today' >
+            < MovieSlider
+              API_KEY={API_KEY} 
+              loggedIn={loggedIn}
+              fetchtitle="Trending today" 
+              placeholder={standingPlaceholder} 
+              fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=`}
+              imageOrientation={"standing"}
+              />
           </Route>
 
           <Route exact path='/signin' >
