@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ImageSlider } from '../components/ImageSlider'
 import { WatchlistButton } from '../components/WatchlistButton'
+import { RightArrow } from '../components/RightArrow'
 
 export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) => {
   const [movies, setMovies] = useState([])
@@ -18,8 +19,12 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
   return (
     <>
       {movies.length > 0 &&
-        <h4>{fetchtitle}</h4>}
-
+        <section classname="titleArrow">
+          <h4>{fetchtitle}</h4>
+          <div className="rightArrowContainer">
+            <RightArrow />
+          </div>
+        </section>}
       <ImageSlider>
         {movies.map(movie => {
 
