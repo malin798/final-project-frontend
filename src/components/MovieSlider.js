@@ -4,7 +4,7 @@ import { ImageSlider } from '../components/ImageSlider'
 import { WatchlistButton } from '../components/WatchlistButton'
 import { RightArrow } from '../components/RightArrow'
 
-export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) => {
+export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, imageOrientation, loggedIn }) => {
   const [movies, setMovies] = useState([])
   const [active, setActive] = useState(false)
 
@@ -20,19 +20,31 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
     <>
       <div className="movie-slider-title">
         {movies.length > 0 &&
-          <h4>{fetchtitle} </h4>}
-        <div className="right-arrow-container">
-          <RightArrow />
-        </div>
+          <Link to={titlelink}>
+            <h4>{fetchtitle}</h4>
+            <div className="right-arrow-container">
+              <RightArrow />
+            </div>
+          </Link>
+        }
       </div>
       <ImageSlider>
         {movies.map(movie => {
 
-          let src = `https://image.tmdb.org/t/p/w342/${movie.backdrop_path}`
+          let imageSrc;
 
-          if (movie.backdrop_path == null || movie.backdrop_path === undefined) {
+          if (imageOrientation === "standing") {
+            imageSrc = movie.poster_path
+          } else {
+            imageSrc = movie.backdrop_path
+          }
+
+          let src = `https://image.tmdb.org/t/p/w342/${imageSrc}`
+
+          if (imageSrc == null || imageSrc === undefined) {
             src = placeholder
           }
+
           return (
             <div className="movie-wrapper" key={movie.id}>
               <Link className="movie-link" to={`/movie/${movie.id}`}>

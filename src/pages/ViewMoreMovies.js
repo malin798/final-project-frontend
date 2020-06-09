@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { WatchlistButton } from '../components/WatchlistButton'
-import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 
-export const GenreItem = ({ loggedIn }) => {
+export const ViewMoreMovies = ({ API_KEY, fetchlink , fetchtitle, moviePlaceholder, loggedIn }) => {
 
   const params = useParams()
   const genreId = params.id
-  const [genre, setGenre] = useState([])
+  const genreName = params.name
+  const [movies, setMovies] = useState([])
   const [page, setPage] = useState(1)
   const [allPages, setAllPages] = useState();
   const [active, setActive] = useState(false)
 
-  const URL = `https://api.themoviedb.org/3/discover/movie?api_key=3d60d24f587752713f5e7b71902de8f8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
-
+  let URL = `${fetchlink}${page}`
+ 
+  if (genreId) {
+    fetchtitle = genreName
+    URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
+  }
+  
   const showMoreMovies = (event) => {
     event.preventDefault()
     setPage(page + 1);
@@ -21,8 +26,8 @@ export const GenreItem = ({ loggedIn }) => {
     fetch(URL)
     .then(res => res.json())
     .then(res => {
-      const allMovies = genre.concat(res.results) 
-      setGenre(allMovies)
+      const allMovies = movies.concat(res.results) 
+      setMovies(allMovies)
     })
   }
 
@@ -31,23 +36,25 @@ export const GenreItem = ({ loggedIn }) => {
     .then(res => res.json())
     .then(res => {
       setAllPages(res.total_pages)
-      setGenre(res.results)
+      setMovies(res.results)
     })
   }, [URL])
 
   return (
-    <>
-      <div className="genre-wrapper-container">
-        {genre.map(item => {
+    <section>
 
-           let src = `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
+      <h3>{fetchtitle}</h3>
+      <div className="movie-wrapper-container">
+        {movies.map(item => {
+
+           let src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
    
            if (item.backdrop_path == null || item.backdrop_path === undefined ) {
              src = moviePlaceholder
            } 
           return (
-            <div className="genre-wrapper" key={item.id}>
-              <Link className="genre-link" to={`/movie/${item.id}`}>
+            <div className="movie-wrapper" key={item.id}>
+              <Link className="movie-link" to={`/movie/${item.id}`}>
                 <img src={src}>
                 </img>
                 <div className='movie-details'> 
@@ -84,7 +91,7 @@ export const GenreItem = ({ loggedIn }) => {
 
       </div>
      
-    </>
+    </section>
    
   )
 }
