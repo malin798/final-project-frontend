@@ -71,7 +71,7 @@ export const App = () => {
           </Route>
 
           <Route exact path='/genres/:id' >
-              < GenreItem />
+              < GenreItem loggedIn={loggedIn} />
           </Route>
 
           <Route exact path="/movie/:id" >

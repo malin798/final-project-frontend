@@ -1,22 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux' 
 import { Link } from 'react-router-dom'
 import { ImageSlider } from '../components/ImageSlider'
+import { WatchlistButton } from '../components/WatchlistButton'
 
 export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) => {
   const [movies, setMovies] = useState([])
   const [active, setActive] = useState(false)
-  console.log("movieSlider", loggedIn)
-
-  const addToList = (event) => {
-    event.preventDefault()
-    //Add to redux/reducers
-    //fetch (put) to users/:id/watchlist
-    //header Authorization: accesstoken
-    // body: "title": "movietitle",
-    // showId: "movieId"
-    //change color of button if added to watchlist?
-  }
 
   useEffect(() => {
     fetch(fetchlink)
@@ -45,7 +34,7 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
                 <img
                   className="movie-image"
                   draggable={false}
-                  alt={movie.original_title}
+                  alt={movie.title}
                   style={{ width: "100%" }}
                   src={src}
                 >
@@ -54,14 +43,9 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
                 <div className='movie-details'>
                   <div>
 
-                    {loggedIn && 
-                      <button
-                      onMouseOver={event => setActive(!active)}
-                      onMouseOut={event => setActive(!active)}
-                      onClick={event => addToList(event)}
-                    >
-                      + {active && "Add to watchlist"}
-                    </button>}
+                  {loggedIn && 
+                    < WatchlistButton active={active} setActive={setActive} item={movie}/>
+                  }
 
                     <h5>
                       {movie.original_title}

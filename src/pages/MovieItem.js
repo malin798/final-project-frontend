@@ -74,14 +74,14 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
         {movie.original_title} &#40;{movie.release_date}&#41;
       </h2>
 
-      {thumbNails.length > 1 ?
+      {thumbNails.length > 2 ?
         < ThumbnailGallery 
           thumbnailArray={thumbNails.slice(0, 10)} 
           thumbnailDefault={thumbNails.map(item => item.file_path)[0]} 
           />
           : 
           <img 
-            className="thumbnail-gallery-display"
+            className="movie-poster"
             src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}>
           </img>
        }

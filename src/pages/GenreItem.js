@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { addToWatchlist } from '../components/reducers/user'
+import { WatchlistButton } from '../components/WatchlistButton'
 import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 
-export const GenreItem = () => {
-
-  const dispatch = useDispatch()
+export const GenreItem = ({ loggedIn }) => {
 
   const params = useParams()
   const genreId = params.id
@@ -27,17 +24,6 @@ export const GenreItem = () => {
       const allMovies = genre.concat(res.results) 
       setGenre(allMovies)
     })
-  }
-
-  const handleClick = (event, title, id) => {
-    event.preventDefault()
-    dispatch(addToWatchlist(title, id))
-    //Add to redux/reducers
-    //fetch (put) to users/:id/watchlist
-    //header Authorization: accesstoken
-    // body: "title": "movietitle",
-    // showId: "movieId"
-    //change color of button if added to watchlist?
   }
 
   useEffect(() => {
@@ -65,16 +51,15 @@ export const GenreItem = () => {
                 <img src={src}>
                 </img>
                 <div className='movie-details'> 
-                  <button
-                    onMouseOver={() => setActive(!active)}
-                    onMouseOut={() => setActive(!active)}
-                    onClick={(event) => handleClick(event, item.title, item.id)}
-                  >
-                    + {active && "Add to watchlist"}
-                  </button>
+
+                  {loggedIn && 
+                    < WatchlistButton active={active} setActive={setActive} item={item}/>
+                  }
+
                   <h5>
                     {item.title}
                   </h5>
+
                   <p>
                     Release {item.release_date}
                   </p>

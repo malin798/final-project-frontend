@@ -15,7 +15,6 @@ export const ActorPage = ({ API_KEY }) => {
   const [actor, setActor] = useState()
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(false)
-  console.log(images)
 
   useEffect(() => {
     setLoading(true)
