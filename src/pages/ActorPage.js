@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
-import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
+//import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
+import actorPlaceholder from '../images/placeholderS.png'
 import { ImageSlider } from '../components/ImageSlider'
 
 export const ActorPage = ({ API_KEY }) => {
@@ -11,7 +12,7 @@ export const ActorPage = ({ API_KEY }) => {
   const URL_PAGE = `https://api.themoviedb.org/3/person/${actorId}?api_key=${API_KEY}&language=en-US`
   const URL_IMAGES = `https://api.themoviedb.org/3/person/${actorId}/images?api_key=${API_KEY}`
   const URL_POPULARMOVIES = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=${actorId}`
-  
+
   const [actor, setActor] = useState()
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(false)
@@ -25,7 +26,7 @@ export const ActorPage = ({ API_KEY }) => {
         setActor(json)
       })
 
-      fetch(URL_IMAGES)
+    fetch(URL_IMAGES)
       .then(res => res.json())
       .then(json => {
         setImages(json.profiles)
@@ -39,7 +40,7 @@ export const ActorPage = ({ API_KEY }) => {
         Loading
       </div>
     )
-  } else { 
+  } else {
     return (
       <div>
         <h2>{actor.name}</h2>
@@ -48,7 +49,7 @@ export const ActorPage = ({ API_KEY }) => {
 
         <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
         </img>
-        
+
         <h3>Biography:</h3>
         {actor.biography}
 
@@ -58,8 +59,8 @@ export const ActorPage = ({ API_KEY }) => {
             <ImageSlider>
               {images.map(image => {
                 return (
-                <img src={`https://image.tmdb.org/t/p/w200/${image.file_path}`}>
-                </img>
+                  <img src={`https://image.tmdb.org/t/p/w200/${image.file_path}`}>
+                  </img>
                 )
               })
               }
@@ -67,8 +68,8 @@ export const ActorPage = ({ API_KEY }) => {
           </div>
         }
 
-        < MovieSlider fetchlink= {URL_POPULARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} />
-        
+        < MovieSlider fetchlink={URL_POPULARMOVIES} fetchtitle="Similar movies:" placeholder={actorPlaceholder} />
+
       </div>
     )
   }

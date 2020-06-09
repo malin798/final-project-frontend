@@ -55,11 +55,11 @@ export const App = () => {
           </Route>
 
           <Route exact path='/genres' >
-            
+
           </Route>
 
           <Route exact path='/genres/:id' >
-              < GenreItem />
+            < GenreItem />
           </Route>
 
           <Route exact path="/movie/:id" >
@@ -71,8 +71,8 @@ export const App = () => {
           </Route>
 
           <Route exact path="/" >
-            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Now playing" placeholder={placeholder} />
-            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Top rated" placeholder={placeholder} />
+            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Now&nbsp;playing" placeholder={placeholder} />
+            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Top&nbsp;rated" placeholder={placeholder} />
             < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Upcoming" placeholder={placeholder} />
           </Route>
 

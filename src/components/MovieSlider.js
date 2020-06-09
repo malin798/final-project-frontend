@@ -30,11 +30,13 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
 
   return (
     <>
-      {movies.length > 0 &&
-        <h4>{fetchtitle}</h4>
+      <div className="titleArrow">
+        {movies.length > 0 &&
+          <h4>{fetchtitle}</h4>}
         <div className="rightArrowContainer">
           <RightArrow />
-        </div>}
+        </div>
+      </div>
       <ImageSlider>
         {movies.map(movie => {
 

@@ -1,19 +1,32 @@
-.titlePil {
+.titleArrow {
   display: flex;
-  background-color: red;
-  width: 100%;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
 }
 
-h4 {
-  width: 7%;
-  background-color: magenta;
+h4:hover {
+  color: rgb(86, 242, 219)
 }
 
 .rightArrowContainer {
-  margin-left: 10px;
-  width: 18px;
-  height: 18px;
-  background-color: mediumaquamarine;
+  margin-left: 4px;
+  width: 14px;
+  height: 14px;
+  margin-bottom: 8px;
+}
+
+.svgarrow {
+  fill: rgb(86, 242, 219);
+  display: inline-block;
+  vertical-align: middle;
+  transition: 0.3s;
+}
+
+.svgarrow:hover {
+  -moz-transform: translate(5px, 0px);
+  -ms-transform: translate(5px, 0px);
+  -o-transform: translate(5px, 0px);
+  -webkit-transform: translate(5px, 0px);
+  transform: translate(7px, 0px)
 }
