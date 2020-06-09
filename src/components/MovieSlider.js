@@ -4,7 +4,7 @@ import { ImageSlider } from '../components/ImageSlider'
 import { WatchlistButton } from '../components/WatchlistButton'
 import { RightArrow } from '../components/RightArrow'
 
-export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) => {
+export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, loggedIn }) => {
   const [movies, setMovies] = useState([])
   const [active, setActive] = useState(false)
 
@@ -18,10 +18,13 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
 
   return (
     <>
-      <div className="titleArrow">
+      <div className="movie-slider-title">
         {movies.length > 0 &&
-          <h4>{fetchtitle}</h4>}
-        <div className="rightArrowContainer">
+          <Link to={titlelink}>
+            <h4>{fetchtitle}</h4>
+          </Link>
+        }
+        <div className="right-arrow-container">
           <RightArrow />
         </div>
       </div>
@@ -53,7 +56,7 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
                     }
 
                     <h5>
-                      {movie.original_title}
+                      {movie.title}
                     </h5>
 
                     <p>

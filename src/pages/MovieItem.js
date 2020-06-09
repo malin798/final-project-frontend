@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
 import { ImageSlider } from '../components/ImageSlider'
-//import actorPlaceholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
-//import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
-import actorPlaceholder from '../images/placeholderS.png'
-import moviePlaceholder from '../images/placeholderL.png'
+import { ThumbnailGallery } from '../components/ThumbnailGallery'
+import { IMDBRatingPlugin } from '../components/IMDBRatingPlugin' 
+import standingPlaceholder from '../images/placeholderS.png'
+import layingPlaceholder from '../images/placeholderL.png'
 
 export const MovieItem = ({ API_KEY, loggedIn }) => {
 
@@ -26,7 +26,13 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
   const [thumbNails, setThumbNails] = useState([]);
   const [loading, setLoading] = useState(false)
 
-  console.log("movie item", loggedIn)
+  let src = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+  
+  if (!movie.backdrop_path) {
+    src = layingPlaceholder
+  }
+
+  console.log("movie item", genre)
 
   useEffect(() => {
     setLoading(true)
@@ -70,8 +76,8 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
       <section className="movie-item">
 
         <h2>
-          {movie.original_title} &#40;{movie.release_date}&#41;
-      </h2>
+          {movie.title} &#40;{movie.release_date}&#41;
+        </h2>
 
         {thumbNails.length > 2 ?
           < ThumbnailGallery
@@ -81,7 +87,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           :
           <img
             className="movie-poster"
-            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}>
+            src={src}>
           </img>
         }
 
@@ -125,7 +131,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
         <div className="movie-genre">
           {genre.map((item, index) => (
             <>
-              <Link to={`/genres/${item.id}`}>
+              <Link to={`/genres/${item.name}/${item.id}`}>
                 {item.name}
               </Link>
               <span>
@@ -144,7 +150,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             let src = `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
 
             if (actor.profile_path == null || actor.profile_path === undefined) {
-              src = actorPlaceholder
+              src = standingPlaceholder
             }
 
             return (
@@ -165,13 +171,14 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
                         as {actor.character}
                       </p>
                     </div>
+                </div>
                 </Link>
               </div>
             )
           })}
         </ImageSlider>
 
-              < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={moviePlaceholder} loggedIn={loggedIn} />
+              < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={layingPlaceholder} loggedIn={loggedIn} />
 
       </section>
     )

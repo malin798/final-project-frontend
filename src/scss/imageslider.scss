@@ -1,10 +1,40 @@
+.movie-slider-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 10px;
+
+  h4:hover {
+    color: rgb(86, 242, 219);
+    cursor: pointer;
+    
+    &:hover + .right-arrow-container {
+      margin-left: 8px;
+    }
+  }
+  
+  .right-arrow-container {
+    margin-left: 4px;
+    width: 14px;
+    height: 14px;
+    margin-bottom: 11px;
+  }
+  
+  .svgarrow {
+    fill: rgb(86, 242, 219);
+    display: inline-block;
+    vertical-align: middle;
+    transition: 0.3s;
+  }
+}
+
 .react-multi-carousel-item {
   padding: 0 3px;
   position: relative;
   width: 317px;
   height: 100%;
   overflow: hidden;
-
+ 
   &:hover .movie-image {
     opacity: 0.4;
     transition: 0.2s ease-in-out;

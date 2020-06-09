@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
-//import placeholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
 import actorPlaceholder from '../images/placeholderS.png'
 import { ImageSlider } from '../components/ImageSlider'
 
@@ -71,7 +70,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
           </div>
         }
 
-        < MovieSlider fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} loggedIn={loggedIn} />
+        < MovieSlider fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={actorPlaceholder} loggedIn={loggedIn} />
 
       </div>
     )

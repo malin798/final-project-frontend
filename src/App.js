@@ -17,8 +17,10 @@ import { Hamburger } from './components/Hamburger'
 import { MovieItem } from './pages/MovieItem'
 import { ActorPage } from './pages/ActorPage'
 import { MovieSlider } from './components/MovieSlider'
-import placeholder from './images/elijah-flores-44se2xSCo00-unsplash.jpg'
-import { GenreItem } from './pages/GenreItem'
+import { ViewMoreMovies } from './pages/ViewMoreMovies'
+import layingPlaceholder from './images/placeholderL.png'
+import standingPlaceholder from './images/placeholderS.png'
+
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -45,13 +47,55 @@ export const App = () => {
           <Route exact path="/" >
             < MovieSlider
               loggedIn={loggedIn}
-              fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Now&nbsp;playing" placeholder={placeholder} />
+              fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} 
+              fetchtitle="Now&nbsp;playing" 
+              placeholder={layingPlaceholder} 
+              titlelink="/now-playing"
+              />
             < MovieSlider
               loggedIn={loggedIn}
-              fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Top&nbsp;rated" placeholder={placeholder} />
+              fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} 
+              fetchtitle="Top&nbsp;rated" 
+              placeholder={layingPlaceholder} 
+              titlelink="/top-rated"
+              />
             < MovieSlider
               loggedIn={loggedIn}
-              fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Upcoming" placeholder={placeholder} />
+              fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} 
+              fetchtitle="Upcoming" 
+              placeholder={layingPlaceholder} 
+              titlelink="/upcoming"
+              />
+          </Route>
+
+          <Route exact path='/now-playing' >
+            < ViewMoreMovies
+              API_KEY={API_KEY} 
+              loggedIn={loggedIn}
+              fetchtitle="Now&nbsp;playing" 
+              placeholder={standingPlaceholder} 
+              fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=`}
+            />
+          </Route>
+
+          <Route exact path='/upcoming' >
+            < ViewMoreMovies
+              API_KEY={API_KEY} 
+              loggedIn={loggedIn}
+              fetchtitle="Upcoming" 
+              placeholder={standingPlaceholder} 
+              fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=`}
+            />
+          </Route>
+
+          <Route exact path='/top-rated' >
+            < ViewMoreMovies
+              API_KEY={API_KEY} 
+              loggedIn={loggedIn}
+              fetchtitle="Top&nbsp;rated" 
+              placeholder={standingPlaceholder} 
+              fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=`}
+            />
           </Route>
 
           <Route exact path='/signin' >
@@ -70,8 +114,12 @@ export const App = () => {
 
           </Route>
 
-          <Route exact path='/genres/:id' >
-            < GenreItem loggedIn={loggedIn} />
+          <Route exact path='/genres/:name/:id' >
+            < ViewMoreMovies
+              API_KEY={API_KEY} 
+              placeholder={standingPlaceholder} 
+              loggedIn={loggedIn} 
+            />
           </Route>
 
           <Route exact path="/movie/:id" >
