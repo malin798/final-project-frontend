@@ -17,8 +17,9 @@ import { Hamburger } from './components/Hamburger'
 import { MovieItem } from './pages/MovieItem'
 import { ActorPage } from './pages/ActorPage'
 import { MovieSlider } from './components/MovieSlider'
-import placeholder from './images/elijah-flores-44se2xSCo00-unsplash.jpg'
+import placeholder from './images/placeholderL.png'
 import { GenreItem } from './pages/GenreItem'
+
 
 const API_KEY = process.env.REACT_APP_API_KEY
 

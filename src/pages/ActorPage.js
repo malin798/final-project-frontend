@@ -71,7 +71,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
           </div>
         }
 
-        < MovieSlider fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} loggedIn={loggedIn} />
+        < MovieSlider fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={actorPlaceholder} loggedIn={loggedIn} />
 
       </div>
     )

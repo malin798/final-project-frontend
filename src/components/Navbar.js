@@ -20,8 +20,10 @@ export const Navbar = ({ loggedIn }) => {
 
       {loggedIn &&
         <section className="signin">
-          <UserImage />
-          {userName.toUpperCase()}
+          <Link to="/profile">
+            <UserImage />
+            {userName.toUpperCase()}
+          </Link>
         </section>
       }
 

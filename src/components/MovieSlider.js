@@ -18,10 +18,10 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
 
   return (
     <>
-      <div className="titleArrow">
+      <div className="movie-slider-title">
         {movies.length > 0 &&
-          <h4>{fetchtitle}</h4>}
-        <div className="rightArrowContainer">
+          <h4>{fetchtitle} </h4>}
+        <div className="right-arrow-container">
           <RightArrow />
         </div>
       </div>
@@ -53,7 +53,7 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
                     }
 
                     <h5>
-                      {movie.original_title}
+                      {movie.title}
                     </h5>
 
                     <p>

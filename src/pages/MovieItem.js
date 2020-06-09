@@ -6,6 +6,9 @@ import { ImageSlider } from '../components/ImageSlider'
 //import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 import actorPlaceholder from '../images/placeholderS.png'
 import moviePlaceholder from '../images/placeholderL.png'
+import { ThumbnailGallery } from '../components/ThumbnailGallery'
+import { IMDBRatingPlugin } from '../components/IMDBRatingPlugin'
+
 
 export const MovieItem = ({ API_KEY, loggedIn }) => {
 
@@ -165,13 +168,14 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
                         as {actor.character}
                       </p>
                     </div>
+                  </div>
                 </Link>
               </div>
             )
           })}
         </ImageSlider>
 
-              < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={moviePlaceholder} loggedIn={loggedIn} />
+        < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={moviePlaceholder} loggedIn={loggedIn} />
 
       </section>
     )
