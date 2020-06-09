@@ -79,7 +79,7 @@ export const App = () => {
           </Route>
 
           <Route exact path="/actor/:id" >
-            < ActorPage API_KEY={API_KEY} />
+            < ActorPage API_KEY={API_KEY} loggedIn={loggedIn} />
           </Route>
 
           <Route exact path="/hamburger" >

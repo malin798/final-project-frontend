@@ -24,7 +24,9 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) =>
           <div className="rightArrowContainer">
             <RightArrow />
           </div>
-        </section>}
+        </section>
+      }
+
       <ImageSlider>
         {movies.map(movie => {
 

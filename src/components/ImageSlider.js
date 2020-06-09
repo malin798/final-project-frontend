@@ -33,7 +33,7 @@ export const ImageSlider = (props) => {
       slidesToSlide={3}
       responsive={responsive}
       ssr={true} // means to render carousel on server-side.
-      infinite={true}
+      infinite={false}
       autoPlaySpeed={1000}
       keyBoardControl={true}
       customTransition="all 1.5s ease-in-out"

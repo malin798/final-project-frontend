@@ -4,7 +4,7 @@ import { MovieSlider } from '../components/MovieSlider'
 import placeholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 import { ImageSlider } from '../components/ImageSlider'
 
-export const ActorPage = ({ API_KEY }) => {
+export const ActorPage = ({ API_KEY, loggedIn }) => {
 
   const params = useParams()
   const actorId = params.id
@@ -70,7 +70,7 @@ export const ActorPage = ({ API_KEY }) => {
           </div>
         }
 
-        < MovieSlider fetchlink= {URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} />
+        < MovieSlider fetchlink= {URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={placeholder} loggedIn={loggedIn}/>
         
       </div>
     )
