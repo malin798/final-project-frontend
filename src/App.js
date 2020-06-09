@@ -31,7 +31,7 @@ const store = configureStore({ reducer: reducer })
 export const App = () => {
   const API_KEY = process.env.REACT_APP_API_KEY
   const [loggedIn, setLoggedIn] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(false)
+  console.log("loggedin app.js", loggedIn)
 
   return (
 
@@ -42,8 +42,20 @@ export const App = () => {
 
         <Switch>
 
+        <Route exact path="/" >
+            < MovieSlider 
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Now playing" placeholder={placeholder} />
+            < MovieSlider 
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Top rated" placeholder={placeholder} />
+            < MovieSlider 
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Upcoming" placeholder={placeholder} />
+          </Route>
+
           <Route exact path='/signin' >
-            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />}
+            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
 
           <Route exact path='/register' >
@@ -51,7 +63,7 @@ export const App = () => {
           </Route>
 
           <Route exact path='/profile' >
-            {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />}
+            {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
 
           <Route exact path='/genres' >
@@ -63,17 +75,11 @@ export const App = () => {
           </Route>
 
           <Route exact path="/movie/:id" >
-            < MovieItem API_KEY={API_KEY} />
+            < MovieItem API_KEY={API_KEY} loggedIn={loggedIn} />
           </Route>
 
           <Route exact path="/actor/:id" >
             < ActorPage API_KEY={API_KEY} />
-          </Route>
-
-          <Route exact path="/" >
-            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Now playing" placeholder={placeholder} />
-            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Top rated" placeholder={placeholder} />
-            < MovieSlider fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} fetchtitle="Upcoming" placeholder={placeholder} />
           </Route>
 
           <Route exact path="/hamburger" >

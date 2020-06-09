@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux' 
 import { Link } from 'react-router-dom'
 import { ImageSlider } from '../components/ImageSlider'
 
-export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
-
+export const MovieSlider = ({ fetchtitle, fetchlink, placeholder, loggedIn }) => {
   const [movies, setMovies] = useState([])
   const [active, setActive] = useState(false)
+  console.log("movieSlider", loggedIn)
 
   const addToList = (event) => {
     event.preventDefault()
@@ -23,7 +24,7 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
       .then((json) => {
         setMovies(json.results)
       })
-  }, [])
+  }, [fetchlink])
 
   return (
     <>
@@ -52,19 +53,24 @@ export const MovieSlider = ({ fetchtitle, fetchlink, placeholder }) => {
 
                 <div className='movie-details'>
                   <div>
-                    <button
+
+                    {loggedIn && 
+                      <button
                       onMouseOver={event => setActive(!active)}
                       onMouseOut={event => setActive(!active)}
                       onClick={event => addToList(event)}
                     >
                       + {active && "Add to watchlist"}
-                    </button>
+                    </button>}
+
                     <h5>
                       {movie.original_title}
                     </h5>
+
                     <p>
                       Release {movie.release_date}
                     </p>
+
                   </div>
                 </div>
               </Link>

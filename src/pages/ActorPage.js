@@ -31,7 +31,7 @@ export const ActorPage = ({ API_KEY }) => {
         setImages(json.profiles)
         setLoading(false)
       })
-  }, [actorId])
+  }, [URL_IMAGES, URL_PAGE])
 
   if (!actor || loading) {
     return (

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { handleLogin } from '../components/reducers/user'
 import { Linksection } from '../components/Linksection'
 import { Accountheader } from '../components/Accountheader'
@@ -15,7 +14,7 @@ export const Login = ({ setLoggedIn }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await dispatch(handleLogin(name, password, setErrorMessage, setLoggedIn))
+    dispatch(handleLogin(name, password, setErrorMessage, setLoggedIn))
   }
 
   return (

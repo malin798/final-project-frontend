@@ -8,7 +8,7 @@ import actorPlaceholder from '../images/phil-desforges-oQd5dwDWu_8-unsplash.jpg'
 import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 
 
-export const MovieItem = ({ API_KEY }) => {
+export const MovieItem = ({ API_KEY, loggedIn }) => {
 
   const params = useParams()
   const movieId = params.id
@@ -26,8 +26,9 @@ export const MovieItem = ({ API_KEY }) => {
   const [trailer, setTrailer] = useState([])
   const [thumbNails, setThumbNails] = useState([]);
   const [loading, setLoading] = useState(false)
-  console.log(thumbNails)
-  
+
+  console.log("movie item", loggedIn)
+    
   useEffect(() => {
     setLoading(true)
     fetch(URL_MOVIE)
@@ -171,7 +172,7 @@ export const MovieItem = ({ API_KEY }) => {
         })}
       </ImageSlider> 
 
-      < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={moviePlaceholder}/>
+      < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={moviePlaceholder} loggedIn={loggedIn}/>
 
       </section>
     )

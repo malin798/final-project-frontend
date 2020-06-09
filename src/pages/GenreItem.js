@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ImageSliderAndTitle} from '../components/MovieSlider'
-import { ImageSlider } from '../components/ImageSlider'
+import { useDispatch } from 'react-redux'
+import { addToWatchlist } from '../components/reducers/user'
 import moviePlaceholder from '../images/elijah-flores-44se2xSCo00-unsplash.jpg'
 
 export const GenreItem = () => {
+
+  const dispatch = useDispatch()
 
   const params = useParams()
   const genreId = params.id
@@ -16,7 +18,7 @@ export const GenreItem = () => {
   const URL = `https://api.themoviedb.org/3/discover/movie?api_key=3d60d24f587752713f5e7b71902de8f8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
 
   const showMoreMovies = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     setPage(page + 1);
 
     fetch(URL)
@@ -27,8 +29,9 @@ export const GenreItem = () => {
     })
   }
 
-  const addToList = (event) => {
+  const handleClick = (event, title, id) => {
     event.preventDefault()
+    dispatch(addToWatchlist(title, id))
     //Add to redux/reducers
     //fetch (put) to users/:id/watchlist
     //header Authorization: accesstoken
@@ -44,7 +47,7 @@ export const GenreItem = () => {
       setAllPages(res.total_pages)
       setGenre(res.results)
     })
-  }, [genreId])
+  }, [URL])
 
   return (
     <>
@@ -63,9 +66,9 @@ export const GenreItem = () => {
                 </img>
                 <div className='movie-details'> 
                   <button
-                    onMouseOver={event => setActive(!active)}
-                    onMouseOut={event => setActive(!active)}
-                    onClick={event => addToList(event)}
+                    onMouseOver={() => setActive(!active)}
+                    onMouseOut={() => setActive(!active)}
+                    onClick={(event) => handleClick(event, item.title, item.id)}
                   >
                     + {active && "Add to watchlist"}
                   </button>

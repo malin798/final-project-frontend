@@ -5,10 +5,8 @@ const initialState = {
     accessToken: null,
     userId: null,
     userName: null,
-    loggedIn: false,
-    error: false,
-    errorMessage: null,
   },
+  watchlist: []
 };
 
 export const user = createSlice({
@@ -26,9 +24,20 @@ export const user = createSlice({
     setUserName: (state, action) => {
       const { userName } = action.payload
       state.login.userName = userName
+    },
+    setWatchlistItem: (state, action) => {
+      const { title, id } = action.payload
+      console.log("item added to watchlist", title, id)
+      state.watchlist.push({"title": title, "showId": id})
     }
   },
 })
+
+export const addToWatchlist = (title, id) => {
+  return async (dispatch) => {
+    dispatch(user.actions.setWatchlistItem({title, id}))
+  }
+}
 
 export const handleSignup = (name, email, password, setErrorMessage) => {
   const SIGNUP_URL = 'http://localhost:8080/users'
@@ -62,7 +71,7 @@ export const handleSignup = (name, email, password, setErrorMessage) => {
         }
       })
       .catch((err) => {
-        setErrorMessage(err.message)
+        setErrorMessage("Could not create user!")
       })
   }
 }
@@ -77,7 +86,7 @@ export const handleLogin = (name, password, setErrorMessage, setLoggedIn) => {
     })
       .then((res) => {
         if (!res.ok) {
-          setLoggedIn(false)
+          dispatch(logout(setLoggedIn))
           setErrorMessage('Username and/or password is incorrect!')
           throw 'Username and/or password is incorrect!'
         } 
@@ -100,15 +109,14 @@ export const handleLogin = (name, password, setErrorMessage, setLoggedIn) => {
         } 
       })
       .catch((err) => {
-        dispatch(logout(setLoggedIn, setErrorMessage))
+        dispatch(logout(setLoggedIn))
         setErrorMessage('Username and/or password is incorrect!')
       })
     }
 }
 
-export const logout = (setLoggedIn, setErrorMessage) => {
+export const logout = (setLoggedIn) => {
     setLoggedIn(false)
-    setErrorMessage()
   return (dispatch) => {
     dispatch(user.actions.setAccessToken({ accessToken: null }))
     dispatch(user.actions.setUserId({ userId: 0 }))

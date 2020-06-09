@@ -2,14 +2,15 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../components/reducers/user'
 
-export const Profile = ({ loggedIn, setLoggedIn, setErrorMessage }) => {
+export const Profile = ({ loggedIn, setLoggedIn }) => {
   const dispatch = useDispatch();
   const userName = useSelector((store) => store.user.login.userName)
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
+  console.log("loggedin profile", loggedIn)
 
   const handleClick = () => {
-    dispatch(logout(setLoggedIn, setErrorMessage))
+    dispatch(logout(setLoggedIn))
   }
 
   if (!loggedIn || userId === null || userId === null || accessToken === null) {
@@ -24,7 +25,7 @@ export const Profile = ({ loggedIn, setLoggedIn, setErrorMessage }) => {
         <div className="welcome">
           Welcome {userName}!</div>
         <div className="logout">
-          <button onClick={handleClick}>LOG OUT</button>
+          <button onClick={() => handleClick()}>LOG OUT</button>
         </div>
       </section>
     )
