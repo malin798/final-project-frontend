@@ -130,7 +130,7 @@ export const App = () => {
           </Route>
 
           <Route exact path='/trending-today' >
-            < MovieSlider
+            < ViewMoreMovies
               API_KEY={API_KEY} 
               loggedIn={loggedIn}
               fetchtitle="Trending today" 

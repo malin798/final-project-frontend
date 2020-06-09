@@ -12,7 +12,7 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink , fetchtitle, moviePlacehold
   const [allPages, setAllPages] = useState();
   const [active, setActive] = useState(false)
 
-  //let URL = `${fetchlink}${page}`
+  let URL = `${fetchlink}${page}`
  
   if (genreId) {
     fetchtitle = genreName
