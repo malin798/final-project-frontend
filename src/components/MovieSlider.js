@@ -4,10 +4,10 @@ import { ImageSlider } from '../components/ImageSlider'
 import { WatchlistButton } from '../components/WatchlistButton'
 import { RightArrow } from '../components/RightArrow'
 
-export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, loggedIn }) => {
+export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, imageOrientation, loggedIn }) => {
   const [movies, setMovies] = useState([])
   const [active, setActive] = useState(false)
-
+  
   useEffect(() => {
     fetch(fetchlink)
       .then((res) => res.json())
@@ -31,11 +31,20 @@ export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, log
       <ImageSlider>
         {movies.map(movie => {
 
-          let src = `https://image.tmdb.org/t/p/w342/${movie.backdrop_path}`
+          let imageSrc;
+     
+          if (imageOrientation === "standing") {
+            imageSrc = movie.poster_path
+          } else {
+            imageSrc = movie.backdrop_path
+          }
 
-          if (movie.backdrop_path == null || movie.backdrop_path === undefined) {
+          let src = `https://image.tmdb.org/t/p/w342/${imageSrc}`
+
+          if (imageSrc == null || imageSrc === undefined) {
             src = placeholder
           }
+          
           return (
             <div className="movie-wrapper" key={movie.id}>
               <Link className="movie-link" to={`/movie/${movie.id}`}>

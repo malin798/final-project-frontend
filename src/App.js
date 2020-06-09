@@ -50,6 +50,7 @@ export const App = () => {
               fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} 
               fetchtitle="Now&nbsp;playing" 
               placeholder={layingPlaceholder} 
+              imageOrientation={"laying"}
               titlelink="/now-playing"
               />
             < MovieSlider
@@ -57,12 +58,14 @@ export const App = () => {
               fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} 
               fetchtitle="Top&nbsp;rated" 
               placeholder={layingPlaceholder} 
+              imageOrientation={"standing"}
               titlelink="/top-rated"
               />
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} 
               fetchtitle="Upcoming" 
+              imageOrientation={"laying"}
               placeholder={layingPlaceholder} 
               titlelink="/upcoming"
               />
