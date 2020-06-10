@@ -20,6 +20,8 @@ import { MovieSlider } from './components/MovieSlider'
 import { ViewMoreMovies } from './pages/ViewMoreMovies'
 import layingPlaceholder from './images/placeholderL.png'
 import standingPlaceholder from './images/placeholderS.png'
+import { MovieSearchResults } from './pages/MovieSearchResults'
+import { ActorSearchResults } from './pages/ActorSearchResults'
 
 
 const API_KEY = process.env.REACT_APP_API_KEY
@@ -33,14 +35,13 @@ const store = configureStore({ reducer: reducer })
 export const App = () => {
   const API_KEY = process.env.REACT_APP_API_KEY
   const [loggedIn, setLoggedIn] = useState(false)
-  console.log("loggedin app.js", loggedIn)
 
   return (
 
     <Provider store={store}>
       <BrowserRouter>
 
-        < Navbar loggedIn={loggedIn} />
+        < Navbar loggedIn={loggedIn} API_KEY={API_KEY}/>
 
         <Switch>
         {/* hamburger ska in in navbar sen */}
@@ -148,7 +149,7 @@ export const App = () => {
           </Route>
 
           <Route exact path='/genres' >
-
+            {/* EMPTY ROUTE HERE... */}
           </Route>
 
           <Route exact path='/genres/:name/:id' >
@@ -165,6 +166,16 @@ export const App = () => {
 
           <Route exact path="/actor/:id" >
             < ActorPage API_KEY={API_KEY} loggedIn={loggedIn} />
+          </Route>
+
+          {/* SEARCH RESULTS PAGES */}
+
+          <Route exact path='/search-results/movie/:value' >
+            < MovieSearchResults loggedIn={loggedIn} />
+          </Route>
+
+          <Route exact path='/search-results/actor/:value' >
+            < ActorSearchResults loggedIn={loggedIn} />
           </Route>
 
           {/* routes for user signin/register/profilepage */}

@@ -49,7 +49,7 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink , fetchtitle, moviePlacehold
 
            let src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
    
-           if (item.backdrop_path == null || item.backdrop_path === undefined ) {
+           if (item.poster_path == null || item.poster_path === undefined ) {
              src = moviePlaceholder
            } 
           return (

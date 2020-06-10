@@ -32,8 +32,6 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
     src = layingPlaceholder
   }
 
-  console.log("movie item", genre)
-
   useEffect(() => {
     setLoading(true)
     fetch(URL_MOVIE)
