@@ -25,7 +25,6 @@ export const ImageSlider = (props) => {
   return (
 
     <Carousel
-      centerMode
       swipeable={true}
       draggable={false}
       minimumTouchDrag={80}

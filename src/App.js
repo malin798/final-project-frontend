@@ -43,13 +43,19 @@ export const App = () => {
         < Navbar loggedIn={loggedIn} />
 
         <Switch>
+        {/* hamburger ska in in navbar sen */}
+          <Route exact path="/hamburger" >
+            < Hamburger />
+          </Route>
+
+        {/* start page components below*/}
 
           <Route exact path="/" >
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=1`}
               fetchtitle="Trending today" 
-              imageOrientation={"standing"}
+              imageOrientation="standing"
               placeholder={standingPlaceholder} 
               titlelink="/trending-today"
               />
@@ -58,7 +64,7 @@ export const App = () => {
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=1`}
               fetchtitle="Trending this week" 
-              imageOrientation={"laying"}
+              imageOrientation="laying"
               placeholder={layingPlaceholder} 
               titlelink="/trending-week"
               />
@@ -68,7 +74,7 @@ export const App = () => {
               fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`} 
               fetchtitle="Now&nbsp;playing" 
               placeholder={layingPlaceholder} 
-              imageOrientation={"laying"}
+              imageOrientation="laying"
               titlelink="/now-playing"
               />
             < MovieSlider
@@ -76,18 +82,20 @@ export const App = () => {
               fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`} 
               fetchtitle="Top&nbsp;rated" 
               placeholder={standingPlaceholder} 
-              imageOrientation={"standing"}
+              imageOrientation="standing"
               titlelink="/top-rated"
               />
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`} 
               fetchtitle="Upcoming" 
-              imageOrientation={"laying"}
+              imageOrientation="laying"
               placeholder={layingPlaceholder} 
               titlelink="/upcoming"
               />
           </Route>
+
+          {/* misc routes below */}
 
           <Route exact path='/now-playing' >
             < ViewMoreMovies
@@ -136,20 +144,7 @@ export const App = () => {
               fetchtitle="Trending today" 
               placeholder={standingPlaceholder} 
               fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=`}
-              imageOrientation={"standing"}
               />
-          </Route>
-
-          <Route exact path='/signin' >
-            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
-          </Route>
-
-          <Route exact path='/register' >
-            < Register />
-          </Route>
-
-          <Route exact path='/profile' >
-            {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
 
           <Route exact path='/genres' >
@@ -170,12 +165,22 @@ export const App = () => {
 
           <Route exact path="/actor/:id" >
             < ActorPage API_KEY={API_KEY} loggedIn={loggedIn} />
-
           </Route>
 
-          <Route exact path="/hamburger" >
-            < Hamburger />
+          {/* routes for user signin/register/profilepage */}
+
+          <Route exact path='/signin' >
+            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
+
+          <Route exact path='/register' >
+            < Register />
+          </Route>
+
+          <Route exact path='/profile' >
+            {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+          </Route>
+
 
         </Switch>
       </BrowserRouter>
