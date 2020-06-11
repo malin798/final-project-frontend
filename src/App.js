@@ -20,7 +20,7 @@ import { MovieSlider } from './components/MovieSlider'
 import { ViewMoreMovies } from './pages/ViewMoreMovies'
 import layingPlaceholder from './images/placeholderL.png'
 import standingPlaceholder from './images/placeholderS.png'
-
+import { Accordion } from './components/Accordion'
 
 
 const API_KEY = process.env.REACT_APP_API_KEY
@@ -177,6 +177,11 @@ export const App = () => {
           <Route exact path="/hamburger" >
             < Hamburger />
           </Route>
+
+          <Route exact path="/accordion" >
+            < Accordion />
+          </Route>
+
 
         </Switch>
       </BrowserRouter>

@@ -9,6 +9,10 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
   const userId = useSelector((store) => store.user.login.userId)
   console.log("loggedin profile", loggedIn)
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const handleClick = () => {
     dispatch(logout(setLoggedIn))
   }
@@ -23,7 +27,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     return (
       <section class="welcome-container">
         <div className="welcome">
-          Welcome {userName}!</div>
+          Welcome {capitalizeFirstLetter(userName)}!</div>
         <div className="logout">
           <button onClick={() => handleClick()}>LOG OUT</button>
         </div>

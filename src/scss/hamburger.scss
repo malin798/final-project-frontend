@@ -1,11 +1,11 @@
-.hamburger {
+.hamburger-container {
 
   label,
   label::before,
   label::after {
     position: absolute;
-    width: 60px;
-    height: 8px;
+    width: 19px;
+    height: 3px;
     border-radius: 4px;
     background: #fff;
     transition: 0.6s;
@@ -14,19 +14,24 @@
 
   label {
     cursor: pointer;
-    top: 10%;
+    z-index: 99;
+    margin-top: -25px;
   }
 
   label::before {
     content: "";
-    transform: translateY(-20px);
-    -webkit-transform: translateY(-20px);
+    transform: translateY(-6px);
+    -webkit-transform: translateY(-6px);
   }
 
   label::after {
     content: "";
-    transform: translateY(20px);
-    -webkit-transform: translateY(20px);
+    transform: translateY(6px);
+    -webkit-transform: translateY(6px);
+  }
+
+  #menu {
+    display: none;
   }
 
   #menu:checked+label {
@@ -34,12 +39,23 @@
   }
 
   #menu:checked+label::before {
-    transform: rotate(225deg) translate(0px);
-    -webkit-transform: rotate(225deg) translate(0px);
+    transform: rotate(45deg) translate(0px);
+    -webkit-transform: rotate(45deg) translate(0px);
   }
 
   #menu:checked+label::after {
-    transform: rotate(-225deg) translate(0px);
-    -webkit-transform: rotate(-225eg) translate(0px);
+    transform: rotate(-45deg) translate(0px);
+    -webkit-transform: rotate(-45deg) translate(0px);
+  }
+
+  .dropdown-menu {
+    background-color: rgb(0, 8, 117);
+    height: 0px;
+    width: 0px;
+
+    #menu:checked+.dropdown-menu {
+      display: block;
+      background-color: orangered;
+    }
   }
 }

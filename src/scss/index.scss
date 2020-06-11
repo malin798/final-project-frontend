@@ -1,6 +1,6 @@
 @import './login-register.scss';
 @import './navbar.scss';
-// @import './movie-item.scss';
+@import './movie-item.scss';
 @import './hamburger.scss';
 @import './startpage.scss';
 @import './listbutton.scss';
@@ -8,9 +8,12 @@
 @import './view-more-movies.scss';
 @import './thumbnail-gallery.scss';
 @import './profile.scss';
+@import './accordion.scss';
+
 
 body {
-  padding: 10px;
+  padding: 20px;
+  padding-top: 80px;
   color: white;
   background-color: #070707;
   margin: 0;
