@@ -20,12 +20,12 @@ export const Review = ({review, index}) => {
           <a 
             className="show-more-less-link"
             onClick={() => setVisible(true)}>
-            &#40;Read more&#41;
+            Read more
           </a>
       }
         {review.content.length > 2000 && visible &&
         <a onClick={() => setVisible(false)}>
-          &#40;Show less&#41;
+          Show less
         </a>
       }
       <div className="author">
