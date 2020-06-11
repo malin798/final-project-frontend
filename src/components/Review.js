@@ -24,7 +24,9 @@ export const Review = ({review, index}) => {
           </a>
       }
         {review.content.length > 2000 && visible &&
-        <a onClick={() => setVisible(false)}>
+        <a 
+          className="show-more-less-link"
+          onClick={() => setVisible(false)}>
           Show less
         </a>
       }
