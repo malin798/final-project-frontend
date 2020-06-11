@@ -6,6 +6,7 @@ import { ThumbnailGallery } from '../components/ThumbnailGallery'
 import { IMDBRatingPlugin } from '../components/IMDBRatingPlugin'
 import standingPlaceholder from '../images/placeholderS.png'
 import layingPlaceholder from '../images/placeholderL.png'
+import { Review } from '../components/Review'
 
 export const MovieItem = ({ API_KEY, loggedIn }) => {
 
@@ -16,6 +17,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
   const URL_CAST = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
   const URL_SIMILARMOVIES = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US`
   const URL_TRAILER = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
+  const URL_REVIEW = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
   const URL_THUMB = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${API_KEY}`
 
   const [movie, setMovie] = useState([])
@@ -24,7 +26,10 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
   const [productionCompany, setProductionCompany] = useState([])
   const [trailer, setTrailer] = useState([])
   const [thumbNails, setThumbNails] = useState([]);
+  const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
+
+  console.log(reviews)
 
   let src = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
 
@@ -46,6 +51,12 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
       .then(res => res.json())
       .then(json => {
         setCast(json.cast)
+      })
+
+      fetch(URL_REVIEW)
+      .then(res => res.json())
+      .then(json => {
+        setReviews(json.results)
       })
 
     fetch(URL_THUMB)
@@ -89,9 +100,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           </img>
         }
 
-        < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
-
-        <h4>Movie overview:</h4>
+        <h4>Movie overview:</h4>  < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
 
         <div>
           {movie.overview}
@@ -116,9 +125,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           <h4>Produced by:</h4>
           {productionCompany.map((company, index) => (
             <>
-              <Link to="">
-                {company.name}
-              </Link>
+              {company.name}
               {productionCompany.length - 1 > index && ", "}
             </>
           ))}
@@ -138,6 +145,12 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             </>
           ))}
         </div>
+
+        <h4>Reviews:</h4> 
+        
+        {reviews.slice(0, 3).map(review => (
+          < Review review={review} />     
+        ))}
 
         <h4>Cast: </h4>
 

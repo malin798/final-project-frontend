@@ -1,12 +1,19 @@
+@import './mixin-var.scss';
+
 .movie-item {
   color: white;
+
+  h4 {
+    display: inline;
+    margin-right: 5px;
+  }
  
   a {
     color:white;
     text-decoration: none;
 
     &:hover {
-      color: cornflowerblue;
+      color: $accent-color;
     }
   }
 
@@ -19,12 +26,50 @@
   }
 
   .imdbRatingPlugin {
-    display: flex;
-    align-items: center;
+    width: fit-content;
+    display: inline-flex;
+    align-items: flex-end;
 
     a {
       margin-right: 5px;
     }
+
+    p {
+      display: inline;
+    }
   }
+
+  .review-container {
+    border: 1px solid white;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+
+    .hide {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+    }
+  
+    .author {
+      color: $accent-color;
+      display: block;
+      font-weight: bold;
+      margin-left: 15px;
+      margin-top: 10px;
+  
+      span {
+        color: white;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: lighter;
+      }
+    }
+  
+    .show-more-less-link {
+      font-size: 14px;
+    }
+  }
+  
 }
 
