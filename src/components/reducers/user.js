@@ -6,7 +6,8 @@ const initialState = {
     userId: null,
     userName: null,
   },
-  watchlist: []
+  watchlist: [],
+  searchResults: []
 };
 
 export const user = createSlice({
@@ -25,6 +26,11 @@ export const user = createSlice({
       const { userName } = action.payload
       state.login.userName = userName
     },
+    setSearchResults: (state, action) => {
+      const { results } = action.payload
+      console.log("redux store", results)
+      state.searchResults = results
+    },
     setWatchlistItem: (state, action) => {
       const { title, id } = action.payload
       console.log("item added to watchlist", title, id)
@@ -32,6 +38,13 @@ export const user = createSlice({
     }
   },
 })
+
+export const setSearchResults = (results) => {
+  return async (dispatch) => {
+    console.log("reducer function", results)
+    dispatch(user.actions.setSearchResults({results}))
+  }
+}
 
 export const addToWatchlist = (title, id) => {
   return async (dispatch) => {

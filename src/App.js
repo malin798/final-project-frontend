@@ -21,6 +21,8 @@ import { ViewMoreMovies } from './pages/ViewMoreMovies'
 import layingPlaceholder from './images/placeholderL.png'
 import standingPlaceholder from './images/placeholderS.png'
 import { Accordion } from './components/Accordion'
+import { MovieSearchResults } from './pages/MovieSearchResults'
+import { ActorSearchResults } from './pages/ActorSearchResults'
 
 
 const API_KEY = process.env.REACT_APP_API_KEY
@@ -34,23 +36,28 @@ const store = configureStore({ reducer: reducer })
 export const App = () => {
   const API_KEY = process.env.REACT_APP_API_KEY
   const [loggedIn, setLoggedIn] = useState(false)
-  console.log("loggedin app.js", loggedIn)
 
   return (
 
     <Provider store={store}>
       <BrowserRouter>
 
-        < Navbar loggedIn={loggedIn} />
+        < Navbar loggedIn={loggedIn} API_KEY={API_KEY} />
 
         <Switch>
+          {/* hamburger ska in in navbar sen */}
+          <Route exact path="/hamburger" >
+            < Hamburger />
+          </Route>
+
+          {/* start page components below*/}
 
           <Route exact path="/" >
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=1`}
               fetchtitle="Trending today"
-              imageOrientation={"standing"}
+              imageOrientation="standing"
               placeholder={standingPlaceholder}
               titlelink="/trending-today"
             />
@@ -59,7 +66,7 @@ export const App = () => {
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=1`}
               fetchtitle="Trending this week"
-              imageOrientation={"laying"}
+              imageOrientation="laying"
               placeholder={layingPlaceholder}
               titlelink="/trending-week"
             />
@@ -69,7 +76,7 @@ export const App = () => {
               fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`}
               fetchtitle="Now&nbsp;playing"
               placeholder={layingPlaceholder}
-              imageOrientation={"laying"}
+              imageOrientation="laying"
               titlelink="/now-playing"
             />
             < MovieSlider
@@ -77,18 +84,20 @@ export const App = () => {
               fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`}
               fetchtitle="Top&nbsp;rated"
               placeholder={standingPlaceholder}
-              imageOrientation={"standing"}
+              imageOrientation="standing"
               titlelink="/top-rated"
             />
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`}
               fetchtitle="Upcoming"
-              imageOrientation={"laying"}
+              imageOrientation="laying"
               placeholder={layingPlaceholder}
               titlelink="/upcoming"
             />
           </Route>
+
+          {/* misc routes below */}
 
           <Route exact path='/now-playing' >
             < ViewMoreMovies
@@ -137,24 +146,11 @@ export const App = () => {
               fetchtitle="Trending today"
               placeholder={standingPlaceholder}
               fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=`}
-              imageOrientation={"standing"}
             />
           </Route>
 
-          <Route exact path='/signin' >
-            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
-          </Route>
-
-          <Route exact path='/register' >
-            < Register />
-          </Route>
-
-          <Route exact path='/profile' >
-            {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
-          </Route>
-
           <Route exact path='/genres' >
-
+            {/* EMPTY ROUTE HERE... */}
           </Route>
 
           <Route exact path='/genres/:name/:id' >
@@ -171,15 +167,34 @@ export const App = () => {
 
           <Route exact path="/actor/:id" >
             < ActorPage API_KEY={API_KEY} loggedIn={loggedIn} />
-
           </Route>
 
-          <Route exact path="/hamburger" >
-            < Hamburger />
+          {/* SEARCH RESULTS PAGES */}
+
+          <Route exact path='/search-results/movie/:value' >
+            < MovieSearchResults loggedIn={loggedIn} />
+          </Route>
+
+          <Route exact path='/search-results/actor/:value' >
+            < ActorSearchResults loggedIn={loggedIn} />
+          </Route>
+
+          {/* routes for user signin/register/profilepage */}
+
+          <Route exact path='/signin' >
+            {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
 
           <Route exact path="/accordion" >
             < Accordion />
+          </Route>
+
+          <Route exact path='/register' >
+            < Register />
+          </Route>
+
+          <Route exact path='/profile' >
+            {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
 
 

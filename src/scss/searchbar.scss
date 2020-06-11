@@ -1,0 +1,100 @@
+@import './mixin-var.scss';
+
+.searchbar-and-filter {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 20%;
+  height: 30px;
+
+  button {
+    background-color: #5C5C5A;
+    border: none;
+    border-radius: 0 15px 15px 0;
+
+    :focus {
+      outline: none;
+    }
+  }
+
+  .search-SVG {
+    height: 18px;
+
+    svg {
+      height: 18px;
+    }
+  }
+
+  select {
+    width: 20px;
+    border-radius: 15px 0 0 15px;
+    background-color: #5C5C5A;
+    border: none;
+  }
+
+  input {
+    @include colors(white, $search-field-gray);
+    border: none;
+    width: -webkit-fill-available;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $accent-color;
+    }
+  }
+
+  a {
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    width: 100%;
+    border-bottom: 1px solid white;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  .right-arrow-container {
+    display: inline;
+    margin-left: 4px;
+    width: 14px;
+    height: 14px;
+    margin-bottom: 11px;
+  }
+  
+  .svgarrow {
+    fill: rgb(86, 242, 219);
+    margin-top: 7px;
+  }
+
+  .search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+  
+    &.visible {
+      position: absolute;
+      top: 30px;
+      background-color: #3f3f3f;
+      color: black;
+      height: fit-content;
+      width: 100%;
+      z-index: 50;
+
+      button {
+        background-color: $accent-color;
+        width: fit-content;
+        border-radius: 5px;
+        margin: 5px;
+        padding: 3px 8px;
+      }
+    }
+  }
+}
+
+

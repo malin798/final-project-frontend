@@ -70,7 +70,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
           </div>
         }
 
-        < MovieSlider fetchlink={URL_SIMILARMOVIES} fetchtitle="Similar movies:" placeholder={layingPlaceholder} loggedIn={loggedIn} />
+        < MovieSlider fetchlink={URL_SIMILARMOVIES} fetchtitle="Also starring in:" placeholder={layingPlaceholder} loggedIn={loggedIn} />
 
       </div>
     )

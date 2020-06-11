@@ -22,9 +22,7 @@ export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, ima
         {movies.length > 0 &&
           <Link to={titlelink}>
             <h4>{fetchtitle}</h4>
-            <div className="right-arrow-container">
-              <RightArrow />
-            </div>
+            <RightArrow />
           </Link>
         }
       </div>
