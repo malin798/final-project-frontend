@@ -1,34 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { RightArrow } from '../components/RightArrow'
 
 export const Accordion = () => {
   return (
-    <header className="accordion-header">
-      <nav role="navigation">
-        <div id="menuToggle">
-          <input type="checkbox" />
-          <span></span>
-          <span></span>
-          <span></span>
-          <ul id="menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="/sign-in">Sign in</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <h1 className="header-title">COMPANY</h1>
-      <h3 className="header-slogan">DESIGN</h3>
-
-      <div className="social-media-header">
-        <i className="fa fa-facebook-f"></i>
-        <i className="fa fa-youtube"></i>
-        <i className="fa fa-instagram"></i>
+    <header className="hamburger-menu">
+      <div id="menuToggle">
+        <input type="checkbox" />
+        <div></div>
+        <div></div>
+        <div></div>
+        <ul id="menu">
+          <Link className="accordion-link" to="/"> <li>Movies</li></Link>
+          <Link className="accordion-link" to="/" ><li>Genres</li></Link>
+          <Link className="accordion-link" to="/" ><li>Latest releases</li></Link>
+          <Link className="accordion-link" to="/" ><li>Upcoming</li></Link>
+        </ul>
       </div>
-
-
-
     </header>
   )
 }

@@ -13,19 +13,17 @@ import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Profile } from './pages/Profile'
 import dotenv from 'dotenv'
-import { Hamburger } from './components/Hamburger'
 import { MovieItem } from './pages/MovieItem'
 import { ActorPage } from './pages/ActorPage'
 import { MovieSlider } from './components/MovieSlider'
 import { ViewMoreMovies } from './pages/ViewMoreMovies'
 import layingPlaceholder from './images/placeholderL.png'
 import standingPlaceholder from './images/placeholderS.png'
-import { Accordion } from './components/Accordion'
 import { MovieSearchResults } from './pages/MovieSearchResults'
 import { ActorSearchResults } from './pages/ActorSearchResults'
 
 
-const API_KEY = process.env.REACT_APP_API_KEY
+//const API_KEY = process.env.REACT_APP_API_KEY
 
 dotenv.config()
 
@@ -46,16 +44,13 @@ export const App = () => {
 
         <Switch>
           {/* hamburger ska in in navbar sen */}
-          <Route exact path="/hamburger" >
-            < Hamburger />
-          </Route>
-
           {/* start page components below*/}
 
           <Route exact path="/" >
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=1`}
+              fetchlink2={`https://api.themoviedb.org/3/movie/reviews?api_key=${API_KEY}&language=en-US&page=`}
               fetchtitle="Trending today"
               imageOrientation="standing"
               placeholder={standingPlaceholder}
@@ -149,6 +144,16 @@ export const App = () => {
             />
           </Route>
 
+          <Route exact path='/trending-today' >
+            < ViewMoreMovies
+              API_KEY={API_KEY}
+              loggedIn={loggedIn}
+              fetchtitle="Trending today"
+              placeholder={standingPlaceholder}
+              fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=`}
+            />
+          </Route>
+
           <Route exact path='/genres' >
             {/* EMPTY ROUTE HERE... */}
           </Route>
@@ -185,10 +190,6 @@ export const App = () => {
             {loggedIn ? <Redirect to='/profile' /> : < Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
 
-          <Route exact path="/accordion" >
-            < Accordion />
-          </Route>
-
           <Route exact path='/register' >
             < Register />
           </Route>
@@ -196,7 +197,6 @@ export const App = () => {
           <Route exact path='/profile' >
             {!loggedIn ? <Redirect to='/signin' /> : < Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
-
 
         </Switch>
       </BrowserRouter>

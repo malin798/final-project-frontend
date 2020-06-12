@@ -4,9 +4,11 @@ import { ImageSlider } from '../components/ImageSlider'
 import { WatchlistButton } from '../components/WatchlistButton'
 import { RightArrow } from '../components/RightArrow'
 
-export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, imageOrientation, loggedIn }) => {
+export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, fetchlink2, placeholder, imageOrientation, loggedIn, API_KEY }) => {
   const [movies, setMovies] = useState([])
   const [active, setActive] = useState(false)
+  const [review, setreview] = useState([])
+
 
   useEffect(() => {
     fetch(fetchlink)
@@ -65,6 +67,10 @@ export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, ima
                     <h5>
                       {movie.title}
                     </h5>
+
+                    <p>
+                      Review {movie.reviews}
+                    </p>
 
                     <p>
                       Release {movie.release_date}

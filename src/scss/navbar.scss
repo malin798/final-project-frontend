@@ -1,7 +1,8 @@
 .navbar {
   display: flex;
   align-items: flex-end;
-  height: 65px;
+  justify-content: space-between;
+  height: 80px;
   position: fixed;
   width: 100%;
   top: 0;
@@ -13,16 +14,26 @@
   background-color: black;
   ;
 
-  .logo-signin {
+  .navleft {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-left: 30px;
+    flex-direction: row;
+    align-items: center;
   }
 
-  a {
-    color: white;
-    text-decoration: none;
+  .navright {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 9px;
+    width: 30%;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    margin-left: 30px;
   }
 
   h3 {
@@ -39,12 +50,20 @@
     text-decoration-color: black;
   }
 
-  .signin {
+  .signin-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 64px;
+    align-items: center;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
     font-family: arial;
     font-weight: 700;
     font-size: 12px;
-    margin-bottom: 8px;
-    display: flex;
   }
 
   .signin:hover {
@@ -52,7 +71,7 @@
 
     &:hover+.right-arrow-container {
       transition: 0.3s;
-      width: 12px;
+      width: 14px;
     }
   }
 
@@ -60,16 +79,14 @@
     border-radius: 60%;
     width: 14px;
     height: 12px;
-    margin-top: 0.5px;
-    margin-right: 5px;
+    margin-left: 5px;
     cursor: pointer;
-    float: left;
     fill: rgb(86, 242, 219);
+    position: relative;
   }
 
   .right-arrow-container:hover {
     transition: 0.3s;
-    width: 11px;
-    margin-bottom: 2px;
+
   }
 }

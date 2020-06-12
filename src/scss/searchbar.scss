@@ -4,13 +4,13 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  width: 20%;
-  height: 30px;
+  width: 60%;
+  height: 22px;
 
   button {
     background-color: #5C5C5A;
     border: none;
-    border-radius: 0 15px 15px 0;
+    border-radius: 0 6px 6px 0;
 
     :focus {
       outline: none;
@@ -21,13 +21,13 @@
     height: 18px;
 
     svg {
-      height: 18px;
+      height: 14px;
     }
   }
 
   select {
     width: 20px;
-    border-radius: 15px 0 0 15px;
+    border-radius: 6px 0 0 6px;
     background-color: #5C5C5A;
     border: none;
   }
@@ -63,7 +63,7 @@
     height: 14px;
     margin-bottom: 11px;
   }
-  
+
   .svgarrow {
     fill: rgb(86, 242, 219);
     margin-top: 7px;
@@ -76,7 +76,7 @@
     height: 0px;
     width: 0px;
     overflow: hidden;
-  
+
     &.visible {
       position: absolute;
       top: 30px;
@@ -96,5 +96,3 @@
     }
   }
 }
-
-
