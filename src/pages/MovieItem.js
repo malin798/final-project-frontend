@@ -89,6 +89,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           {movie.title} <span className="release">&#40;{movie.release_date}&#41;</span>
         </h2>
 
+<<<<<<< HEAD
         <section className="top-container">
           <section className="images-container">
             {thumbNails.length > 2 ?
@@ -161,6 +162,75 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
 
 
+=======
+        <section className="movie-overview-container">
+        {thumbNails.length > 2 ?
+          < ThumbnailGallery
+            thumbnailArray={thumbNails.slice(0, 10)}
+            thumbnailDefault={thumbNails.map(item => item.file_path)[0]}
+          />
+          :
+          <img
+            className="movie-poster"
+            src={src}>
+          </img>
+        }
+
+        <section className="movie-overview">
+          <h4 className="movie-overview-title">Movie overview:</h4>  
+          < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
+
+          <div>
+            {movie.overview}
+          </div>
+
+          <h4>Genre:</h4>
+          <div className="movie-genre">
+            {genre.map((item, index) => (
+              <>
+                <Link to={`/genres/${item.name}/${item.id}`}>
+                  {item.name} 
+                </Link>
+                
+                {/* <span>
+                  {(genre.length - 1 > index) ? ", " : ""}
+                </span> */}
+              </>
+            ))}
+          </div>
+
+          <div>
+            <h4>Produced by:</h4>
+            {productionCompany.map((company, index) => (
+              <>
+                {company.name}
+                {productionCompany.length - 1 > index && ", "}
+              </>
+            ))}
+          </div>
+        </section>
+      </section>
+
+        {trailer.map((item) => {
+          if (item.site === "YouTube") {
+            return (
+              <iframe
+                width="560" height="315"
+                src={`https://www.youtube.com/embed/${item.key}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              >
+              </iframe>
+            )
+          }
+        })[0]}
+
+        <h4>Reviews:</h4> 
+        
+        {reviews.slice(0, 3).map(review => (
+          < Review review={review} />     
+        ))}
+>>>>>>> fe1d48e7c0acb0356eb987fd25ac647f5bcecb1f
 
         <h4>Cast: </h4>
 

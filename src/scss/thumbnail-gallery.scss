@@ -1,6 +1,10 @@
 .thumbnail-gallery {
   width: 100%;
 
+  @media (min-width: 1024px) {
+    width: 40%;
+  }
+
   .thumbnail-gallery-display {
     width: 100%;
   }

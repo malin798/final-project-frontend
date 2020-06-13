@@ -3,63 +3,34 @@
 .movie-item {
   color: white;
 
-  .top-container {
+  .movie-overview-container {
+    width: 95vw;
     display: flex;
+    flex-wrap: wrap;
   }
 
-  .images-container {
-    width: 100%;
+  .movie-overview {
+    @media (min-width: 1024px) {
+      width: 60%;
+    }
   }
 
-  .info-container {
-    padding-left: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 50%;
-  }
-
-  h2 {
-    font-size: 20px;
-    font-family: Roboto;
-  }
-
-  h2 .release {
-    font-weight: 300;
+  .movie-overview-title {
+    display: inline;
   }
 
   h4 {
-    display: inline;
+    margin: 10px 0;
     margin-right: 5px;
-    font-family: Roboto;
-    font-size: 12px;
-    font-weight: 700;
   }
 
   a {
     color: white;
     text-decoration: none;
-    font-family: Roboto;
-    font-size: 12px;
-    font-weight: 400;
 
     &:hover {
       color: $accent-color;
     }
-  }
-
-  div {
-    color: white;
-    text-decoration: none;
-    font-family: Roboto;
-    font-size: 12px;
-    font-weight: 400;
-  }
-
-  .movie-genre {
-    font-family: Roboto;
-    font-size: 12px;
-    font-weight: 400;
   }
 
   .movie-poster {
@@ -74,6 +45,7 @@
     width: fit-content;
     display: inline-flex;
     align-items: flex-end;
+    margin: 10px 0;
 
     a {
       margin-right: 5px;
@@ -81,6 +53,24 @@
 
     p {
       display: inline;
+    }
+  }
+
+  .movie-genre {
+    a {
+      margin-right: 10px;
+      padding: 4px;
+      background: #18A5CC;
+      text-decoration: none;
+    }
+  }
+
+  iframe {
+    width: 100%;
+    margin: 20px 0;
+
+    @media (min-width: 668px) {
+      width: 70%;
     }
   }
 
