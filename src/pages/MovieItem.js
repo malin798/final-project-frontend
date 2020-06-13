@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
@@ -53,7 +55,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
         setCast(json.cast)
       })
 
-      fetch(URL_REVIEW)
+    fetch(URL_REVIEW)
       .then(res => res.json())
       .then(json => {
         setReviews(json.results)
@@ -83,74 +85,82 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
     return (
 
       <section className="movie-item">
-
         <h2>
-          {movie.title} &#40;{movie.release_date}&#41;
+          {movie.title} <span className="release">&#40;{movie.release_date}&#41;</span>
         </h2>
 
-        {thumbNails.length > 2 ?
-          < ThumbnailGallery
-            thumbnailArray={thumbNails.slice(0, 10)}
-            thumbnailDefault={thumbNails.map(item => item.file_path)[0]}
-          />
-          :
-          <img
-            className="movie-poster"
-            src={src}>
-          </img>
-        }
+        <section className="top-container">
+          <section className="images-container">
+            {thumbNails.length > 2 ?
+              < ThumbnailGallery
+                thumbnailArray={thumbNails.slice(0, 10)}
+                thumbnailDefault={thumbNails.map(item => item.file_path)[0]}
+              />
+              :
+              <img
+                className="movie-poster"
+                src={src}>
+              </img>
+            }
+          </section>
+          <section className="info-container">
+            <h4>Movie overview:</h4>  < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
 
-        <h4>Movie overview:</h4>  < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
+            <div>
 
-        <div>
-          {movie.overview}
-        </div>
-
-        {trailer.map((item) => {
-          if (item.site === "YouTube") {
-            return (
-              <iframe
-                width="560" height="315"
-                src={`https://www.youtube.com/embed/${item.key}`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              >
-              </iframe>
-            )
-          }
-        })[0]}
-
-        <div>
-
-          <h4>Produced by:</h4>
-          {productionCompany.map((company, index) => (
-            <>
-              {company.name}
-              {productionCompany.length - 1 > index && ", "}
-            </>
-          ))}
-        </div>
+              <h4>Produced by:</h4>
+              {productionCompany.map((company, index) => (
+                <>
+                  {company.name}
+                  {productionCompany.length - 1 > index && ", "}
+                </>
+              ))}
+            </div>
 
 
-        <h4>Genre:</h4>
-        <div className="movie-genre">
-          {genre.map((item, index) => (
-            <>
-              <Link to={`/genres/${item.name}/${item.id}`}>
-                {item.name}
-              </Link>
-              <span>
-                {(genre.length - 1 > index) ? ", " : ""}
-              </span>
-            </>
-          ))}
-        </div>
+            <h4>Genre:  <span className="movie-genre">
+              {genre.map((item, index) => (
+                <>
+                  <Link to={`/genres/${item.name}/${item.id}`}>
+                    {item.name}
+                  </Link>
+                  <span>
+                    {(genre.length - 1 > index) ? ", " : ""}
+                  </span>
+                </>
+              ))}
+            </span></h4>
 
-        <h4>Reviews:</h4> 
-        
-        {reviews.slice(0, 3).map(review => (
-          < Review review={review} />     
-        ))}
+
+            <h4>Reviews: </h4>
+            {reviews.slice(0, 3).map(review => (
+              < Review review={review} />
+            ))}
+
+            <h4>Overview: <span className="movie-genre">
+              {movie.overview}
+            </span></h4>
+
+
+            {trailer.map((item) => {
+              if (item.site === "YouTube") {
+                return (
+                  <iframe
+                    // width="560" height="315"
+                    src={`https://www.youtube.com/embed/${item.key}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  >
+                  </iframe>
+                )
+              }
+            })[0]}
+          </section>
+
+        </section>
+
+
+
 
         <h4>Cast: </h4>
 
@@ -191,7 +201,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
         < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={layingPlaceholder} loggedIn={loggedIn} />
 
-      </section>
+      </section >
     )
   }
 }

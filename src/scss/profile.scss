@@ -1,24 +1,59 @@
 .welcome-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: 25px;
-  margin-right: 20px;
-  align-items: flex-end;
+  flex-direction: column;
+  margin-top: 70px;
+  height: 500px;
+  width: 80%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: auto;
+  margin-right: auto;
 
   .welcome {
     font-size: 22px;
-    font-family: Helvetica neue;
-    font-weight: bold;
+    font-family: monospace;
+    font-weight: 400;
   }
-  
+
+  h6 {
+    font-size: 13px;
+    font-family: monospace;
+    font-weight: 400;
+    margin-bottom: 0px;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .watch-list-container {
+    height: 500px;
+    width: 99%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 11px;
+    padding-top: 30px;
+  }
+
+  .watch-list {
+    background-color: rgb(0, 210, 178);
+    height: 300px;
+    width: 180px;
+  }
+
+  .watch-list2 {
+    background-color: rgb(0, 172, 210);
+    height: 300px;
+    width: 180px;
+  }
+
   button {
-    color: rgb(0, 0, 0);
-    background-color: rgb(103, 199, 177);
+    color: rgb(0, 210, 178);
+    background-color: black;
     border: none;
     font-size: 11px;
-    font-family: helvetica neue;
+    font-family: Roboto;
+    text-align: end;
+    font-weight: 600;
   }
 
 }
-

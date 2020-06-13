@@ -50,7 +50,6 @@ export const App = () => {
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=1`}
-              fetchlink2={`https://api.themoviedb.org/3/movie/reviews?api_key=${API_KEY}&language=en-US&page=`}
               fetchtitle="Trending today"
               imageOrientation="standing"
               placeholder={standingPlaceholder}

@@ -1,23 +1,23 @@
 import React from 'react'
 
-export const IMDBRatingPlugin = ({imdbId, title, rating}) => {
+export const IMDBRatingPlugin = ({ imdbId, title, rating }) => {
   return (
     <div
-      class="imdbRatingPlugin" 
-      data-title={imdbId} 
+      class="imdbRatingPlugin"
+      data-title={imdbId}
       data-style="p2"
     >
 
-      <a 
+      <a
         href={`https://www.imdb.com/title/${imdbId}/?ref_=plg_rt_1`}
         target="_blank"
         rel="noopener noreferrer"
       >
 
-      <img 
-        src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_38x18.png" 
-        alt={`${title} on IMDb`} 
-      />
+        <img
+          src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_38x18.png"
+          alt={`${title} on IMDb`}
+        />
       </a>
 
       {rating !== 0 &&
@@ -25,7 +25,7 @@ export const IMDBRatingPlugin = ({imdbId, title, rating}) => {
           {rating}/10 ⭐
         </p>
       }
-      
+
     </div>
   )
 }

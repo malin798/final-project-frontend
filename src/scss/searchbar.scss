@@ -4,11 +4,11 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  width: 60%;
-  height: 22px;
+  width: 60px;
+  height: 21px;
 
   button {
-    background-color: #5C5C5A;
+    background-color: rgb(255, 255, 255);
     border: none;
     border-radius: 0 6px 6px 0;
 
@@ -18,7 +18,7 @@
   }
 
   .search-SVG {
-    height: 18px;
+    height: 14px;
 
     svg {
       height: 14px;
@@ -28,12 +28,13 @@
   select {
     width: 20px;
     border-radius: 6px 0 0 6px;
-    background-color: #5C5C5A;
+    background-color: rgb(255, 255, 255);
     border: none;
+    border-right: 1px solid lightgrey;
   }
 
   input {
-    @include colors(white, $search-field-gray);
+    @include colors(rgb(0, 0, 0), $search-field-gray);
     border: none;
     width: -webkit-fill-available;
 

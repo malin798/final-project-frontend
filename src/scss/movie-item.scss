@@ -3,18 +3,63 @@
 .movie-item {
   color: white;
 
+  .top-container {
+    display: flex;
+  }
+
+  .images-container {
+    width: 100%;
+  }
+
+  .info-container {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 50%;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-family: Roboto;
+  }
+
+  h2 .release {
+    font-weight: 300;
+  }
+
   h4 {
     display: inline;
     margin-right: 5px;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 700;
   }
- 
+
   a {
-    color:white;
+    color: white;
     text-decoration: none;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
 
     &:hover {
       color: $accent-color;
     }
+  }
+
+  div {
+    color: white;
+    text-decoration: none;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .movie-genre {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
   }
 
   .movie-poster {
@@ -49,14 +94,14 @@
       -webkit-line-clamp: 6;
       -webkit-box-orient: vertical;
     }
-  
+
     .author {
       color: $accent-color;
       display: block;
       font-weight: bold;
       margin-left: 15px;
       margin-top: 10px;
-  
+
       span {
         color: white;
         font-size: 14px;
@@ -64,12 +109,11 @@
         font-weight: lighter;
       }
     }
-  
+
     .show-more-less-link {
       font-size: 14px;
       text-decoration: underline;
     }
   }
-  
-}
 
+}

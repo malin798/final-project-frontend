@@ -3,20 +3,21 @@ import { Link } from 'react-router-dom'
 import { ImageSlider } from '../components/ImageSlider'
 import { WatchlistButton } from '../components/WatchlistButton'
 import { RightArrow } from '../components/RightArrow'
-import { Review } from '../components/Review'
 
 
 export const MovieSlider = ({ review, fetchtitle, titlelink, fetchlink, placeholder, imageOrientation, loggedIn, API_KEY }) => {
   const [movies, setMovies] = useState([])
   const [active, setActive] = useState(false)
+  const URL_TV_LATEST = `https://api.themoviedb.org/3/tv/latest?api_key=${API_KEY}&language=en-US`
+
 
   useEffect(() => {
-    fetch(fetchlink)
+    fetch(URL_TV_LATEST)
       .then((res) => res.json())
       .then((json) => {
         setMovies(json.results)
       })
-  }, [fetchlink])
+  }, [URL_TV_LATEST])
 
   return (
     <>
@@ -67,6 +68,7 @@ export const MovieSlider = ({ review, fetchtitle, titlelink, fetchlink, placehol
                     <h5>
                       {movie.title}
                     </h5>
+
 
                     <p>
                       Release {movie.release_date}

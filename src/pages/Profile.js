@@ -25,13 +25,21 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     )
   } else {
     return (
-      <section class="welcome-container">
-        <div className="welcome">
-          Welcome {capitalizeFirstLetter(userName)}!</div>
-        <div className="logout">
-          <button onClick={() => handleClick()}>LOG OUT</button>
-        </div>
-      </section>
+      <>
+        <section class="welcome-container">
+          <div className="welcome">
+            Welcome {capitalizeFirstLetter(userName)}!</div>
+          <h6>Make your own your movielists. Which are your favourite movies? Keep track of the movies you want to see but haven't seen yet! </h6>
+          <section className="watch-list-container">
+            <div className="watch-list"></div>
+            <div className="watch-list2"></div>
+            <div className="watch-list"></div>
+          </section>
+          <div className="logout">
+            <button onClick={() => handleClick()}>LOG OUT</button>
+          </div>
+        </section>
+      </>
     )
   }
 

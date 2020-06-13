@@ -11,32 +11,32 @@ export const MovieSearchResults = ({ loggedIn }) => {
   const results = useSelector((store) => store.user.searchResults)
   const [active, setActive] = useState()
 
-      // setMovies(results)
-      console.log("results", results)    
+  // setMovies(results)
+  console.log("results", results)
 
   // setMovies(useSelector((store) => store.user.searchResults))
-  
+
   return (
     <section>
 
-    <h3>Search results for - {searchValue}</h3>
+      <h3>Search results for - {searchValue}</h3>
       <div className="movie-wrapper-container">
         {results.map(item => {
 
           let src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
 
-          if (item.poster_path == null || item.poster_path === undefined ) {
+          if (item.poster_path == null || item.poster_path === undefined) {
             src = standingPlaceholder
-          } 
+          }
           return (
             <div className="movie-wrapper" key={item.id}>
               <Link className="movie-link" to={`/movie/${item.id}`}>
                 <img src={src}>
                 </img>
-                <div className='movie-details'> 
+                <div className='movie-details'>
 
-                  {loggedIn && 
-                    < WatchlistButton active={active} setActive={setActive} item={item}/>
+                  {loggedIn &&
+                    < WatchlistButton active={active} setActive={setActive} item={item} />
                   }
 
                   <h5>
@@ -52,7 +52,7 @@ export const MovieSearchResults = ({ loggedIn }) => {
           )
         })}
 
-      {/* <section className="pagination">
+        {/* <section className="pagination">
         {page < allPages &&
           <button onClick={(event) => showMoreMovies(event)}>
             Show more
@@ -65,7 +65,7 @@ export const MovieSearchResults = ({ loggedIn }) => {
         </p>
       </section> */}
 
-    </div>
+      </div>
 
     </section>
 
