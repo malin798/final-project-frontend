@@ -88,6 +88,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           {movie.title} &#40;{movie.release_date}&#41;
         </h2>
 
+        <section className="movie-overview-container">
         {thumbNails.length > 2 ?
           < ThumbnailGallery
             thumbnailArray={thumbNails.slice(0, 10)}
@@ -100,11 +101,40 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           </img>
         }
 
-        <h4>Movie overview:</h4>  < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
+        <section className="movie-overview">
+          <h4 className="movie-overview-title">Movie overview:</h4>  
+          < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
 
-        <div>
-          {movie.overview}
-        </div>
+          <div>
+            {movie.overview}
+          </div>
+
+          <h4>Genre:</h4>
+          <div className="movie-genre">
+            {genre.map((item, index) => (
+              <>
+                <Link to={`/genres/${item.name}/${item.id}`}>
+                  {item.name} 
+                </Link>
+                
+                {/* <span>
+                  {(genre.length - 1 > index) ? ", " : ""}
+                </span> */}
+              </>
+            ))}
+          </div>
+
+          <div>
+            <h4>Produced by:</h4>
+            {productionCompany.map((company, index) => (
+              <>
+                {company.name}
+                {productionCompany.length - 1 > index && ", "}
+              </>
+            ))}
+          </div>
+        </section>
+      </section>
 
         {trailer.map((item) => {
           if (item.site === "YouTube") {
@@ -119,32 +149,6 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             )
           }
         })[0]}
-
-        <div>
-
-          <h4>Produced by:</h4>
-          {productionCompany.map((company, index) => (
-            <>
-              {company.name}
-              {productionCompany.length - 1 > index && ", "}
-            </>
-          ))}
-        </div>
-
-
-        <h4>Genre:</h4>
-        <div className="movie-genre">
-          {genre.map((item, index) => (
-            <>
-              <Link to={`/genres/${item.name}/${item.id}`}>
-                {item.name}
-              </Link>
-              <span>
-                {(genre.length - 1 > index) ? ", " : ""}
-              </span>
-            </>
-          ))}
-        </div>
 
         <h4>Reviews:</h4> 
         

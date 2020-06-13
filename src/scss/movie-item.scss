@@ -3,8 +3,24 @@
 .movie-item {
   color: white;
 
-  h4 {
+  .movie-overview-container {
+    width: 95vw;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .movie-overview {
+    @media (min-width: 1024px) {
+      width: 60%;
+    }
+  }
+
+  .movie-overview-title {
     display: inline;
+  }
+
+  h4 {
+    margin: 10px 0;
     margin-right: 5px;
   }
  
@@ -29,6 +45,7 @@
     width: fit-content;
     display: inline-flex;
     align-items: flex-end;
+    margin: 10px 0;
 
     a {
       margin-right: 5px;
@@ -36,6 +53,24 @@
 
     p {
       display: inline;
+    }
+  }
+
+  .movie-genre {
+    a {
+      margin-right: 10px;
+      padding: 4px;
+      background: #18A5CC;
+      text-decoration: none;
+    }
+  }
+
+  iframe {
+    width: 100%; 
+    margin: 20px 0;
+
+    @media (min-width: 668px) {
+      width: 70%;
     }
   }
 
