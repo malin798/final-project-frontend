@@ -8,18 +8,12 @@
     margin-bottom: 10px;
   }
 
-  h4 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-  }
-
   h4:hover {
     color: rgb(86, 242, 219);
     cursor: pointer;
 
     &:hover+.right-arrow-container {
       margin-left: 8px;
-      transition: 0.3s;
     }
   }
 
@@ -27,7 +21,7 @@
     margin-left: 4px;
     width: 14px;
     height: 14px;
-    margin-bottom: 8px;
+    margin-bottom: 11px;
   }
 
   .svgarrow {
@@ -97,5 +91,35 @@
       top: 10px;
       right: -10px;
     }
+  }
+}
+
+.movie-slider-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 10px;
+
+
+  h4:hover {
+    color: rgb(86, 242, 219);
+
+    &:hover+.right-arrow-container {
+      margin-left: 8px;
+      transition: 0.3s;
+    }
+  }
+
+  .right-arrow-container {
+    margin-left: 4px;
+    width: 14px;
+    height: 14px;
+    margin-bottom: 8px;
+  }
+
+  .svgarrow {
+    fill: rgb(86, 242, 219);
+    display: inline-block;
+    vertical-align: middle;
   }
 }
