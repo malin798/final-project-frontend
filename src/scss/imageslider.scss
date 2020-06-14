@@ -1,5 +1,9 @@
 .movie-slider-title {
 
+  h4 {
+    font-size: 16px;
+  }
+
   a {
     text-decoration: none;
     display: flex;
@@ -21,7 +25,7 @@
     margin-left: 4px;
     width: 14px;
     height: 14px;
-    margin-bottom: 11px;
+    margin-bottom: 8px;
   }
 
   .svgarrow {
@@ -91,35 +95,5 @@
       top: 10px;
       right: -10px;
     }
-  }
-}
-
-.movie-slider-title {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  margin-bottom: 10px;
-
-
-  h4:hover {
-    color: rgb(86, 242, 219);
-
-    &:hover+.right-arrow-container {
-      margin-left: 8px;
-      transition: 0.3s;
-    }
-  }
-
-  .right-arrow-container {
-    margin-left: 4px;
-    width: 14px;
-    height: 14px;
-    margin-bottom: 8px;
-  }
-
-  .svgarrow {
-    fill: rgb(86, 242, 219);
-    display: inline-block;
-    vertical-align: middle;
   }
 }

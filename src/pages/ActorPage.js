@@ -41,19 +41,24 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
   } else {
     return (
       <div className="actor-page-container">
-        <h2>{actor.name}</h2>
-        <h3>Born:</h3>
-        {actor.birthday}, {actor.place_of_birth}
+        <section className="actor-top-container">
 
-        <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
-        </img>
+          <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
+          </img>
+          <div className="actor-info-container">
+            <h2>{actor.name}</h2>
+            <h3>Born:</h3> <span>
+              {actor.birthday}, {actor.place_of_birth}</span>
 
-        {actor.biography &&
-          <section>
-            <h3>Biography:</h3>
-            <p>{actor.biography}</p>
-          </section>
-        }
+            {actor.biography &&
+              <section>
+                <h3>Biography:</h3>
+                <p>{actor.biography}</p>
+              </section>
+            }
+          </div>
+        </section>
+
 
         {images && images.length > 1 &&
           <div>

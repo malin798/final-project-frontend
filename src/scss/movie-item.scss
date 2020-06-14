@@ -2,16 +2,51 @@
 
 .movie-item {
   color: white;
+  margin-top: 20px;
+
+  .svgarrow {
+    margin-top: 5px;
+  }
+
+  h2 {
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 0px;
+  }
+
+  .thin {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 19px;
+  }
 
   .movie-overview-container {
     width: 95vw;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-  }
+    align-items: flex-start;
+    padding-right: 12px;
 
-  .movie-overview {
-    @media (min-width: 1024px) {
-      width: 60%;
+
+    .movie-image-container {
+      margin-bottom: 20px;
+
+
+      @media (min-width: 1024px) {
+        width: 75%;
+      }
+    }
+
+    .movie-overview {
+      @media (min-width: 1024px) {
+        width: 24%;
+        padding-left: 16px;
+        padding-bottom: 10px;
+        padding-right: 30px;
+
+      }
     }
   }
 
@@ -20,8 +55,21 @@
   }
 
   h4 {
-    margin: 10px 0;
+    font-size: 13px;
     margin-right: 5px;
+    font-family: Roboto;
+    margin-top: 10px;
+    margin-bottom: 2px;
+  }
+
+  .cast {
+    font-size: 16px;
+
+  }
+
+  div {
+    font-size: 12px;
+    font-family: Roboto;
   }
 
   a {
@@ -57,11 +105,18 @@
   }
 
   .movie-genre {
+    margin-top: 10px;
+
     a {
-      margin-right: 10px;
-      padding: 4px;
-      background: #18A5CC;
+      margin-right: 6px;
+      padding: 2px 7px;
+      background: rgb(24, 97, 142);
       text-decoration: none;
+      border-radius: 2px;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 1px;
     }
   }
 

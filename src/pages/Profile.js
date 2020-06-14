@@ -29,7 +29,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
         <section class="welcome-container">
           <div className="welcome">
             Welcome {capitalizeFirstLetter(userName)}!</div>
-          <h6>Make your own your movielists. Which are your favourite movies? Keep track of the movies you want to see but haven't seen yet! </h6>
+          <h6>Make your own your movielists. Which are your favourite movies? Your favourite classics? Commedies? Also keep track of the movies you want to see but haven't seen yet! </h6>
           <section className="watch-list-container">
             <div className="watch-list"></div>
             <div className="watch-list2"></div>

@@ -84,29 +84,41 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
       <section className="movie-item">
 
-        <h2>
-          {movie.title} &#40;{movie.release_date}&#41;
-        </h2>
-
         <section className="movie-overview-container">
-          {thumbNails.length > 2 ?
-            < ThumbnailGallery
-              thumbnailArray={thumbNails.slice(0, 10)}
-              thumbnailDefault={thumbNails.map(item => item.file_path)[0]}
-            />
-            :
-            <img
-              className="movie-poster"
-              src={src}>
-            </img>
-          }
+          <section className="movie-image-container">
 
+            {thumbNails.length > 2 ?
+              < ThumbnailGallery
+                thumbnailArray={thumbNails.slice(0, 10)}
+                thumbnailDefault={thumbNails.map(item => item.file_path)[0]}
+              />
+              :
+              <img
+                className="movie-poster"
+                src={src}>
+              </img>
+            }
+          </section>
           <section className="movie-overview">
-            <h4 className="movie-overview-title">Movie overview:</h4>
-            < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
+            <h2>
+              {movie.title} <span className="thin">&#40;{movie.release_date}&#41;</span>
+            </h2>
+            <h4 >Movie overview:</h4>
 
             <div>
               {movie.overview}
+            </div>
+
+            < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
+
+            <h4>Produced by:</h4>
+            <div>
+              {productionCompany.map((company, index) => (
+                <>
+                  {company.name}
+                  {productionCompany.length - 1 > index && ", "}
+                </>
+              ))}
             </div>
 
             <h4>Genre:</h4>
@@ -124,39 +136,32 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
               ))}
             </div>
 
-            <div>
-              <h4>Produced by:</h4>
-              {productionCompany.map((company, index) => (
-                <>
-                  {company.name}
-                  {productionCompany.length - 1 > index && ", "}
-                </>
-              ))}
-            </div>
           </section>
         </section>
 
-        {trailer.map((item) => {
-          if (item.site === "YouTube") {
-            return (
-              <iframe
-                width="560" height="315"
-                src={`https://www.youtube.com/embed/${item.key}`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              >
-              </iframe>
-            )
-          }
-        })[0]}
+        {
+          trailer.map((item) => {
+            if (item.site === "YouTube") {
+              return (
+                <iframe
+                  width="560" height="315"
+                  src={`https://www.youtube.com/embed/${item.key}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                >
+                </iframe>
+              )
+            }
+          })[0]
+        }
 
-        <h4>Reviews:</h4>
+        {
+          reviews.slice(0, 3).map(review => (
+            < Review review={review} />
+          ))
+        }
 
-        {reviews.slice(0, 3).map(review => (
-          < Review review={review} />
-        ))}
-
-        <h4>Cast: </h4>
+        <h4 className="cast">Cast: </h4>
 
         <ImageSlider>
 
@@ -195,7 +200,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
         < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={layingPlaceholder} loggedIn={loggedIn} />
 
-      </section>
+      </section >
     )
   }
 }

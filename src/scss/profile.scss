@@ -1,7 +1,7 @@
 .welcome-container {
   display: flex;
   flex-direction: column;
-  margin-top: 70px;
+  margin-top: 30px;
   height: 500px;
   width: 80%;
   align-items: center;
@@ -20,8 +20,9 @@
     font-family: monospace;
     font-weight: 400;
     margin-bottom: 0px;
-    margin-top: 8px;
+    margin-top: 16px;
     text-align: center;
+    width: 65%;
   }
 
   .watch-list-container {
@@ -37,13 +38,13 @@
   .watch-list {
     background-color: rgb(0, 210, 178);
     height: 300px;
-    width: 180px;
+    width: 200px;
   }
 
   .watch-list2 {
     background-color: rgb(0, 172, 210);
     height: 300px;
-    width: 180px;
+    width: 200px;
   }
 
   button {
