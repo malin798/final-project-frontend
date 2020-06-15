@@ -105,10 +105,12 @@
   }
 
   .movie-genre {
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 10px;
 
     a {
-      margin-right: 6px;
+      margin: 3px;
       padding: 2px 7px;
       background: rgb(24, 97, 142);
       text-decoration: none;

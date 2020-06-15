@@ -22,6 +22,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
   const [movie, setMovie] = useState([])
   const [cast, setCast] = useState([])
+  const [directors, setDirectors] = useState([])
   const [genre, setGenre] = useState([])
   const [productionCompany, setProductionCompany] = useState([])
   const [trailer, setTrailer] = useState([])
@@ -29,7 +30,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
 
-  console.log(reviews)
+  console.log(movie)
 
   let src = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
 
@@ -51,6 +52,11 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
       .then(res => res.json())
       .then(json => {
         setCast(json.cast)
+        json.crew.map(item => {
+          if (item.job == "Director") {
+            setDirectors(directors => [...directors, item.name])
+          }
+        })
       })
 
     fetch(URL_REVIEW)
@@ -99,6 +105,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
               </img>
             }
           </section>
+
           <section className="movie-overview">
             <h2>
               {movie.title} <span className="thin">&#40;{movie.release_date}&#41;</span>
@@ -110,6 +117,16 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             </div>
 
             < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
+
+            <h4>Director:</h4>
+            <div>
+              {directors.map((item, index) => (
+                <>
+                  {item}
+                  {directors.length - 1 > index && ", "}
+                </>
+              ))}
+            </div>
 
             <h4>Produced by:</h4>
             <div>
