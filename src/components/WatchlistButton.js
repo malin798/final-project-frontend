@@ -27,4 +27,3 @@ export const WatchlistButton = ({ active, setActive, item }) => {
     </button>
   )
 }
- 
