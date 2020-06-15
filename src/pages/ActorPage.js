@@ -67,7 +67,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
               {images.map(image => {
                 return (
                   <div className="movie-wrapper">
-                    <img 
+                    <img
                       src={`https://image.tmdb.org/t/p/w200/${image.file_path}`}
                       className="movie-image"
                     >

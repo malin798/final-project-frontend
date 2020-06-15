@@ -38,26 +38,26 @@ export const user = createSlice({
     setWatchlistItem: (state, action) => {
       const { title, id } = action.payload
       console.log("item added to watchlist", title, id)
-      state.watchlist.push({"title": title, "showId": id})
+      state.watchlist.push({ "title": title, "showId": id })
     }
   },
 })
 
 export const setSearchResults = (results) => {
   return async (dispatch) => {
-    dispatch(user.actions.setSearchResults({results}))
+    dispatch(user.actions.setSearchResults({ results }))
   }
 }
 
 export const setSearchResultsAllPages = (pages) => {
   return async (dispatch) => {
-    dispatch(user.actions.setSearchResultsAllPages({pages}))
+    dispatch(user.actions.setSearchResultsAllPages({ pages }))
   }
 }
 
 export const addToWatchlist = (title, id) => {
   return async (dispatch) => {
-    dispatch(user.actions.setWatchlistItem({title, id}))
+    dispatch(user.actions.setWatchlistItem({ title, id }))
   }
 }
 
@@ -71,7 +71,7 @@ export const handleSignup = (name, email, password, setErrorMessage) => {
       body: JSON.stringify({
         "name": name,
         "email": email,
-        "password": password 
+        "password": password
       })
     })
       .then((res) => {
@@ -111,7 +111,7 @@ export const handleLogin = (name, password, setErrorMessage, setLoggedIn) => {
           dispatch(logout(setLoggedIn))
           setErrorMessage('Username and/or password is incorrect!')
           throw 'Username and/or password is incorrect!'
-        } 
+        }
         return res.json();
       })
       .then((json) => {
@@ -128,17 +128,17 @@ export const handleLogin = (name, password, setErrorMessage, setLoggedIn) => {
           dispatch(user.actions.setUserId({ userId: json.userId }))
           dispatch(user.actions.setUserName({ userName: json.userName }))
           setLoggedIn(true)
-        } 
+        }
       })
       .catch((err) => {
         dispatch(logout(setLoggedIn))
         setErrorMessage('Username and/or password is incorrect!')
       })
-    }
+  }
 }
 
 export const logout = (setLoggedIn) => {
-    setLoggedIn(false)
+  setLoggedIn(false)
   return (dispatch) => {
     dispatch(user.actions.setAccessToken({ accessToken: null }))
     dispatch(user.actions.setUserId({ userId: 0 }))
