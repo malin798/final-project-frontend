@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { WatchlistButton } from '../components/WatchlistButton'
+import { Pagination } from '../components/Pagination'
 
 export const ViewMoreMovies = ({ API_KEY, fetchlink , fetchtitle, moviePlaceholder, loggedIn }) => {
 
@@ -11,6 +12,7 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink , fetchtitle, moviePlacehold
   const [page, setPage] = useState(1)
   const [allPages, setAllPages] = useState();
   const [active, setActive] = useState(false)
+  // console.log(movies)
 
   let URL = `${fetchlink}${page}`
  
@@ -19,17 +21,17 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink , fetchtitle, moviePlacehold
     URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
   }
   
-  const showMoreMovies = (event) => {
-    event.preventDefault()
-    setPage(page + 1);
+  // const showMoreMovies = (event) => {
+  //   event.preventDefault()
+  //   setPage(page + 1);
 
-    fetch(URL)
-    .then(res => res.json())
-    .then(res => {
-      const allMovies = movies.concat(res.results) 
-      setMovies(allMovies)
-    })
-  }
+  //   fetch(URL)
+  //   .then(res => res.json())
+  //   .then(res => {
+  //     const allMovies = movies.concat(res.results) 
+  //     setMovies(allMovies)
+  //   })
+  // }
 
   useEffect(() => {
     fetch(URL)
@@ -76,18 +78,7 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink , fetchtitle, moviePlacehold
           )
         })}
 
-        <section className="pagination">
-          {page < allPages &&
-            <button onClick={(event) => showMoreMovies(event)}>
-              Show more
-            </button>
-          }
-         
-        
-          <p className="pagination-page-indicator"> 
-            {page} / {allPages} 
-          </p>
-        </section>
+        < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL}/>
 
       </div>
      

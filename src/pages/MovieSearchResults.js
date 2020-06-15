@@ -1,27 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { WatchlistButton } from '../components/WatchlistButton'
+import { Pagination } from '../components/Pagination'
 import standingPlaceholder from '../images/placeholderS.png'
 
-export const MovieSearchResults = ({ loggedIn }) => {
+export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
 
   const params = useParams()
   const searchValue = params.value
   const results = useSelector((store) => store.user.searchResults)
-  const [active, setActive] = useState()
+  const allPages = useSelector((store) => store.user.searchResultsAllPages)
+  const [active, setActive] = useState(false)
+  const [movies, setMovies] = useState(results)
+  const [page, setPage] = useState(1)
 
-  // setMovies(results)
-  console.log("results", results)
+  const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&include_adult=false&page=${page}`
 
-  // setMovies(useSelector((store) => store.user.searchResults))
+  useEffect(() => {
+    fetch(URL)
+    .then(res => res.json())
+    .then(res => {
+      setMovies(res.results)
+    })
+  }, [URL])
 
   return (
     <section>
 
       <h3>Search results for - {searchValue}</h3>
       <div className="movie-wrapper-container">
-        {results.map(item => {
+        {movies.map(item => {
 
           let src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
 
@@ -52,18 +61,7 @@ export const MovieSearchResults = ({ loggedIn }) => {
           )
         })}
 
-        {/* <section className="pagination">
-        {page < allPages &&
-          <button onClick={(event) => showMoreMovies(event)}>
-            Show more
-          </button>
-        }
-      
-      
-        <p className="pagination-page-indicator"> 
-          {page} / {allPages} 
-        </p>
-      </section> */}
+      < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL}/>
 
       </div>
 

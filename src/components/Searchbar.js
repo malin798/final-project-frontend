@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
-import { setSearchResults } from '../components/reducers/user'
+import { setSearchResults, setSearchResultsAllPages } from '../components/reducers/user'
 import { RightArrow } from './RightArrow'
 import { SearchSVG } from '../components/SearchSVG'
 
@@ -13,7 +13,7 @@ export const Searchbar = ({ API_KEY }) => {
   const [searchValue, setSearchValue] = useState("")
   const [optionValue, setOptionValue] = useState("title")
   const [visible, setVisible] = useState(false)
-  
+
   let URL;
   let PATH;
 
@@ -34,7 +34,9 @@ export const Searchbar = ({ API_KEY }) => {
     fetch(URL)
     .then(res => res.json())
     .then(res => {
+      console.log(res)
       dispatch(setSearchResults(res.results))
+      dispatch(setSearchResultsAllPages(res.total_pages))
       setVisible(true)
     })
   }
@@ -45,8 +47,6 @@ export const Searchbar = ({ API_KEY }) => {
     setSearchValue("")
     history.push(PATH)
   }
-  console.log("url", URL)
-  console.log("path", PATH)
  
   return (
     <section className="searchbar-and-filter">

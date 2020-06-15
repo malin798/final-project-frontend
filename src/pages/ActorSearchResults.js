@@ -1,24 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { WatchlistButton } from '../components/WatchlistButton'
+import { Pagination } from '../components/Pagination'
 import standingPlaceholder from '../images/placeholderS.png'
 
 export const ActorSearchResults = ({ API_KEY, loggedIn }) => {
 
   const params = useParams()
   const searchValue = params.value
-  const results = useSelector((store) => store.user.searchResults)
-  const [active, setActive] = useState()
+  const allPages = useSelector((store) => store.user.searchResultsAllPages)
+  const [actors, setActors] = useState([])
+  const [active, setActive] = useState(false)
+  const [page, setPage] = useState(1)
 
-  console.log("results", results)  
+  const URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&include_adult=false&page=${page}`
+
+  useEffect(() => {
+    fetch(URL)
+    .then(res => res.json())
+    .then(res => {
+      setActors(res.results)
+    })
+  }, [URL])
 
   return (
     <section>
 
-    <h3>Search results for actors - {searchValue}</h3>
+      <h3>Search results for actors - {searchValue}</h3>
       <div className="movie-wrapper-container">
-        {results.map(item => {
+        {actors.map(item => {
 
           let src = `https://image.tmdb.org/t/p/w500/${item.profile_path}`
 
@@ -48,8 +59,10 @@ export const ActorSearchResults = ({ API_KEY, loggedIn }) => {
             </div>
           )
         })}
-            </div>
 
-</section>
+      < Pagination page={page} setPage={setPage} allPages={allPages} movies={actors} setMovies={setActors} URL={URL}/>
+
+      </div>
+    </section>
   )
 }

@@ -176,11 +176,11 @@ export const App = () => {
           {/* SEARCH RESULTS PAGES */}
 
           <Route exact path='/search-results/movie/:value' >
-            < MovieSearchResults loggedIn={loggedIn} />
+            < MovieSearchResults API_KEY={API_KEY} loggedIn={loggedIn} />
           </Route>
 
           <Route exact path='/search-results/actor/:value' >
-            < ActorSearchResults loggedIn={loggedIn} />
+            < ActorSearchResults API_KEY={API_KEY} loggedIn={loggedIn} />
           </Route>
 
           {/* routes for user signin/register/profilepage */}
