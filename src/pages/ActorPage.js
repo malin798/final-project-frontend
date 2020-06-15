@@ -66,8 +66,13 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
             <ImageSlider>
               {images.map(image => {
                 return (
-                  <img src={`https://image.tmdb.org/t/p/w200/${image.file_path}`}>
-                  </img>
+                  <div className="movie-wrapper">
+                    <img 
+                      src={`https://image.tmdb.org/t/p/w200/${image.file_path}`}
+                      className="movie-image"
+                    >
+                    </img>
+                  </div>
                 )
               })
               }

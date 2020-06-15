@@ -140,15 +140,11 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
             <h4>Genre:</h4>
             <div className="movie-genre">
-              {genre.map((item, index) => (
+              {genre.map(item => (
                 <>
                   <Link to={`/genres/${item.name}/${item.id}`}>
                     {item.name}
                   </Link>
-
-                  {/* <span>
-                  {(genre.length - 1 > index) ? ", " : ""}
-                </span> */}
                 </>
               ))}
             </div>
@@ -157,7 +153,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
         </section>
 
         {
-          trailer.map((item) => {
+          trailer.map(item => {
             if (item.site === "YouTube") {
               return (
                 <iframe
