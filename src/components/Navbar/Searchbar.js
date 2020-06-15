@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
-import { setSearchResults, setSearchResultsAllPages } from '../components/reducers/user'
-import { RightArrow } from './RightArrow'
-import { SearchSVG } from '../components/SearchSVG'
+import { setSearchResults, setSearchResultsAllPages } from '../reducers/user'
+import { RightArrow } from '../RightArrow'
+import { SearchSVG } from './SearchSVG'
 
 export const Searchbar = ({ API_KEY }) => {
   const dispatch = useDispatch()

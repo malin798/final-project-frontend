@@ -8,7 +8,7 @@ import {
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { user } from './components/reducers/user'
-import { Navbar } from './components/Navbar'
+import { Navbar } from './components/Navbar/Navbar'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Profile } from './pages/Profile'
@@ -43,7 +43,7 @@ export const App = () => {
         < Navbar loggedIn={loggedIn} API_KEY={API_KEY} />
 
         <Switch>
-          {/* hamburger ska in in navbar sen */}
+          
           {/* start page components below*/}
 
           <Route exact path="/" >
