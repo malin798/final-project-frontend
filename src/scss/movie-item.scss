@@ -35,7 +35,7 @@
 
 
       @media (min-width: 1024px) {
-        width: 75%;
+        width: 60%;
       }
     }
 
@@ -123,11 +123,10 @@
   }
 
   iframe {
-    width: 100%;
     margin: 20px 0;
 
-    @media (min-width: 668px) {
-      width: 70%;
+    @media (max-width: 668px) {
+      width: 100%;
     }
   }
 

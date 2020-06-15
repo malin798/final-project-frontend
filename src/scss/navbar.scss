@@ -17,13 +17,13 @@
   .navleft {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
   }
 
   .navright {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-end;
     margin-bottom: 9px;
     width: 40%;
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: space-between;
     width: fit-content;
-    margin-left: 30px;
+    margin-left: 15px;
   }
 
   h3 {

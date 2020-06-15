@@ -14,7 +14,6 @@ export const Review = ({ review, index }) => {
 
   return (
     <>
-      <h4>Reviews:</h4>
       <section className="review-container">
         <div className={`review ${visible ? "show" : "hide"}`}>
           {review.content}

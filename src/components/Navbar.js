@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { UserImage } from '../components/UserImage'
 import { Searchbar } from '../components/Searchbar'
-import { Accordion } from '../components/Accordion'
+import { HamburgerMenu } from '../components/HamburgerMenu'
 
 export const Navbar = ({ loggedIn, API_KEY }) => {
   const userName = useSelector((store) => store.user.login.userName)
@@ -12,7 +12,7 @@ export const Navbar = ({ loggedIn, API_KEY }) => {
     <>
       <div className="navbar">
         <div className="navleft">
-          <Accordion />
+          < HamburgerMenu />
           <div className="logo">
             <Link to="/">
               <h3><span>I</span><span className="find">FIND</span><span>MOVIES</span></h3>

@@ -168,10 +168,13 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           })[0]
         }
 
-        {
-          reviews.slice(0, 3).map(review => (
+        { reviews.length > 0 &&
+          <>
+          <h4>Reviews:</h4>
+          {reviews.slice(0, 3).map(review => (
             < Review review={review} />
-          ))
+          ))}
+          </>
         }
 
         <h4 className="cast">Cast: </h4>
