@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
 
-export const Review = ({ review, index }) => {
+export const Review = ({ review }) => {
   const [visible, setVisible] = useState(true)
-
 
   useEffect(() => {
     if (review.content.length > 2000) {

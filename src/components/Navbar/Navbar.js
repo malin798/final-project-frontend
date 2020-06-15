@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { UserImage } from '../components/UserImage'
-import { Searchbar } from '../components/Searchbar'
-import { HamburgerMenu } from '../components/HamburgerMenu'
+import { UserImage } from './UserImage'
+import { Searchbar } from './Searchbar'
+import { HamburgerMenu } from './HamburgerMenu'
+import { RandomMovieGenerator } from '../RandomMovieGenerator'
 
 export const Navbar = ({ loggedIn, API_KEY }) => {
   const userName = useSelector((store) => store.user.login.userName)
@@ -21,6 +22,8 @@ export const Navbar = ({ loggedIn, API_KEY }) => {
         </div>
 
         <div className="navright">
+
+          < RandomMovieGenerator  API_KEY={API_KEY} />
           < Searchbar API_KEY={API_KEY} />
           {!loggedIn &&
             <Link className="signin-container" to="/signin">

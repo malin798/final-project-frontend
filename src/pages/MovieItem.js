@@ -2,17 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
 import { ImageSlider } from '../components/ImageSlider'
-import { ThumbnailGallery } from '../components/ThumbnailGallery'
-import { IMDBRatingPlugin } from '../components/IMDBRatingPlugin'
+import { ThumbnailGallery } from '../components/MovieItem/ThumbnailGallery'
+import { IMDBRatingPlugin } from '../components/MovieItem/IMDBRatingPlugin'
 import standingPlaceholder from '../images/placeholderS.png'
 import layingPlaceholder from '../images/placeholderL.png'
-import { Review } from '../components/Review'
+import { Review } from '../components/MovieItem/Review'
 
 export const MovieItem = ({ API_KEY, loggedIn }) => {
 
   const params = useParams()
   const movieId = params.id
-  // const movieId = "419704"
   const URL_MOVIE = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
   const URL_CAST = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
   const URL_SIMILARMOVIES = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US`
@@ -29,8 +28,6 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
   const [thumbNails, setThumbNails] = useState([]);
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
-
-  console.log(movie)
 
   let src = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
 

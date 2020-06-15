@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { handleLogin } from '../components/reducers/user'
-import { Linksection } from '../components/Linksection'
-import { Accountheader } from '../components/Accountheader'
-import { Errormessage } from '../components/Errormessage'
+import { Linksection } from '../components/LoginRegister/Linksection'
+import { Accountheader } from '../components/LoginRegister/Accountheader'
+import { Errormessage } from '../components/LoginRegister/Errormessage'
 
 export const Login = ({ setLoggedIn }) => {
 

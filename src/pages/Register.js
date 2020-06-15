@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { user, handleSignup } from '../components/reducers/user';
-import { Accountheader } from '../components/Accountheader'
-import { Linksection } from '../components/Linksection'
-import { Errormessage } from '../components/Errormessage'
+import { Accountheader } from '../components/LoginRegister/Accountheader'
+import { Linksection } from '../components/LoginRegister/Linksection'
+import { Errormessage } from '../components/LoginRegister/Errormessage'
 
 export const Register = () => {
 
