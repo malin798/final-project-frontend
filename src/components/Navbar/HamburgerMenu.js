@@ -25,12 +25,6 @@ export const HamburgerMenu = () => {
       </div>
       <ul className={`hamburger-menu ${show ? "visible" : ""}`}>
         <Link to="/"> <li>Home</li></Link>
-        <Link to="/"> <li>Movies</li></Link>
-        <Link to="/top-rated" ><li>Top rated</li></Link>
-        <Link to="/upcoming" ><li>Upcoming</li></Link>
-        <Link to="/trending-today" ><li>Trending today</li></Link>
-        <Link to="/trending-week"><li>Trending week</li></Link>
-        <Link to="/now-playing"><li>Now playing</li></Link>
         <li className="genres" onClick={() => handleClick()}>Genres
           < RightArrow visible={visible} />
         </li>
@@ -56,6 +50,12 @@ export const HamburgerMenu = () => {
           <Link className="genre" to="/genres/War/10752"><p>War</p></Link>
           <Link className="genre" to="/genres/Western/37"><p>Western</p></Link>
         </div>
+        <Link to="/top-rated" ><li>Top rated</li></Link>
+        <Link to="/upcoming" ><li>Upcoming</li></Link>
+        <Link to="/trending-today" ><li>Trending today</li></Link>
+        <Link to="/trending-week"><li>Trending week</li></Link>
+        <Link to="/now-playing"><li>Now playing</li></Link>
+
       </ul>
     </>
   )
