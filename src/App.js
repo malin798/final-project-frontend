@@ -246,7 +246,13 @@ export const App = () => {
             />
           </Route>
 
-
+          <Route exact path='/genres/:name/:id' >
+            < ViewMoreMovies
+              API_KEY={API_KEY}
+              placeholder={standingPlaceholder}
+              loggedIn={loggedIn}
+            />
+          </Route>
 
           {/* misc routes below */}
 
@@ -297,18 +303,6 @@ export const App = () => {
               fetchtitle="Trending today"
               placeholder={standingPlaceholder}
               fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=`}
-            />
-          </Route>
-
-          <Route exact path='/genres' >
-            {/* EMPTY ROUTE HERE... */}
-          </Route>
-
-          <Route exact path='/genres/:name/:id' >
-            < ViewMoreMovies
-              API_KEY={API_KEY}
-              placeholder={standingPlaceholder}
-              loggedIn={loggedIn}
             />
           </Route>
 
