@@ -37,7 +37,7 @@ export const RandomMovieGenerator = ({ API_KEY }) => {
   }
   return (
     <div className="random-button">
-      <button onClick={() => handleClick()}>RANDOMIZE FILM 👈</button>
+      <button onClick={() => handleClick()}>RANDOMIZE FILM 🎲</button>
     </div>
   )
 }
