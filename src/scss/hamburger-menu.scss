@@ -144,12 +144,6 @@
           transform: rotate(90deg);
         }
       }
-
-      &:focus {
-        &.transform .right-arrow-container {
-          transform: rotate(90deg);
-        }
-      }
     }
   }
 }
