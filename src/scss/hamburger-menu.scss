@@ -47,7 +47,7 @@
   overflow: hidden;
 
   &.visible {
-    height: 100%;
+    height: fit-content;
     transition: 1s;
 
     &:focus {
@@ -87,6 +87,7 @@
     opacity: 1;
     padding-left: 15px;
     line-height: 1px;
+    margin-top: 15px;
 
     &:hover {
       color: #ffc5bb;
@@ -123,18 +124,9 @@
   }
 
   .genres {
-    font-size: 13px;
-    letter-spacing: 0.5px;
-
-    &:focus {
-      color: #ffc07d;
-    }
 
     .right-arrow-container {
       margin-left: 8px;
-      margin-top: 0.5px;
-      width: 20px;
-      height: 20px;
 
       svg {
         height: 17px;
