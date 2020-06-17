@@ -43,7 +43,7 @@ export const App = () => {
         < Navbar loggedIn={loggedIn} API_KEY={API_KEY} />
 
         <Switch>
-          
+
           {/* start page components below*/}
 
           <Route exact path="/" >
@@ -90,6 +90,163 @@ export const App = () => {
               titlelink="/upcoming"
             />
           </Route>
+
+          <Route exact path="/genres" >
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=history&with_genres=36`}
+              fetchtitle="History"
+              placeholder={layingPlaceholder}
+              imageOrientation="laying"
+              titlelink="/genres/history/36"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=animation&with_genres=16`}
+              fetchtitle="Animation"
+              placeholder={standingPlaceholder}
+              imageOrientation="standing"
+              titlelink="/genres/animation/16"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=music&with_genres=10402`}
+              fetchtitle="Music"
+              imageOrientation="laying"
+              placeholder={layingPlaceholder}
+              titlelink="/genres/music/10402"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=comedy&with_genres=35`}
+              fetchtitle="Comedy"
+              imageOrientation="laying"
+              placeholder={layingPlaceholder}
+              titlelink="/genres/comedy/35"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=action&with_genres=28`}
+              fetchtitle="Action"
+              placeholder={standingPlaceholder}
+              imageOrientation="standing"
+              titlelink="/genres/action/28"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=adventure&with_genres=12`}
+              fetchtitle="Adventure"
+              placeholder={layingPlaceholder}
+              imageOrientation="laying"
+              titlelink="/genres/adventure/12"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=crime&with_genres=80`}
+              fetchtitle="Crime"
+              placeholder={standingPlaceholder}
+              imageOrientation="standing"
+              titlelink="/genres/crime/80"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=documentary&with_genres=99`}
+              fetchtitle="Documentary"
+              imageOrientation="laying"
+              placeholder={layingPlaceholder}
+              titlelink="/genres/documentary/99"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=drama&with_genres=18`}
+              fetchtitle="Drama"
+              imageOrientation="laying"
+              placeholder={layingPlaceholder}
+              titlelink="/genres/drama/18"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=famliy&with_genres=10751`}
+              fetchtitle="Family"
+              placeholder={standingPlaceholder}
+              imageOrientation="standing"
+              titlelink="/genres/family/10751"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=fantasy&with_genres=14`}
+              fetchtitle="Fantasy"
+              placeholder={layingPlaceholder}
+              imageOrientation="laying"
+              titlelink="/genres/fantasy/14"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=horror&with_genres=27`}
+              fetchtitle="Horror"
+              placeholder={standingPlaceholder}
+              imageOrientation="standing"
+              titlelink="/genres/horror/27"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=mystery&with_genres=9648`}
+              fetchtitle="Mystery"
+              imageOrientation="laying"
+              placeholder={layingPlaceholder}
+              titlelink="/genres/mystery/9648"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=romance&with_genres=10749`}
+              fetchtitle="Romance"
+              imageOrientation="laying"
+              placeholder={layingPlaceholder}
+              titlelink="/genres/romance/10749"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=science_fiction&with_genres=28`}
+              fetchtitle="Science&nbsp;Fiction"
+              placeholder={standingPlaceholder}
+              imageOrientation="standing"
+              titlelink="/genres/science_fiction/28"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=thriller&with_genres=53`}
+              fetchtitle="Thriller"
+              placeholder={layingPlaceholder}
+              imageOrientation="laying"
+              titlelink="/genres/thriller/53"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=TV_movie&with_genres=10770`}
+              fetchtitle="TV&nbsp;movie"
+              placeholder={standingPlaceholder}
+              imageOrientation="standing"
+              titlelink="/genres/TV_movie/10770"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=war&with_genres=10752`}
+              fetchtitle="War"
+              imageOrientation="laying"
+              placeholder={layingPlaceholder}
+              titlelink="/genres/war/10752"
+            />
+            < MovieSlider
+              loggedIn={loggedIn}
+              fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=western&with_genres=37`}
+              fetchtitle="Western"
+              imageOrientation="laying"
+              placeholder={layingPlaceholder}
+              titlelink="/genres/western/37"
+            />
+          </Route>
+
+
 
           {/* misc routes below */}
 

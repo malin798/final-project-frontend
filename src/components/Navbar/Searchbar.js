@@ -17,7 +17,7 @@ export const Searchbar = ({ API_KEY }) => {
   let URL;
   let PATH;
 
-  switch(optionValue) {
+  switch (optionValue) {
     case "title":
       URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
       PATH = `/search-results/movie/${searchValue}`
@@ -25,20 +25,20 @@ export const Searchbar = ({ API_KEY }) => {
     case "actor":
       URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
       PATH = `/search-results/actor/${searchValue}`
-    break;
+      break;
   }
 
   const handleSearch = (event) => {
     event.preventDefault()
 
     fetch(URL)
-    .then(res => res.json())
-    .then(res => {
-      console.log(res)
-      dispatch(setSearchResults(res.results))
-      dispatch(setSearchResultsAllPages(res.total_pages))
-      setVisible(true)
-    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        dispatch(setSearchResults(res.results))
+        dispatch(setSearchResultsAllPages(res.total_pages))
+        setVisible(true)
+      })
   }
 
   const handleClick = () => {
@@ -47,11 +47,11 @@ export const Searchbar = ({ API_KEY }) => {
     setSearchValue("")
     history.push(PATH)
   }
- 
+
   return (
     <section className="searchbar-and-filter">
-      <select 
-        onChange={(event) => {setOptionValue(event.target.value); setVisible(false)}}
+      <select
+        onChange={(event) => { setOptionValue(event.target.value); setVisible(false) }}
       >
 
         <option>
@@ -81,29 +81,29 @@ export const Searchbar = ({ API_KEY }) => {
           {results.map(item => {
             return (
               <Link to={`/movie/${item.id}`}
-                onClick={() => {setVisible(false); setSearchValue("")}}>
+                onClick={() => { setVisible(false); setSearchValue("") }}>
                 {item.title} < RightArrow />
               </Link>
             )
           })}
-        <button onClick={(event) => handleClick(event)}>To all results</button>
-      </div>
+          <button onClick={(event) => handleClick(event)}>To all results</button>
+        </div>
         :
         <div className={`search-results ${visible ? "visible" : ""}`}>
-        {results.map(item => {
-          return (
-            <Link to={`/actor/${item.id}`}
-              onClick={() => {setVisible(false); setSearchValue("")}}>
-              {item.name} < RightArrow />
-            </Link>
-          )
-        })}
-      <button onClick={(event) => handleClick(event)}>To all results</button>
-    </div>
+          {results.map(item => {
+            return (
+              <Link to={`/actor/${item.id}`}
+                onClick={() => { setVisible(false); setSearchValue("") }}>
+                {item.name} < RightArrow />
+              </Link>
+            )
+          })}
+          <button onClick={(event) => handleClick(event)}>To all results</button>
+        </div>
       }
-      <button onClick={(event) => handleSearch(event)}>< SearchSVG /></button>
+      <button className="search-emoji" onClick={(event) => handleSearch(event)}> 🔍 </button>
     </section>
-  
-    
+
+
   )
 }

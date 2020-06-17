@@ -27,11 +27,11 @@ export const HamburgerMenu = () => {
         <Link to="/"> <li>Home</li></Link>
         <Link to="/"> <li>Movies</li></Link>
         <Link to="/top-rated" ><li>Top rated</li></Link>
+        <Link to="/upcoming" ><li>Upcoming</li></Link>
         <Link to="/trending-today" ><li>Trending today</li></Link>
         <Link to="/trending-week"><li>Trending week</li></Link>
-        <Link to="/upcoming" ><li>Upcoming</li></Link>
         <Link to="/now-playing"><li>Now playing</li></Link>
-        <li className="genres" onClick={() => handleClick()}>Genres<span><RightArrow /></span></li>
+        <Link to="/genres"><li className="genres" onClick={() => handleClick()}>Genres<span><RightArrow /></span></li></Link>
         <div className={`hamburger-menu-genre-accordion ${visible ? "visible" : ""}`}><br />
           <Link className="genre" to="/genres/Action/28">Action</Link><br />
           <Link className="genre" to="/genres/Adventure/12">Adventure</Link><br />
@@ -49,15 +49,13 @@ export const HamburgerMenu = () => {
           <Link className="genre" to="/genres/Romance/10749">Romance</Link><br />
           <Link className="genre" to="/genres/Science%20Fiction/878">Science&nbsp;Fiction</Link><br />
           <Link className="genre" to="/genres/Thriller/53">Thriller</Link><br />
+          <Link className="genre" to="/genres/TV%20Movie/10770">TV Movie</Link><br />
           <Link className="genre" to="/genres/War/10752">War</Link><br />
           <Link className="genre" to="/genres/Western/37">Western</Link>
         </div>
-
       </ul>
-
     </>
   )
 }
 
 
-//          <Link className="genre" to="/genres/Romance/10749">TV Movie</Link><br />

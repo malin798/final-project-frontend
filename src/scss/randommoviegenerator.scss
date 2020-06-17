@@ -1,0 +1,20 @@
+.random-button {
+
+  button {
+    fill: "red";
+    border-radius: 2px;
+    margin-right: 30px;
+    width: 156px;
+    height: 20px;
+    background-color: #ff5050;
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
