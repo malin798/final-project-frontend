@@ -17,32 +17,37 @@ export const Searchbar = ({ API_KEY }) => {
   let URL;
   let PATH;
 
-  switch (optionValue) {
-    case "title":
-      URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
-      PATH = `/search-results/movie/${searchValue}`
-      break;
-    case "actor":
-      URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
-      PATH = `/search-results/actor/${searchValue}`
-      break;
-  }
+  const handleSearch = (searchValue) => {
 
-  const handleSearch = (event) => {
-    event.preventDefault()
+    if (searchValue.length < 3) {
+      setVisible(false)
+      return
+    }
 
+    switch (optionValue) {
+      case "title":
+        URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
+        PATH = `/search-results/movie/${searchValue}`
+        break;
+      case "actor":
+        URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
+        PATH = `/search-results/actor/${searchValue}`
+        break;
+    }
+
+    console.log(searchValue)
+    
     fetch(URL)
       .then(res => res.json())
       .then(res => {
         console.log(res)
-        dispatch(setSearchResults(res.results))
+        dispatch(setSearchResults(res.results.slice(0, 5)))
         dispatch(setSearchResultsAllPages(res.total_pages))
         setVisible(true)
       })
   }
 
   const handleClick = () => {
-    console.log(PATH)
     setVisible(false)
     setSearchValue("")
     history.push(PATH)
@@ -72,7 +77,7 @@ export const Searchbar = ({ API_KEY }) => {
       </select>
       <input
         value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
+        onChange={(event) => {setSearchValue(event.target.value); handleSearch(event.target.value)}}
         type="text"
       >
       </input>
@@ -101,7 +106,7 @@ export const Searchbar = ({ API_KEY }) => {
           <button onClick={(event) => handleClick(event)}>To all results</button>
         </div>
       }
-      <button className="search-emoji" onClick={(event) => handleSearch(event)}> 🔍 </button>
+      <span className="search-emoji"> 🔍 </span>
     </section>
 
 

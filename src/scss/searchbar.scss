@@ -97,7 +97,9 @@
   }
 
   .search-emoji {
-    padding-right: 14px;
+    background-color: $search-field-gray;
+    padding-right: 5px;
+    padding-top: 2px;
     font-size: 11px;
     padding-bottom: 4px;
   }
