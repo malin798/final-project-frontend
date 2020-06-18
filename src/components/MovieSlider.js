@@ -8,7 +8,6 @@ import { Review } from './MovieItem/Review'
 
 export const MovieSlider = ({ review, fetchtitle, titlelink, fetchlink, placeholder, imageOrientation, loggedIn, API_KEY }) => {
   const [movies, setMovies] = useState([])
-  const [active, setActive] = useState(false)
 
   useEffect(() => {
     fetch(fetchlink)
@@ -60,9 +59,9 @@ export const MovieSlider = ({ review, fetchtitle, titlelink, fetchlink, placehol
                 <div className='movie-details'>
                   <div>
 
-                    {/* {loggedIn && */}
-                    < WatchlistButton active={active} setActive={setActive} item={movie} />
-                    {/* } */}
+                    {loggedIn &&
+                    < WatchlistButton item={movie} />
+                    }
 
                     <h5>
                       {movie.title}
