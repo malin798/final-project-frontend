@@ -6,9 +6,9 @@ export const WatchlistButton = ({ active, setActive, item }) => {
 
   const dispatch = useDispatch()
 
-  const handleClick = async (event, title, id) => {
+  const handleClick = async (event, title, id, poster) => {
     event.preventDefault()
-    dispatch(addToWatchlist(title, id))
+    dispatch(addToWatchlist(title, id, poster))
 
     const response = await fetch("http://localhost:8080/users/5ed91c84a1d0445020645add/watchlist", {
       method: 'PUT',
@@ -18,7 +18,8 @@ export const WatchlistButton = ({ active, setActive, item }) => {
       },
       body: JSON.stringify({
         "title": title,
-        "showId": id
+        "showId": id,
+        "poster": poster
       })
     })
 
@@ -39,7 +40,7 @@ export const WatchlistButton = ({ active, setActive, item }) => {
     <button
       onMouseOver={() => setActive(!active)}
       onMouseOut={() => setActive(!active)}
-      onClick={(event) => handleClick(event, item.title, item.id)}
+      onClick={(event) => handleClick(event, item.title, item.id, item.poster_path)}
     >
       + {active && "Add to watchlist"}
     </button>

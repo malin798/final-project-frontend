@@ -21,10 +21,13 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
       .then(json => {
         setList(json.watchlist)
         //.then(watchlist => {
-        // setList(watchlist)
         // console.log(watchlist)
       })
   }, [])
+
+
+  //let src = `https://image.tmdb.org/t/p/w342/${imageSrc}`
+
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -50,14 +53,26 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
         <section class="welcome-container">
           <div className="welcome">
             Welcome {capitalizeFirstLetter(userName)}!</div>
-          <h6>Here is your watchlist. Which are your favourite movies? Keep track of the movies you want to see but haven't seen yet! </h6>
+          <h6>Here is your watchlist. Which are your favourite movies? Keep track of the ones you want to see but haven't seen yet! </h6>
 
           {list.map((item) => (
-            <section className="watch-list-container">
-              <div className="watch-item">TITLE
-            <p className="watch-item-title">{item.title}</p>
-                <button className="remove-button" onClick={() => handleLogOut()}>REMOVE</button>
 
+            <section className="watch-list-container" key={item.id}>
+              <div className="watch-item">
+                <div className="watch-list-left-container">
+                  TITLE<p>{item.title}</p>
+                  <button className="remove-button" onClick={() => handleLogOut()}>REMOVE</button>
+                </div>
+                <div className="movie-image">
+                  <img
+
+                    draggable={false}
+                    alt={item.title}
+                    style={{ width: "100%" }}
+                    src={`https://image.tmdb.org/t/p/w342/${item.poster}`}
+                  >
+                  </img>
+                </div>
               </div>
             </section>
           ))}
@@ -65,7 +80,6 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
           < div className="logout" >
             <button onClick={() => handleLogOut()}>LOG OUT</button>
           </div>
-
         </section>
       </>
     )
