@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../components/reducers/user'
+import { logout, replaceWatchlist, removeItem } from '../components/reducers/user'
 
 export const Profile = ({ loggedIn, setLoggedIn }) => {
   const dispatch = useDispatch();
@@ -18,30 +18,30 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     })
       .then(res => res.json())
       .then(json => {
-        setList(json.watchlist)
-        //.then(watchlist => {
-        console.log(json.watchlist)
+        dispatch(replaceWatchlist(json.watchlist))
+        setList(json.watchlist)        
       })
   }, [])
 
 
-  const removeItem = (showId) => {
+//  export const removeItem = (showId) => {
     
-    fetch(`http://localhost:8080/users/${userId}/watchlist`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `${accessToken}`
-      },
-      body: JSON.stringify({
-        "showId": showId
-      })
-    })
-      .then(res => res.json())
-      .then(json => {
-        setList(json.watchlist)
-      })
-  }
+//     fetch(`http://localhost:8080/users/${userId}/watchlist`, {
+//       method: "DELETE",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Authorization": `${accessToken}`
+//       },
+//       body: JSON.stringify({
+//         "showId": showId
+//       })
+//     })
+//       .then(res => res.json())
+//       .then(json => {
+//         dispatch(replaceWatchlist(json.watchlist))
+//         setList(json.watchlist)
+//       })
+//   }
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -72,7 +72,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
               <div className="watch-item">
                 <div className="watch-list-left-container">
                   TITLE<p>{item.title}</p>
-                  <button className="remove-button" onClick={() => removeItem(item.showId)}>REMOVE</button>
+                  <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button>
                 </div>
                 <div className="movie-image">
                   <img
