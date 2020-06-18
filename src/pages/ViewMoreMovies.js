@@ -30,7 +30,7 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink, fetchtitle, moviePlaceholde
         setAllPages(res.total_pages)
         setMovies(res.results)
       })
-  }, [URL])
+  }, [fetchlink])
 
   return (
     <section>
