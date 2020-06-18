@@ -60,7 +60,7 @@ export const MovieSlider = ({ review, fetchtitle, titlelink, fetchlink, placehol
                   <div>
 
                     {loggedIn &&
-                    < WatchlistButton item={movie} />
+                      < WatchlistButton item={movie} />
                     }
 
                     <h5>

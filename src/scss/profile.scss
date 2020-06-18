@@ -36,6 +36,8 @@
   }
 
   .watch-item {
+    display: flex;
+    justify-content: space-between;
     height: 110px;
     width: 400px;
     color: black;

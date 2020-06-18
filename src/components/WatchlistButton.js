@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector  } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToWatchlist } from '../components/reducers/user'
 
 export const WatchlistButton = ({ item }) => {
@@ -10,7 +10,7 @@ export const WatchlistButton = ({ item }) => {
   const [added, setAdded] = useState(false)
   const [active, setActive] = useState(false)
 
-  const handleClick = async (event, title, id) => {
+  const handleClick = async (event, title, id, poster) => {
     event.preventDefault()
     dispatch(addToWatchlist(title, id))
     setAdded(true)
@@ -38,7 +38,7 @@ export const WatchlistButton = ({ item }) => {
         <button
           onMouseOver={() => setActive(true)}
           onMouseOut={() => setActive(false)}
-          onClick={(event) => handleClick(event, item.title, item.id)}
+          onClick={(event) => handleClick(event, item.title, item.id, item.poster_path)}
         >
           + {active && "Add to watchlist"}
         </button>
@@ -46,10 +46,10 @@ export const WatchlistButton = ({ item }) => {
 
       {added &&
         <button
-          className={`${added ? "added" : "" }`}
+          className={`${added ? "added" : ""}`}
           onMouseOver={() => setActive(true)}
           onMouseOut={() => setActive(false)}
-          // onClick={(event) => handleClick(event, item.title, item.id)}
+        // onClick={(event) => handleClick(event, item.title, item.id)}
         >
           ✔️ {active && "Added to watchlist"}
         </button>
