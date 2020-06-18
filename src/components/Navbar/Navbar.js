@@ -13,7 +13,7 @@ export const Navbar = ({ loggedIn, API_KEY }) => {
     <>
       <div className="navbar">
         <div className="navleft">
-          < HamburgerMenu />
+          < HamburgerMenu API_KEY={API_KEY} />
           <div className="logo">
             <Link to="/">
               <h3><span>I</span><span className="find">FIND</span><span>MOVIES</span></h3>
@@ -25,7 +25,9 @@ export const Navbar = ({ loggedIn, API_KEY }) => {
 
 
           < Searchbar API_KEY={API_KEY} />
-          < RandomMovieGenerator API_KEY={API_KEY} />
+
+          < RandomMovieGenerator API_KEY={API_KEY} className="desktop-navbar-menu"/>
+
           {!loggedIn &&
             <Link className="signin-container" to="/signin">
               <div className="signin">SIGN IN</div>

@@ -1,9 +1,5 @@
 .random-button {
-
-  button {
-    fill: "red";
     border-radius: 1px;
-    margin-right: 30px;
     width: 148px;
     height: 20px;
     background-color: #0075a7;
@@ -13,12 +9,24 @@
     letter-spacing: 0.7px;
     border: none;
     font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding-left: 8px;
     padding-bottom: 2.5px;
-  }
+    cursor: pointer;
+
+    &.mobile-hamburger-menu {
+
+      @media (min-width: 1024px) {
+        display: none;
+      }
+    }
+
+    &.desktop-navbar-menu {
+      margin-right: 30px;
+
+      @media (max-width: 1024px) {
+        display: none;
+      }
+    }  
 }
 
 //background-color: #ff3246;
