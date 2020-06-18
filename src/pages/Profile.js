@@ -23,26 +23,6 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
       })
   }, [])
 
-
-//  export const removeItem = (showId) => {
-    
-//     fetch(`http://localhost:8080/users/${userId}/watchlist`, {
-//       method: "DELETE",
-//       headers: {
-//         "Content-Type": "application/json",
-//         "Authorization": `${accessToken}`
-//       },
-//       body: JSON.stringify({
-//         "showId": showId
-//       })
-//     })
-//       .then(res => res.json())
-//       .then(json => {
-//         dispatch(replaceWatchlist(json.watchlist))
-//         setList(json.watchlist)
-//       })
-//   }
-
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
