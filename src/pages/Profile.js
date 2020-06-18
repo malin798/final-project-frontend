@@ -69,21 +69,21 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
           {list.map((item) => (
 
             <section className="watch-list-container" key={item.showId}>
-              <div className="watch-item">
-                <div className="watch-list-left-container">
-                  TITLE<p>{item.title}</p>
+              <section className="watch-item">
+                <div className="left-container">{item.title}
+
                   <button className="remove-button" onClick={() => removeItem(item.showId)}>REMOVE</button>
                 </div>
                 <div className="movie-image">
                   <img
                     draggable={false}
                     alt={item.title}
-                    style={{ width: "100%" }}
+
                     src={`https://image.tmdb.org/t/p/w342/${item.poster}`}
                   >
                   </img>
                 </div>
-              </div>
+              </section>
             </section>
           ))}
 
