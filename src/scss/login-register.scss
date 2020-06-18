@@ -38,6 +38,7 @@
     max-height: 100%;
     padding: 10px 10px;
     background-color: rgb(29, 33, 33);
+    padding-top: 20px;
 
     @media (min-width: 1200px) {
       padding: 20px 60px;
@@ -111,11 +112,14 @@
     margin-left: 3px;
     text-decoration: none;
     color: rgb(34, 70, 111);
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   p {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 500;
+
   }
 
   a:hover {

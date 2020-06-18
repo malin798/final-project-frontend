@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { RightArrow } from '../RightArrow'
+import { RandomMovieGenerator } from '../RandomMovieGenerator'
 
 export const HamburgerMenu = () => {
 
@@ -55,10 +56,8 @@ export const HamburgerMenu = () => {
         <Link to="/trending-today" ><li>Trending today</li></Link>
         <Link to="/trending-week"><li>Trending week</li></Link>
         <Link to="/now-playing"><li>Now playing</li></Link>
-
       </ul>
+
     </>
   )
 }
-
-

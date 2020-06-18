@@ -2,19 +2,23 @@
 
   button {
     fill: "red";
-    border-radius: 2px;
+    border-radius: 1px;
     margin-right: 30px;
-    width: 156px;
+    width: 148px;
     height: 20px;
-    background-color: #ff5050;
+    background-color: #0075a7;
     color: white;
-    font-family: Roboto, sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 0.7px;
     border: none;
-    font-size: 13px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 8px;
+    padding-bottom: 2.5px;
   }
 }
+
+//background-color: #ff3246;

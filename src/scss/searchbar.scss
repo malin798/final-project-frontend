@@ -3,13 +3,13 @@
 .searchbar-and-filter {
   display: flex;
   position: relative;
-  height: 21px;
+  height: 20px;
   margin-right: 24px;
 
   button {
-    background-color: #56f2db;
+    background-color: #5f8882;
     border: none;
-    border-radius: 0 11px 11px 0;
+    border-radius: 0 1px 1px 0;
 
     :focus {
       outline: none;
@@ -26,10 +26,10 @@
 
   select {
     width: 20px;
-    border-radius: 11px 0 0 11px;
-    background-color: #56f2db;
+    border-radius: 1px 0 0 1px;
+    background-color: #5f8882;
     border: none;
-    border-right: 1px solid rgb(0, 181, 169);
+    border-right: 1px solid rgb(81, 123, 120);
   }
 
   input {

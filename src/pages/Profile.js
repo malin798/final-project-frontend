@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../components/reducers/user'
 
@@ -7,6 +7,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
   const userName = useSelector((store) => store.user.login.userName)
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
+  const [list, setList] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:8080/users/5ed91c84a1d0445020645add/watchlist", {
@@ -17,8 +18,11 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     })
 
       .then(res => res.json())
-      .then(watchlist => {
-        console.log(watchlist)
+      .then(json => {
+        setList(json.watchlist)
+        //.then(watchlist => {
+        // setList(watchlist)
+        // console.log(watchlist)
       })
   }, [])
 
@@ -26,7 +30,11 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  const handleClick = () => {
+  // const handleClick = () => {
+  //   dispatch(xxxxx(setLoggedIn))
+  // }
+
+  const handleLogOut = () => {
     dispatch(logout(setLoggedIn))
   }
 
@@ -42,18 +50,24 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
         <section class="welcome-container">
           <div className="welcome">
             Welcome {capitalizeFirstLetter(userName)}!</div>
-          <h6>Make your own your movielists. Which are your favourite movies? Your favourite classics? Commedies? Also keep track of the movies you want to see but haven't seen yet! </h6>
-          <section className="watch-list-container">
-            <div className="watch-list"></div>
-            <div className="watch-list2"></div>
-            <div className="watch-list"></div>
-          </section>
-          <div className="logout">
-            <button onClick={() => handleClick()}>LOG OUT</button>
+          <h6>Here is your watchlist. Which are your favourite movies? Keep track of the movies you want to see but haven't seen yet! </h6>
+
+          {list.map((item) => (
+            <section className="watch-list-container">
+              <div className="watch-item">TITLE
+            <p className="watch-item-title">{item.title}</p>
+                <button className="remove-button" onClick={() => handleLogOut()}>REMOVE</button>
+
+              </div>
+            </section>
+          ))}
+
+          < div className="logout" >
+            <button onClick={() => handleLogOut()}>LOG OUT</button>
           </div>
+
         </section>
       </>
     )
   }
-
 }

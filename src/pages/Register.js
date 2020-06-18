@@ -93,11 +93,11 @@ export const Register = () => {
           }
 
           <button type="submit">
-            Create user
+            CREATE USER
           </button>
         </form>
 
-        < Linksection title="Already got an account?" link="/signin" linkTitle="Sign in" />
+        < Linksection className="sign-in-link-title" title="Already got an account?" link="/signin" linkTitle="Sign in" />
 
       </section>
     </section>
