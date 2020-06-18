@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
-export const RandomMovieGenerator = ({ API_KEY }) => {
+export const RandomMovieGenerator = ({ API_KEY, className }) => {
   const history = useHistory()
   const [genre, setGenre] = useState([])
 
@@ -36,8 +36,10 @@ export const RandomMovieGenerator = ({ API_KEY }) => {
 
   }
   return (
-    <div className="random-button">
-      <button onClick={() => handleClick()}>RANDOMIZE FILM &nbsp;🎲</button>
-    </div>
+    <>
+      <button 
+        className={`random-button ${className ? className : ""}`}
+        onClick={() => handleClick()}>RANDOMIZE FILM &nbsp;🎲</button>
+    </>
   )
 }

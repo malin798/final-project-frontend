@@ -35,12 +35,17 @@ export const user = createSlice({
       const { pages } = action.payload
       state.searchResultsAllPages = pages
     },
+    setWatchlistArray: (state, action) => {
+      const { watchlist } = action.payload
+      console.log("List added to watchlist", watchlist)
+      state.watchlist = watchlist
+    },
     setWatchlistItem: (state, action) => {
-      const { title, id } = action.payload
-      console.log("item added to watchlist", title, id)
-      state.watchlist.push({ "title": title, "showId": id })
+      const { title, id, poster } = action.payload
+      console.log("item added to watchlist", title, id, poster)
+      state.watchlist.push({ "title": title, "showId": id, "poster": poster })
     }
-  },
+  }
 })
 
 export const setSearchResults = (results) => {
@@ -55,9 +60,33 @@ export const setSearchResultsAllPages = (pages) => {
   }
 }
 
-export const addToWatchlist = (title, id) => {
+export const replaceWatchlist = (watchlist) => {
   return async (dispatch) => {
-    dispatch(user.actions.setWatchlistItem({ title, id }))
+    dispatch(user.actions.setWatchlistArray({ watchlist }))
+  }
+}
+
+export const addToWatchlist = (title, id, poster) => {
+  return async (dispatch) => {
+    dispatch(user.actions.setWatchlistItem({ title, id, poster }))
+  }
+}
+
+export const removeItem = (showId, setList, userId, accessToken) => {
+  return async (dispatch) => {
+   const res = await fetch(`http://localhost:8080/users/${userId}/watchlist`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `${accessToken}`
+      },
+      body: JSON.stringify({
+        "showId": showId
+      })
+    })
+      const json = await res.json()
+      dispatch(replaceWatchlist(json.watchlist))
+      setList(json.watchlist)
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '../components/reducers/user'
+import { logout, replaceWatchlist, removeItem } from '../components/reducers/user'
 
 export const Profile = ({ loggedIn, setLoggedIn }) => {
   const dispatch = useDispatch();
@@ -18,30 +18,10 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     })
       .then(res => res.json())
       .then(json => {
+        dispatch(replaceWatchlist(json.watchlist))
         setList(json.watchlist)
-        //.then(watchlist => {
-        console.log(json.watchlist)
       })
   }, [])
-
-
-  const removeItem = (showId) => {
-
-    fetch(`http://localhost:8080/users/${userId}/watchlist`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `${accessToken}`
-      },
-      body: JSON.stringify({
-        "showId": showId
-      })
-    })
-      .then(res => res.json())
-      .then(json => {
-        setList(json.watchlist)
-      })
-  }
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -71,17 +51,18 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
             <section className="watch-list-container" key={item.showId}>
               <section className="watch-item">
                 <div className="left-container">{item.title}
-
-                  <button className="remove-button" onClick={() => removeItem(item.showId)}>REMOVE</button>
-                </div>
-                <div className="movie-image">
-                  <img
-                    draggable={false}
-                    alt={item.title}
-
-                    src={`https://image.tmdb.org/t/p/w342/${item.poster}`}
-                  >
-                  </img>
+                  <div className="watch-list-left-container">
+                    TITLE<p>{item.title}</p>
+                    <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button>
+                  </div>
+                  <div className="movie-image">
+                    <img
+                      draggable={false}
+                      alt={item.title}
+                      src={`https://image.tmdb.org/t/p/w342/${item.poster}`}
+                    >
+                    </img>
+                  </div>
                 </div>
               </section>
             </section>

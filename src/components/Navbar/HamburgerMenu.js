@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { RightArrow } from '../RightArrow'
 import { RandomMovieGenerator } from '../RandomMovieGenerator'
 
-export const HamburgerMenu = () => {
+export const HamburgerMenu = ({ API_KEY }) => {
 
   const [visible, setVisible] = useState(false)
   const [show, setShow] = useState(false)
@@ -56,6 +56,8 @@ export const HamburgerMenu = () => {
         <Link to="/trending-today" ><li>Trending today</li></Link>
         <Link to="/trending-week"><li>Trending week</li></Link>
         <Link to="/now-playing"><li>Now playing</li></Link>
+
+        < RandomMovieGenerator API_KEY={API_KEY} className="mobile-hamburger-menu" />
       </ul>
 
     </>
