@@ -57,21 +57,21 @@ export const MovieSlider = ({ review, fetchtitle, titlelink, fetchlink, placehol
                 </img>
 
                 <div className='movie-details'>
-                  <div>
+                  
 
-                    {loggedIn &&
-                    < WatchlistButton item={movie} />
-                    }
+                  {loggedIn &&
+                  < WatchlistButton item={movie} />
+                  }
 
-                    <h5>
-                      {movie.title}
-                    </h5>
+                  <h5>
+                    {movie.title}
+                  </h5>
 
-                    <p>
-                      Release {movie.release_date}
-                    </p>
+                  <p>
+                    Release {movie.release_date}
+                  </p>
 
-                  </div>
+                  
                 </div>
               </Link>
             </div>

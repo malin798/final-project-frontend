@@ -10,9 +10,7 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink, fetchtitle, moviePlaceholde
   const genreName = params.name
   const [movies, setMovies] = useState([])
   const [page, setPage] = useState(1)
-  const [allPages, setAllPages] = useState();
-  const [active, setActive] = useState(false)
-  // console.log(movies)
+  const [allPages, setAllPages] = useState()
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -24,18 +22,6 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink, fetchtitle, moviePlaceholde
     fetchtitle = genreName
     URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
   }
-
-  // const showMoreMovies = (event) => {
-  //   event.preventDefault()
-  //   setPage(page + 1);
-
-  //   fetch(URL)
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     const allMovies = movies.concat(res.results) 
-  //     setMovies(allMovies)
-  //   })
-  // }
 
   useEffect(() => {
     fetch(URL)
@@ -60,12 +46,15 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink, fetchtitle, moviePlaceholde
           return (
             <div className="movie-wrapper" key={item.id}>
               <Link className="movie-link" to={`/movie/${item.id}`}>
-                <img src={src}>
+                <img 
+                  className="movie-image"
+                  src={src}>
                 </img>
-                <div className='movie-details'>
 
+                <div className='movie-details'>
+                
                   {loggedIn &&
-                    < WatchlistButton active={active} setActive={setActive} item={item} />
+                    < WatchlistButton item={item} />
                   }
 
                   <h5>
@@ -75,6 +64,7 @@ export const ViewMoreMovies = ({ API_KEY, fetchlink, fetchtitle, moviePlaceholde
                   <p>
                     Release {item.release_date}
                   </p>
+
                 </div>
               </Link>
             </div>
