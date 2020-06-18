@@ -17,37 +17,35 @@ export const Searchbar = ({ API_KEY }) => {
   let URL;
   let PATH;
 
+  switch (optionValue) {
+    case "title":
+      URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
+      PATH = `/search-results/movie/${searchValue}`
+      break;
+    case "actor":
+      URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
+      PATH = `/search-results/actor/${searchValue}`
+      break;
+  }
+
   const handleSearch = (searchValue) => {
 
     if (searchValue.length < 3) {
       setVisible(false)
       return
     }
-
-    switch (optionValue) {
-      case "title":
-        URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
-        PATH = `/search-results/movie/${searchValue}`
-        break;
-      case "actor":
-        URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
-        PATH = `/search-results/actor/${searchValue}`
-        break;
-    }
-
-    console.log(searchValue)
     
     fetch(URL)
       .then(res => res.json())
       .then(res => {
-        console.log(res)
-        dispatch(setSearchResults(res.results.slice(0, 5)))
+        dispatch(setSearchResults(res.results))
         dispatch(setSearchResultsAllPages(res.total_pages))
         setVisible(true)
       })
   }
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.preventDefault()
     setVisible(false)
     setSearchValue("")
     history.push(PATH)
