@@ -75,7 +75,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
 
                 </section>
               </Link>
-             ------&nbsp;&nbsp; 🍿  &nbsp;&nbsp;------
+            🍿
             </section>
 
           ))
