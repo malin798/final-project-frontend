@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWatchlist } from '../reducers/user'
+import checkmark from '../../images/white_checkmark.png'
 
 export const WatchlistButtonExtended = ({ item }) => {
 
@@ -40,7 +41,7 @@ export const WatchlistButtonExtended = ({ item }) => {
   }
 
   return (
-    <>
+    <div className="watchlistbuttonextended">
       {!added &&
         <button
           onClick={(event) => handleClick(event, item.title, item.id, item.backdrop_path, item.overview, item.release_date)}
@@ -50,12 +51,17 @@ export const WatchlistButtonExtended = ({ item }) => {
       }
 
       {added &&
-        <button
-          className={`${added ? "added" : ""}`}
-        >
-          ✔️ Added to watchlist
-        </button>
+        <>
+          <button
+            className={`${added ? "added" : ""}`}
+          >
+            <img className="added-button" src={checkmark} />&nbsp;Added to watchlist
+
+
+          </button>
+
+        </>
       }
-    </>
+    </div>
   )
 }

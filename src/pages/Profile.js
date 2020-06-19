@@ -11,6 +11,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
   const [list, setList] = useState([])
+  //const [productionCountry, setProductionCountry] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:8080/users/${userId}/watchlist`, {
@@ -24,6 +25,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
         const sortedList = json.watchlist.reverse()
         dispatch(replaceWatchlist(sortedList))
         setList(sortedList)
+        //setProductionCountry(json.production_countries)
       })
   }, [])
 
@@ -76,6 +78,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
                   }
                   <div className="right-container">{item.title}
                     <p className="year">{item.year.slice(0, 4)}</p>
+
                     <p className="overview">{item.overview}<span>...</span></p>
 
                   </div>
@@ -97,10 +100,21 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     )
   }
 }
+/*<h4>Production country:</h4>
+                    <div>
+                      {productionCountry.map((country, index) => (
+                        <>
+                          {country.name}
+                          {productionCountry.length - 1 > index && ", "}
+                        </>
+                      ))}
+                    </div>*/
+
 
 /*  "production_countries": [
     {
       "iso_3166_1": "US",
       "name": "United States of America"
     }
-  ],*/
+  ],
+*/

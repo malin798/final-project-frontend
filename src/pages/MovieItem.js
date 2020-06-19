@@ -29,6 +29,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
   const [thumbNails, setThumbNails] = useState([]);
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(false)
+  const [productionCountry, setProductionCountry] = useState([])
 
   let src = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
 
@@ -44,6 +45,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
         setMovie(json)
         setProductionCompany(json.production_companies)
         setGenre(json.genres)
+        setProductionCountry(json.production_countries)
       })
 
     fetch(URL_CAST)
@@ -87,7 +89,6 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
     return (
 
       <section className="movie-item">
-
         <section className="movie-overview-container">
           <section className="movie-image-container">
 
@@ -109,9 +110,9 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
               {movie.title} <span className="thin">&#40;{movie.release_date}&#41;</span>
             </h2>
 
-          {loggedIn &&
-            < WatchlistButtonExtended item={movie} /> 
-          }
+            {loggedIn &&
+              < WatchlistButtonExtended item={movie} />
+            }
             <h4 >Movie overview:</h4>
 
             <div>
@@ -136,6 +137,16 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
                 <>
                   {company.name}
                   {productionCompany.length - 1 > index && ", "}
+                </>
+              ))}
+            </div>
+
+            <h4>Production country:</h4>
+            <div>
+              {productionCountry.map((country, index) => (
+                <>
+                  {country.name}
+                  {productionCountry.length - 1 > index && ", "}
                 </>
               ))}
             </div>
