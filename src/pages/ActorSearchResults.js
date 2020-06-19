@@ -43,10 +43,6 @@ export const ActorSearchResults = ({ API_KEY, loggedIn }) => {
                 </img>
                 <div className='movie-details'> 
 
-                  {loggedIn && 
-                    < WatchlistButton active={active} setActive={setActive} item={item}/>
-                  }
-
                   <h5>
                     {item.name}
                   </h5>
