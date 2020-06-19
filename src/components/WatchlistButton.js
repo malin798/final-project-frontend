@@ -11,6 +11,7 @@ export const WatchlistButton = ({ item }) => {
   const [added, setAdded] = useState(false)
   const [active, setActive] = useState(false)
 
+
   useEffect(() => {
     watchlist.map(listItem => {
       if (listItem.showId === item.id) {
@@ -19,9 +20,9 @@ export const WatchlistButton = ({ item }) => {
     })
   }, [])
 
-  const handleClick = async (event, title, id, poster, cast) => {
+  const handleClick = async (event, title, id, poster, overview, year) => {
     event.preventDefault()
-    dispatch(addToWatchlist(title, id, poster))
+    dispatch(addToWatchlist(title, id, poster, overview, year))
     setAdded(true)
 
     const response = await fetch(`http://localhost:8080/users/${userId}/watchlist`, {
@@ -34,7 +35,8 @@ export const WatchlistButton = ({ item }) => {
         "title": title,
         "showId": id,
         "poster": poster,
-        "cast": cast
+        "overview": overview,
+        "year": year
       })
     })
 
@@ -48,7 +50,7 @@ export const WatchlistButton = ({ item }) => {
         <button
           onMouseOver={() => setActive(true)}
           onMouseOut={() => setActive(false)}
-          onClick={(event) => handleClick(event, item.title, item.id, item.backdrop_path)}
+          onClick={(event) => handleClick(event, item.title, item.id, item.backdrop_path, item.overview, item.release_date)}
         >
           + {active && "Add to watchlist"}
         </button>
@@ -67,3 +69,4 @@ export const WatchlistButton = ({ item }) => {
     </>
   )
 }
+//{cutOutDate(movie.release_date)}

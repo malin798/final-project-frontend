@@ -14,9 +14,10 @@
     color: white;
     padding: 4px 8px;
     letter-spacing: 1px;
-   
+    font-size: 20px;
+
     &.added {
-      background-color: cornflowerblue;
+      background-color: rgb(80, 132, 187);
     }
   }
 }
