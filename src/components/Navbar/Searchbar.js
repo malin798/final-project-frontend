@@ -14,7 +14,7 @@ export const Searchbar = ({ API_KEY }) => {
   const [optionValue, setOptionValue] = useState("title")
   const [visible, setVisible] = useState(false)
 
-  const handleSearch = () => {
+  const handleSearch = (searchValue) => {
     let URL;
     switch (optionValue) {
       case "title":
@@ -82,7 +82,7 @@ export const Searchbar = ({ API_KEY }) => {
       </select>
       <input
         value={searchValue}
-        onChange={(event) => {setSearchValue(event.target.value); handleSearch()}}
+        onChange={(event) => {setSearchValue(event.target.value); handleSearch(event.target.value)}}
         type="text"
       >
       </input>
