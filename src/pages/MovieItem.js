@@ -7,6 +7,7 @@ import { IMDBRatingPlugin } from '../components/MovieItem/IMDBRatingPlugin'
 import standingPlaceholder from '../images/placeholderS.png'
 import layingPlaceholder from '../images/placeholderL.png'
 import { Review } from '../components/MovieItem/Review'
+import { WatchlistButtonExtended } from '../components/MovieItem/WatchlistButtonExtended'
 
 export const MovieItem = ({ API_KEY, loggedIn }) => {
 
@@ -107,6 +108,10 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             <h2>
               {movie.title} <span className="thin">&#40;{movie.release_date}&#41;</span>
             </h2>
+
+          {loggedIn &&
+            < WatchlistButtonExtended item={movie} /> 
+          }
             <h4 >Movie overview:</h4>
 
             <div>
