@@ -57,10 +57,10 @@ export const MovieSlider = ({ review, fetchtitle, titlelink, fetchlink, placehol
                 </img>
 
                 <div className='movie-details'>
-                  
+
 
                   {loggedIn &&
-                  < WatchlistButton item={movie} />
+                    < WatchlistButton item={movie} />
                   }
 
                   <h5>
@@ -71,7 +71,7 @@ export const MovieSlider = ({ review, fetchtitle, titlelink, fetchlink, placehol
                     Release {movie.release_date}
                   </p>
 
-                  
+
                 </div>
               </Link>
             </div>

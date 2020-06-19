@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector  } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToWatchlist } from '../components/reducers/user'
 
 export const WatchlistButton = ({ item }) => {
@@ -10,7 +10,8 @@ export const WatchlistButton = ({ item }) => {
   const userId = useSelector((store) => store.user.login.userId)
   const [added, setAdded] = useState(false)
   const [active, setActive] = useState(false)
- 
+
+
   useEffect(() => {
     watchlist.map(listItem => {
       if (listItem.showId === item.id) {
@@ -19,9 +20,9 @@ export const WatchlistButton = ({ item }) => {
     })
   }, [])
 
-  const handleClick = async (event, title, id, poster) => {
+  const handleClick = async (event, title, id, poster, overview, year) => {
     event.preventDefault()
-    dispatch(addToWatchlist(title, id, poster))
+    dispatch(addToWatchlist(title, id, poster, overview, year))
     setAdded(true)
 
     const response = await fetch(`http://localhost:8080/users/${userId}/watchlist`, {
@@ -33,7 +34,9 @@ export const WatchlistButton = ({ item }) => {
       body: JSON.stringify({
         "title": title,
         "showId": id,
-        "poster": poster
+        "poster": poster,
+        "overview": overview,
+        "year": year
       })
     })
 
@@ -47,7 +50,7 @@ export const WatchlistButton = ({ item }) => {
         <button
           onMouseOver={() => setActive(true)}
           onMouseOut={() => setActive(false)}
-          onClick={(event) => handleClick(event, item.title, item.id, item.backdrop_path)}
+          onClick={(event) => handleClick(event, item.title, item.id, item.backdrop_path, item.overview, item.release_date)}
         >
           + {active && "Add to watchlist"}
         </button>
@@ -55,9 +58,10 @@ export const WatchlistButton = ({ item }) => {
 
       {added &&
         <button
-          className={`${added ? "added" : "" }`}
+          className={`${added ? "added" : ""}`}
           onMouseOver={() => setActive(true)}
           onMouseOut={() => setActive(false)}
+        // onClick={(event) => handleClick(event, item.title, item.id)}
         >
           ✔️ {active && "Added to watchlist"}
         </button>
@@ -65,3 +69,4 @@ export const WatchlistButton = ({ item }) => {
     </>
   )
 }
+//{cutOutDate(movie.release_date)}
