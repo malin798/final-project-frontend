@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { WatchlistButton } from '../components/WatchlistButton'
 import { Pagination } from '../components/Pagination'
+import { capitalizeFirstLetter } from '../utils/StringUtils'
 
 export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, loggedIn }) => {
 
@@ -9,10 +10,6 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
   const [movies, setMovies] = useState([])
   const [page, setPage] = useState(1)
   const [allPages, setAllPages] = useState()
-
-  const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
 
   let URL;
 

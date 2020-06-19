@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { ImageSlider } from '../components/ImageSlider'
 import { WatchlistButton } from '../components/WatchlistButton'
 import { RightArrow } from '../components/RightArrow'
-import { Review } from './MovieItem/Review'
-
 
 export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, imageOrientation, loggedIn }) => {
   const [movies, setMovies] = useState([])
