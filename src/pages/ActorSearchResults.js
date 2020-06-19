@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { WatchlistButton } from '../components/WatchlistButton'
+import { capitalizeFirstLetter } from '../utils/StringUtils'
 import { Pagination } from '../components/Pagination'
 import standingPlaceholder from '../images/placeholderS.png'
 
@@ -11,7 +11,6 @@ export const ActorSearchResults = ({ API_KEY, loggedIn }) => {
   const searchValue = params.value
   const allPages = useSelector((store) => store.user.searchResultsAllPages)
   const [actors, setActors] = useState([])
-  const [active, setActive] = useState(false)
   const [page, setPage] = useState(1)
 
   const URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&include_adult=false&page=${page}`
@@ -27,7 +26,7 @@ export const ActorSearchResults = ({ API_KEY, loggedIn }) => {
   return (
     <section>
 
-      <h3>Search results for actors - {searchValue}</h3>
+      <h3>Search results for actors: {capitalizeFirstLetter(searchValue)}</h3>
       <div className="movie-wrapper-container">
         {actors.map(item => {
 

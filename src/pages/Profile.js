@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, replaceWatchlist, removeItem } from '../components/reducers/user'
+import { capitalizeFirstLetter } from '../utils/StringUtils'
 import { Link } from 'react-router-dom'
 
 export const Profile = ({ loggedIn, setLoggedIn }) => {
@@ -23,10 +24,6 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
         setList(json.watchlist)
       })
   }, [])
-
-  const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
 
   const handleLogOut = () => {
     dispatch(logout(setLoggedIn))

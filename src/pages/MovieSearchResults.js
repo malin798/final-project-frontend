@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { WatchlistButton } from '../components/WatchlistButton'
 import { Pagination } from '../components/Pagination'
+import { capitalizeFirstLetter } from '../utils/StringUtils'
 import standingPlaceholder from '../images/placeholderS.png'
 
 export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
@@ -28,7 +29,7 @@ export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
   return (
     <section>
 
-      <h3>Search results for - {searchValue}</h3>
+      <h3>Search results for: {capitalizeFirstLetter(searchValue)}</h3>
       <div className="movie-wrapper-container">
         {movies.map(item => {
 
