@@ -14,27 +14,22 @@ export const Searchbar = ({ API_KEY }) => {
   const [optionValue, setOptionValue] = useState("title")
   const [visible, setVisible] = useState(false)
 
-  let URL;
-  let PATH;
-
-  switch (optionValue) {
-    case "title":
-      URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
-      PATH = `/search-results/movie/${searchValue}`
-      break;
-    case "actor":
-      URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
-      PATH = `/search-results/actor/${searchValue}`
-      break;
-  }
-
-  const handleSearch = (searchValue) => {
-
+  const handleSearch = () => {
+    let URL;
+    switch (optionValue) {
+      case "title":
+        URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
+        break;
+      case "actor":
+        URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
+        break;
+    }
+  
     if (searchValue.length < 3) {
       setVisible(false)
       return
     }
-    
+
     fetch(URL)
       .then(res => res.json())
       .then(res => {
@@ -45,6 +40,18 @@ export const Searchbar = ({ API_KEY }) => {
   }
 
   const handleClick = (event) => {
+
+    let PATH;
+
+    switch (optionValue) {
+      case "title":
+        PATH = `/search-results/movie/${searchValue}`
+        break;
+      case "actor":
+        PATH = `/search-results/actor/${searchValue}`
+        break;
+    }
+
     event.preventDefault()
     setVisible(false)
     setSearchValue("")
@@ -75,7 +82,7 @@ export const Searchbar = ({ API_KEY }) => {
       </select>
       <input
         value={searchValue}
-        onChange={(event) => {setSearchValue(event.target.value); handleSearch(event.target.value)}}
+        onChange={(event) => {setSearchValue(event.target.value); handleSearch()}}
         type="text"
       >
       </input>

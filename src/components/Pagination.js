@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 
 export const Pagination = ({ page, setPage, allPages, movies, setMovies, URL }) => {
-  console.log("movies", movies)
 
   const showMoreMovies = (event) => {
     event.preventDefault()
@@ -14,7 +13,6 @@ export const Pagination = ({ page, setPage, allPages, movies, setMovies, URL }) 
         setMovies(allMovies)
       })
   }
-  console.log("movies", movies)
 
   return (
     <section className="pagination">
