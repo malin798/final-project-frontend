@@ -6,7 +6,7 @@ import { RightArrow } from '../components/RightArrow'
 import { Review } from './MovieItem/Review'
 
 
-export const MovieSlider = ({ review, fetchtitle, titlelink, fetchlink, placeholder, imageOrientation, loggedIn, API_KEY }) => {
+export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, imageOrientation, loggedIn }) => {
   const [movies, setMovies] = useState([])
 
   useEffect(() => {

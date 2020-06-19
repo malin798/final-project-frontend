@@ -216,7 +216,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           })}
         </ImageSlider>
 
-        < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={layingPlaceholder} loggedIn={loggedIn} />
+        < MovieSlider fetchtitle="Similar movies:" titlelink={`/similar-movies/${movie.id}`} fetchlink={URL_SIMILARMOVIES} placeholder={layingPlaceholder} loggedIn={loggedIn} />
 
       </section >
     )

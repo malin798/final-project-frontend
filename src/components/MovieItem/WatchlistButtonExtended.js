@@ -52,7 +52,6 @@ export const WatchlistButtonExtended = ({ item }) => {
       {added &&
         <button
           className={`${added ? "added" : ""}`}
-        // onClick={(event) => handleClick(event, item.title, item.id)}
         >
           ✔️ Added to watchlist
         </button>
@@ -60,4 +59,3 @@ export const WatchlistButtonExtended = ({ item }) => {
     </>
   )
 }
-//{cutOutDate(movie.release_date)}
