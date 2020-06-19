@@ -7,7 +7,7 @@
   margin-right: 24px;
 
   button {
-    background-color: #d9fef4d2;
+    background-color: $search-field-gray;
     border: none;
     border-radius: 0 1px 1px 0;
 
@@ -27,7 +27,7 @@
   select {
     width: 20px;
     border-radius: 1px 0 0 1px;
-    background-color: #d9fef4d2;
+    background-color: $search-field-gray;
     border: none;
     border-right: 1px solid rgb(133, 177, 174);
   }
@@ -79,7 +79,7 @@
 
     &.visible {
       position: absolute;
-      top: 30px;
+      top: 20px;
       background-color: #3f3f3f;
       color: black;
       height: fit-content;

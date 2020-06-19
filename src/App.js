@@ -68,7 +68,7 @@ export const App = () => {
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`}
-              fetchtitle="Now&nbsp;playing"
+              fetchtitle="Now playing"
               placeholder={layingPlaceholder}
               imageOrientation="laying"
               titlelink="/now-playing"
@@ -76,7 +76,7 @@ export const App = () => {
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`}
-              fetchtitle="Top&nbsp;rated"
+              fetchtitle="Top rated"
               placeholder={standingPlaceholder}
               imageOrientation="standing"
               titlelink="/top-rated"
@@ -90,6 +90,8 @@ export const App = () => {
               titlelink="/upcoming"
             />
           </Route>
+
+           {/* Genre routes below  */}
 
           <Route exact path="/genres" >
             < MovieSlider
@@ -207,7 +209,7 @@ export const App = () => {
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=28`}
-              fetchtitle="Science&nbsp;Fiction"
+              fetchtitle="Science-Fiction"
               placeholder={standingPlaceholder}
               imageOrientation="standing"
               titlelink="/genres/science_fiction/28"
@@ -223,7 +225,7 @@ export const App = () => {
             < MovieSlider
               loggedIn={loggedIn}
               fetchlink={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=10770`}
-              fetchtitle="TV&nbsp;movie"
+              fetchtitle="TV-movie"
               placeholder={standingPlaceholder}
               imageOrientation="standing"
               titlelink="/genres/TV_movie/10770"
@@ -246,11 +248,12 @@ export const App = () => {
             />
           </Route>
 
-          <Route exact path='/genres/:name/:id' >
+          <Route exact path='/genres/:genreName/:genreId' >
             < ViewMoreMovies
               API_KEY={API_KEY}
               placeholder={standingPlaceholder}
               loggedIn={loggedIn}
+              type="genres"
             />
           </Route>
 
@@ -260,9 +263,9 @@ export const App = () => {
             < ViewMoreMovies
               API_KEY={API_KEY}
               loggedIn={loggedIn}
-              fetchtitle="Now&nbsp;playing"
+              fetchtitle="Now playing"
               placeholder={standingPlaceholder}
-              fetchlink={`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=`}
+              type="now-playing"
             />
           </Route>
 
@@ -272,7 +275,7 @@ export const App = () => {
               loggedIn={loggedIn}
               fetchtitle="Upcoming"
               placeholder={standingPlaceholder}
-              fetchlink={`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=`}
+              type="upcoming"
             />
           </Route>
 
@@ -280,9 +283,9 @@ export const App = () => {
             < ViewMoreMovies
               API_KEY={API_KEY}
               loggedIn={loggedIn}
-              fetchtitle="Top&nbsp;rated"
+              fetchtitle="Top rated"
               placeholder={standingPlaceholder}
-              fetchlink={`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=`}
+              type="top-rated"
             />
           </Route>
 
@@ -290,9 +293,9 @@ export const App = () => {
             < ViewMoreMovies
               API_KEY={API_KEY}
               loggedIn={loggedIn}
-              fetchtitle="Trending"
+              fetchtitle="Trending this week"
               placeholder={standingPlaceholder}
-              fetchlink={`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=`}
+              type="trending-week"
             />
           </Route>
 
@@ -302,7 +305,17 @@ export const App = () => {
               loggedIn={loggedIn}
               fetchtitle="Trending today"
               placeholder={standingPlaceholder}
-              fetchlink={`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=`}
+              type="trending-today"
+            />
+          </Route>
+
+          <Route exact path='/similar-movies/:movieId' >
+            < ViewMoreMovies
+              API_KEY={API_KEY}
+              loggedIn={loggedIn}
+              fetchtitle="Similar movies"
+              placeholder={standingPlaceholder}
+              type="similar-movies"
             />
           </Route>
 

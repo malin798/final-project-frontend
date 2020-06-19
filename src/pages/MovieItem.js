@@ -7,6 +7,7 @@ import { IMDBRatingPlugin } from '../components/MovieItem/IMDBRatingPlugin'
 import standingPlaceholder from '../images/placeholderS.png'
 import layingPlaceholder from '../images/placeholderL.png'
 import { Review } from '../components/MovieItem/Review'
+import { WatchlistButtonExtended } from '../components/MovieItem/WatchlistButtonExtended'
 
 export const MovieItem = ({ API_KEY, loggedIn }) => {
 
@@ -107,6 +108,10 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             <h2>
               {movie.title} <span className="thin">&#40;{movie.release_date}&#41;</span>
             </h2>
+
+          {loggedIn &&
+            < WatchlistButtonExtended item={movie} /> 
+          }
             <h4 >Movie overview:</h4>
 
             <div>
@@ -180,7 +185,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
           {cast.slice(0, 10).map(actor => {
 
-            let src = `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+            let src = `https://image.tmdb.org/t/p/w300/${actor.profile_path}`
 
             if (actor.profile_path == null || actor.profile_path === undefined) {
               src = standingPlaceholder
@@ -211,7 +216,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           })}
         </ImageSlider>
 
-        < MovieSlider fetchtitle="Similar movies:" fetchlink={URL_SIMILARMOVIES} placeholder={layingPlaceholder} loggedIn={loggedIn} />
+        < MovieSlider fetchtitle="Similar movies:" titlelink={`/similar-movies/${movie.id}`} fetchlink={URL_SIMILARMOVIES} placeholder={layingPlaceholder} loggedIn={loggedIn} />
 
       </section >
     )
