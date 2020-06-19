@@ -4,8 +4,8 @@
   border-radius: 1px;
   width: 148px;
   height: 20px;
-  background-color: $accent-color;
-  color: black;
+  background-color: $accent-color-dark;
+  color: white;
   font-family: "Roboto", sans-serif;
   font-weight: 600;
   letter-spacing: 0.7px;
@@ -16,6 +16,10 @@
   align-items: center;
   padding-bottom: 2.1px;
   cursor: pointer;
+
+  &:hover {
+    color: $accent-color;
+  }
 
   &.mobile-hamburger-menu {
 
