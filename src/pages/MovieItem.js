@@ -185,7 +185,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
           {cast.slice(0, 10).map(actor => {
 
-            let src = `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+            let src = `https://image.tmdb.org/t/p/w300/${actor.profile_path}`
 
             if (actor.profile_path == null || actor.profile_path === undefined) {
               src = standingPlaceholder
