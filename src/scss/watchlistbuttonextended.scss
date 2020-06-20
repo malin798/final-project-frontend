@@ -13,6 +13,7 @@
     letter-spacing: 0.5px;
     font-size: 11px;
     cursor: pointer;
+    margin-left: 1.5px;
 
     &.added {
       background-color: $accent-orange;
@@ -22,6 +23,5 @@
   .added-button {
     height: 9px;
     width: 8px;
-
   }
 }

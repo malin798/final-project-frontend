@@ -62,12 +62,14 @@
     margin-right: 5px;
     font-family: Roboto;
     margin-top: 10px;
-    margin-bottom: 2px;
+    margin-bottom: 0px;
     color: $accent-color-dark;
   }
 
   .cast {
     font-size: 16px;
+    margin-bottom: 6px;
+    color: white;
   }
 
   div {
@@ -118,6 +120,7 @@
       text-transform: uppercase;
       font-size: 10px;
       letter-spacing: 1px;
+      margin-left: 1.3px;
 
       &:hover {
         background-color: $accent-color-dark;

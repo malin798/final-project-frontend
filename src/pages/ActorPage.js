@@ -61,7 +61,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
 
         {images && images.length > 1 &&
           <div>
-            <h4>Images: </h4>
+            <h4 >Images: </h4>
             <ImageSlider>
               {images.map(image => {
                 return (
