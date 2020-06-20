@@ -5,6 +5,7 @@ import { WatchlistButton } from '../components/WatchlistButton'
 import { Pagination } from '../components/Pagination'
 import { capitalizeFirstLetter } from '../utils/StringUtils'
 import standingPlaceholder from '../images/placeholderS.png'
+import { LoadingAnimation } from '../components/Loadinganimation/LoadingAnimation'
 
 export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
 
@@ -15,6 +16,7 @@ export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
   const [active, setActive] = useState(false)
   const [movies, setMovies] = useState(results)
   const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
 
   const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&include_adult=false&page=${page}`
 
@@ -26,47 +28,53 @@ export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
     })
   }, [URL])
 
-  return (
-    <section>
+  if (loading) {
+    return (
+      < LoadingAnimation />
+    )
+  } else {
+    return (
+      <section>
 
-      <h3>Search results for: {capitalizeFirstLetter(searchValue)}</h3>
-      <div className="movie-wrapper-container">
-        {movies.map(item => {
+        <h3>Search results for: {capitalizeFirstLetter(searchValue)}</h3>
+        <div className="movie-wrapper-container">
+          {movies.map(item => {
 
-          let src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+            let src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
 
-          if (item.poster_path == null || item.poster_path === undefined) {
-            src = standingPlaceholder
-          }
-          return (
-            <div className="movie-wrapper" key={item.id}>
-              <Link className="movie-link" to={`/movie/${item.id}`}>
-                <img src={src}>
-                </img>
-                <div className='movie-details'>
+            if (item.poster_path == null || item.poster_path === undefined) {
+              src = standingPlaceholder
+            }
+            return (
+              <div className="movie-wrapper" key={item.id}>
+                <Link className="movie-link" to={`/movie/${item.id}`}>
+                  <img src={src}>
+                  </img>
+                  <div className='movie-details'>
 
-                  {loggedIn &&
-                    < WatchlistButton active={active} setActive={setActive} item={item} />
-                  }
+                    {loggedIn &&
+                      < WatchlistButton active={active} setActive={setActive} item={item} />
+                    }
 
-                  <h5>
-                    {item.title}
-                  </h5>
+                    <h5>
+                      {item.title}
+                    </h5>
 
-                  <p>
-                    Release {item.release_date}
-                  </p>
-                </div>
-              </Link>
-            </div>
-          )
-        })}
+                    <p>
+                      Release {item.release_date}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            )
+          })}
 
-      < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL}/>
+        < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL}/>
 
-      </div>
+        </div>
 
-    </section>
+      </section>
 
-  )
+    )
+  }
 }

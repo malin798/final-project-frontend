@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { MovieSlider } from '../components/MovieSlider'
+import { LoadingAnimation } from '../components/Loadinganimation/LoadingAnimation'
 import { ImageSlider } from '../components/ImageSlider'
 import layingPlaceholder from '../images/placeholderL.png'
 
@@ -34,9 +35,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
 
   if (!actor || loading) {
     return (
-      <div>
-        Loading
-      </div>
+      < LoadingAnimation />
     )
   } else {
     return (

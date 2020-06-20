@@ -8,6 +8,7 @@ import standingPlaceholder from '../images/placeholderS.png'
 import layingPlaceholder from '../images/placeholderL.png'
 import { Review } from '../components/MovieItem/Review'
 import { WatchlistButtonExtended } from '../components/MovieItem/WatchlistButtonExtended'
+import { LoadingAnimation } from '../components/Loadinganimation/LoadingAnimation'
 
 export const MovieItem = ({ API_KEY, loggedIn }) => {
 
@@ -81,9 +82,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
   if (!movie || loading) {
     return (
-      <div>
-        loading
-      </div>
+        < LoadingAnimation />
     )
   } else {
     return (

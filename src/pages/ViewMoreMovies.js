@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { WatchlistButton } from '../components/WatchlistButton'
 import { Pagination } from '../components/Pagination'
 import { capitalizeFirstLetter } from '../utils/StringUtils'
+import { LoadingAnimation } from '../components/Loadinganimation/LoadingAnimation'
 
 export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, loggedIn }) => {
 
@@ -10,6 +11,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
   const [movies, setMovies] = useState([])
   const [page, setPage] = useState(1)
   const [allPages, setAllPages] = useState()
+  const [loading, setLoading] = useState(false)
 
   let URL;
 
@@ -41,58 +43,66 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
   }
 
   useEffect(() => {
+    setLoading(true)
     fetch(URL)
       .then(res => res.json())
       .then(res => {
         setAllPages(res.total_pages)
         setMovies(res.results)
+        setLoading(false)
       })
   }, [URL])
 
-  return (
-    <section>
-      <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
-      <div className="movie-wrapper-container">
-        {movies.map(item => {
+  if (loading) {
+    return (
+        < LoadingAnimation />
+    )
+  } else {
+    return (
+      <section>
+        <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
+        <div className="movie-wrapper-container">
+          {movies.map(item => {
 
-          let src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+            let src = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
 
-          if (item.poster_path == null || item.poster_path === undefined) {
-            src = moviePlaceholder
-          }
-          return (
-            <div className="movie-wrapper" key={item.id}>
-              <Link className="movie-link" to={`/movie/${item.id}`}>
-                <img
-                  className="movie-image"
-                  src={src}>
-                </img>
+            if (item.poster_path == null || item.poster_path === undefined) {
+              src = moviePlaceholder
+            }
+            return (
+              <div className="movie-wrapper" key={item.id}>
+                <Link className="movie-link" to={`/movie/${item.id}`}>
+                  <img
+                    className="movie-image"
+                    src={src}>
+                  </img>
 
-                <div className='movie-details'>
+                  <div className='movie-details'>
 
-                  {loggedIn &&
-                    < WatchlistButton item={item} />
-                  }
+                    {loggedIn &&
+                      < WatchlistButton item={item} />
+                    }
 
-                  <h5>
-                    {item.title}
-                  </h5>
+                    <h5>
+                      {item.title}
+                    </h5>
 
-                  <p>
-                    Release {item.release_date}
-                  </p>
+                    <p>
+                      Release {item.release_date}
+                    </p>
 
-                </div>
-              </Link>
-            </div>
-          )
-        })}
+                  </div>
+                </Link>
+              </div>
+            )
+          })}
 
-        < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL} />
+          < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL} />
 
-      </div>
+        </div>
 
-    </section>
+      </section>
 
-  )
+    )
+  }
 }
