@@ -80,7 +80,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
       })
   }, [URL_MOVIE])
 
-  if (!movie || loading) {
+  if (loading) {
     return (
         < LoadingAnimation />
     )

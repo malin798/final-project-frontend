@@ -63,19 +63,14 @@ export const Searchbar = ({ API_KEY }) => {
       <select
         onChange={(event) => { setOptionValue(event.target.value); setVisible(false) }}
       >
-
         <option>
         </option>
 
-        <option
-          value="title"
-        >
+        <option value="title">
           Title
         </option>
 
-        <option
-          value="actor"
-        >
+        <option value="actor">
           Actor
         </option>
 
