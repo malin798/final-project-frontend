@@ -1,10 +1,7 @@
 @import './mixin-var.scss';
 
-.movie-details {
+.watchlistbuttonextended {
   button {
-    position: absolute;
-    top: 7px;
-    right: -11px;
     text-transform: uppercase;
     font-family: Roboto;
     font-weight: 600;
@@ -12,11 +9,10 @@
     border-radius: 2px;
     border: none;
     color: white;
-    padding: 2px 6px;
+    padding: 3px 8px;
     letter-spacing: 0.5px;
     font-size: 11px;
     cursor: pointer;
-
 
     &.added {
       background-color: $accent-orange;
@@ -25,7 +21,7 @@
 
   .added-button {
     height: 9px;
-    width: 7px;
-    padding-left: -3px;
+    width: 8px;
+
   }
 }

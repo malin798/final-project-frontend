@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout, replaceWatchlist, removeItem } from '../components/reducers/user'
 import { capitalizeFirstLetter } from '../utils/StringUtils'
 import { Link } from 'react-router-dom'
+import layingPlaceholder from '../images/placeholderL.png'
 
 export const Profile = ({ loggedIn, setLoggedIn }) => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
   const [list, setList] = useState([])
+  //const [productionCountry, setProductionCountry] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:8080/users/${userId}/watchlist`, {
@@ -20,8 +22,10 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     })
       .then(res => res.json())
       .then(json => {
-        dispatch(replaceWatchlist(json.watchlist))
-        setList(json.watchlist)
+        const sortedList = json.watchlist.reverse()
+        dispatch(replaceWatchlist(sortedList))
+        setList(sortedList)
+        //setProductionCountry(json.production_countries)
       })
   }, [])
 
@@ -58,21 +62,30 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
               <Link className="movie-link" to={`/movie/${item.showId}`}>
                 <section className="watch-item">
 
-                  <img className="movie-image"
-                    draggable={false}
-                    alt={item.title}
-                    src={`https://image.tmdb.org/t/p/w342/${item.poster}`}
-                  >
-                  </img>
+                  {item.poster === undefined || item.poster === null ?
+
+                    <img className="movie-image"
+                      alt={item.title}
+                      src={layingPlaceholder}
+                    >
+                    </img>
+                    :
+                    <img className="movie-image"
+                      alt={item.title}
+                      src={`https://image.tmdb.org/t/p/w342/${item.poster}`}
+                    >
+                    </img>
+                  }
                   <div className="right-container">{item.title}
-                    <p className="year">{item.year}</p>
+                    <p className="year">{item.year.slice(0, 4)}</p>
+
                     <p className="overview">{item.overview}<span>...</span></p>
-                    <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button>
+
                   </div>
 
                 </section>
               </Link>
-            🍿
+              <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button> 🍿
             </section>
 
           ))
@@ -87,4 +100,21 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     )
   }
 }
+/*<h4>Production country:</h4>
+                    <div>
+                      {productionCountry.map((country, index) => (
+                        <>
+                          {country.name}
+                          {productionCountry.length - 1 > index && ", "}
+                        </>
+                      ))}
+                    </div>*/
 
+
+/*  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+*/

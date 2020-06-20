@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWatchlist } from '../components/reducers/user'
+import checkmark from '../images/white_checkmark.png'
 
 export const WatchlistButton = ({ item }) => {
 
@@ -20,7 +21,7 @@ export const WatchlistButton = ({ item }) => {
     })
   }, [])
 
-  const handleClick = async (event, title, id, poster, overview, year) => {
+  const handleClick = async (event, title, id, poster, overview, year, country) => {
     event.preventDefault()
     dispatch(addToWatchlist(title, id, poster, overview, year))
     setAdded(true)
@@ -36,7 +37,8 @@ export const WatchlistButton = ({ item }) => {
         "showId": id,
         "poster": poster,
         "overview": overview,
-        "year": year
+        "year": year,
+        "country": country
       })
     })
 
@@ -50,9 +52,9 @@ export const WatchlistButton = ({ item }) => {
         <button
           onMouseOver={() => setActive(true)}
           onMouseOut={() => setActive(false)}
-          onClick={(event) => handleClick(event, item.title, item.id, item.backdrop_path, item.overview, item.release_date)}
+          onClick={(event) => handleClick(event, item.title, item.id, item.backdrop_path, item.overview, item.release_date, item.production_countries)}
         >
-          + {active && "Add to watchlist"}
+          {active && "Add to watchlist"} +
         </button>
       }
 
@@ -63,7 +65,10 @@ export const WatchlistButton = ({ item }) => {
           onMouseOut={() => setActive(false)}
         // onClick={(event) => handleClick(event, item.title, item.id)}
         >
-          ✔️ {active && "Added to watchlist"}
+
+          {active && "Added to watchlist "}
+          <img className="added-button" src={checkmark} />
+
         </button>
       }
     </>

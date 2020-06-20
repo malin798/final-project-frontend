@@ -13,24 +13,24 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
 
   let URL;
 
-  switch(type) {
-    case "genres": 
+  switch (type) {
+    case "genres":
       const genreId = params.genreId
       const genreName = params.genreName
       fetchtitle = genreName
       URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
       break;
-    case "now-playing": 
-    URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}`
+    case "now-playing":
+      URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}`
       break;
-    case "upcoming": 
-    URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`
+    case "upcoming":
+      URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`
       break;
     case "top-rated":
-      URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}` 
+      URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
       break;
-    case "trending-week": 
-    URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${page}`
+    case "trending-week":
+      URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${page}`
       break;
     case "trending-today":
       URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${page}`
@@ -51,7 +51,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
 
   return (
     <section>
-      <h3>{capitalizeFirstLetter(fetchtitle)}</h3>
+      <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
       <div className="movie-wrapper-container">
         {movies.map(item => {
 
@@ -63,13 +63,13 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
           return (
             <div className="movie-wrapper" key={item.id}>
               <Link className="movie-link" to={`/movie/${item.id}`}>
-                <img 
+                <img
                   className="movie-image"
                   src={src}>
                 </img>
 
                 <div className='movie-details'>
-                
+
                   {loggedIn &&
                     < WatchlistButton item={item} />
                   }
