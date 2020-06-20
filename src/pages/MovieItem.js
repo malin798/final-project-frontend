@@ -106,7 +106,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
           <section className="movie-overview">
             <h2>
-              {movie.title} <span className="thin">&#40;{movie.release_date}&#41;</span>
+              {movie.title} {movie.release_date && <span className="thin">&#40;{movie.release_date}&#41;</span>}
             </h2>
 
             {loggedIn &&
