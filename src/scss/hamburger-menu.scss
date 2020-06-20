@@ -55,6 +55,14 @@
     margin-bottom: 12px;
     transition: height 0.4s ease-in-out;
   }
+
+  a {
+    &.active {
+      p {
+        color: white;
+      }
+    }
+  }
 }
 
 .hamburger-menu {
@@ -101,6 +109,14 @@
     }
   }
 
+  a {
+    &.active {
+      li {
+        color: #1eb3b1;
+      }
+    }
+  }
+  
   li {
     padding: 10px 0;
     display: flex;
@@ -126,6 +142,7 @@
   }
 
   .genres {
+    margin-bottom: -3px;
 
     .right-arrow-container {
       margin-left: 8px;
@@ -140,8 +157,6 @@
         }
       }
     }
-
-    margin-bottom: -3px;
   }
 
   button {
