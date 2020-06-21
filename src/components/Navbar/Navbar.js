@@ -24,9 +24,9 @@ export const Navbar = ({ loggedIn, API_KEY }) => {
         <div className="navright">
 
 
-          < Searchbar API_KEY={API_KEY} />
+          < Searchbar API_KEY={API_KEY} className="desktop-navbar-menu" />
 
-          < RandomMovieGenerator API_KEY={API_KEY} className="desktop-navbar-menu"/>
+          < RandomMovieGenerator API_KEY={API_KEY} className="desktop-navbar-menu" />
 
           {!loggedIn &&
             <Link className="signin-container" to="/signin">

@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
   height: 70px;
   position: fixed;
   width: 100%;
@@ -12,6 +12,12 @@
   z-index: 2000;
   border-bottom: 5px solid rgb(0, 24, 22);
   background-color: black;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (min-width: 1024px) {}
 
   .navleft {
     display: flex;
@@ -21,11 +27,9 @@
 
   .navright {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
     margin-bottom: 11px;
     width: 60%;
+    justify-content: flex-end;
   }
 
   .logo {
@@ -38,10 +42,15 @@
   h3 {
     font-family: Monoton;
     font-weight: 400;
-    font-size: 28px;
+    font-size: 25px;
     color: rgb(86, 242, 219);
     text-decoration-color: black;
-    margin-bottom: 0px;
+    margin-bottom: 2px;
+
+    @media (min-width: 1024px) {
+      font-size: 28px;
+      margin-bottom: 0px;
+    }
   }
 
   h3 .find {
@@ -53,7 +62,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    width: 80px;
+    width: 75px;
     align-items: center;
   }
 
@@ -62,7 +71,12 @@
     text-decoration: none;
     font-family: arial;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
+  }
+
+  .signin {
+    margin-right: 4px;
+    margin-bottom: 2px;
   }
 
   .signin:hover {
@@ -78,7 +92,7 @@
     border-radius: 60%;
     width: 20px;
     height: 18px;
-    margin-left: 5px;
+    margin-left: 1px;
     cursor: pointer;
     fill: rgb(86, 242, 219);
     display: flex;

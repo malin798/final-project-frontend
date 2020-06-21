@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink  } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import { RightArrow } from '../RightArrow'
 import { RandomMovieGenerator } from '../RandomMovieGenerator'
+import { Searchbar } from './Searchbar'
 
 export const HamburgerMenu = ({ API_KEY }) => {
 
@@ -58,6 +60,8 @@ export const HamburgerMenu = ({ API_KEY }) => {
         <NavLink exact to="/now-playing"><li>Now playing</li></NavLink>
 
         < RandomMovieGenerator API_KEY={API_KEY} className="mobile-hamburger-menu" />
+        < Searchbar API_KEY={API_KEY} className="mobile-hamburger-menu" />
+
       </ul>
 
     </>

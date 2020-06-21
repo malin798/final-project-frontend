@@ -5,7 +5,7 @@ import { setSearchResults, setSearchResultsAllPages } from '../reducers/user'
 import { RightArrow } from '../RightArrow'
 import { SearchSVG } from './SearchSVG'
 
-export const Searchbar = ({ API_KEY }) => {
+export const Searchbar = ({ API_KEY, className }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const results = useSelector((store) => store.user.searchResults).slice(0, 5)
@@ -24,7 +24,7 @@ export const Searchbar = ({ API_KEY }) => {
         URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
         break;
     }
-  
+
     if (searchValue.length < 3) {
       setVisible(false)
       return
@@ -59,7 +59,7 @@ export const Searchbar = ({ API_KEY }) => {
   }
 
   return (
-    <section className="searchbar-and-filter">
+    <section className={`searchbar-and-filter ${className ? className : ""}`}>
       <select
         onChange={(event) => { setOptionValue(event.target.value); setVisible(false) }}
       >
@@ -77,7 +77,7 @@ export const Searchbar = ({ API_KEY }) => {
       </select>
       <input
         value={searchValue}
-        onChange={(event) => {setSearchValue(event.target.value); handleSearch(event.target.value)}}
+        onChange={(event) => { setSearchValue(event.target.value); handleSearch(event.target.value) }}
         type="text"
       >
       </input>

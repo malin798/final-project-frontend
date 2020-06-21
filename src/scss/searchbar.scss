@@ -102,4 +102,20 @@
     font-size: 12px;
     padding-top: 0px;
   }
+
+  &.mobile-hamburger-menu {
+    margin-top: 25px;
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  }
+
+  &.desktop-navbar-menu {
+    margin-right: 30px;
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
 }
