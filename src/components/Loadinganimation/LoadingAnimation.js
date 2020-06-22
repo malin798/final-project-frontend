@@ -15,12 +15,11 @@ export const LoadingAnimation = () => {
 
   return (
     <section className="loading-animation">
-      <div>
+      <div className="lottie">
         <Lottie 
             options={defaultOptions}
             height="100%"
             width="100%"
-            className="lottie"
           />
       </div>
     </section>
