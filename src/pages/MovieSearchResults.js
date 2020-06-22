@@ -23,11 +23,11 @@ export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
   useEffect(() => {
     setLoading(true)
     fetch(URL)
-    .then(res => res.json())
-    .then(res => {
-      setMovies(res.results)
-      setLoading(false)
-    })
+      .then(res => res.json())
+      .then(res => {
+        setMovies(res.results)
+        setLoading(false)
+      })
   }, [URL])
 
   if (loading) {
@@ -50,7 +50,7 @@ export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
             return (
               <div className="movie-wrapper" key={item.id}>
                 <Link className="movie-link" to={`/movie/${item.id}`}>
-                  <img 
+                  <img
                     className="movie-image"
                     src={src}>
                   </img>

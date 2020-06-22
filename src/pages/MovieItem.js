@@ -88,9 +88,9 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
     return (
 
       <section className="movie-item">
-         <h2>
-            {movie.title} {movie.release_date && <span className="thin">&#40;{movie.release_date}&#41;</span>}
-          </h2>
+        <h2>
+          {movie.title} {movie.release_date && <span className="thin">&#40;{movie.release_date}&#41;</span>}
+        </h2>
         <section className="movie-overview-container">
           <section className="movie-image-container">
 
@@ -107,87 +107,87 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             }
 
           </section>
-        <section className="movie-overview">
+          <section className="movie-overview">
 
-        {trailer.map(item => {
-          if (item.site === "YouTube") {
-            return (
-              <iframe
-                className="trailer"
-                width="560" height="315"
-                src={`https://www.youtube.com/embed/${item.key}`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              >
-              </iframe>
-            )
-          }
-        })[0]}
-          <section>
+            {trailer.map(item => {
+              if (item.site === "YouTube") {
+                return (
+                  <iframe
+                    className="trailer"
+                    width="560" height="315"
+                    src={`https://www.youtube.com/embed/${item.key}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  >
+                  </iframe>
+                )
+              }
+            })[0]}
+            <section>
 
-            {loggedIn &&
-              < WatchlistButtonExtended item={movie} />
-            }
-            <h4 className="imdb-title-container" >Movie overview: < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} /></h4>
+              {loggedIn &&
+                < WatchlistButtonExtended item={movie} />
+              }
+              <h4 className="imdb-title-container" >Movie overview: < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} /></h4>
 
-            <p>
-              {movie.overview}
-            </p>
+              <p>
+                {movie.overview}
+              </p>
 
-            <h4>Director:</h4>
-            <p>
-              {directors.map((item, index) => (
-                <>
-                  {item}
-                  {directors.length - 1 > index && ", "}
-                </>
-              ))}
-            </p>
+              <h4>Director:</h4>
+              <p>
+                {directors.map((item, index) => (
+                  <>
+                    {item}
+                    {directors.length - 1 > index && ", "}
+                  </>
+                ))}
+              </p>
 
-            <h4>Produced by:</h4>
-            <p>
-              {productionCompany.map((company, index) => (
-                <>
-                  {company.name}
-                  {productionCompany.length - 1 > index && ", "}
-                </>
-              ))}
-            </p>
+              <h4>Produced by:</h4>
+              <p>
+                {productionCompany.map((company, index) => (
+                  <>
+                    {company.name}
+                    {productionCompany.length - 1 > index && ", "}
+                  </>
+                ))}
+              </p>
 
-            <h4>Production country:</h4>
-            <p>
-              {productionCountry.map((country, index) => (
-                <>
-                  {country.name}
-                  {productionCountry.length - 1 > index && ", "}
-                </>
-              ))}
-            </p>
+              <h4>Production country:</h4>
+              <p>
+                {productionCountry.map((country, index) => (
+                  <>
+                    {country.name}
+                    {productionCountry.length - 1 > index && ", "}
+                  </>
+                ))}
+              </p>
 
-            <h4>Genre:</h4>
-            <div className="movie-genre">
-              {genre.map(item => (
-                <>
-                  <Link to={`/genres/${item.name}/${item.id}`}>
-                    {item.name}
-                  </Link>
-                </>
-              ))}
-            </div>
+              <h4>Genre:</h4>
+              <div className="movie-genre">
+                {genre.map(item => (
+                  <>
+                    <Link to={`/genres/${item.name}/${item.id}`}>
+                      {item.name}
+                    </Link>
+                  </>
+                ))}
+              </div>
+            </section>
+
           </section>
-
-        </section>
         </section>
 
         {reviews.length > 0 &&
-        <section className="review-container">
-          <h4> Reviews:</h4>
-          <section className="review-all-items">
-            {reviews.slice(0, 4).map(review => (
-              < Review review={review} />
-            ))}
+          <section className="review-container">
+            <h4> Reviews:</h4>
+            <section className="review-all-items">
+              {reviews.slice(0, 4).map(review => (
+                < Review review={review} />
+              ))}
+            </section>
           </section>
-        </section>
         }
         <div className="movie-slider-title-container">
           <h3 className="image-slider-title-no-link">Cast: </h3>
