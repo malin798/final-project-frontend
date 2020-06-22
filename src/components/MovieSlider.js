@@ -56,7 +56,6 @@ export const MovieSlider = ({ fetchtitle, titlelink, fetchlink, placeholder, ima
 
                 <div className='movie-details'>
 
-
                   {loggedIn &&
                     < WatchlistButton item={movie} />
                   }

@@ -16,6 +16,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
   const [actor, setActor] = useState()
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(false)
+  console.log(actor)
 
   useEffect(() => {
     setLoading(true)
@@ -42,14 +43,19 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
       <div className="actor-page-container">
         <section className="actor-top-container">
 
-          <img src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}>
+          <img src={`https://image.tmdb.org/t/p/w300/${actor.profile_path}`}>
           </img>
           <div className="actor-info-container">
             <h2>{actor.name}</h2>
-            <h4>Born:</h4> 
-            <p>
-              {actor.birthday}, {actor.place_of_birth}
-            </p>
+            
+            {actor.birthday && 
+              <>
+                <h4>Born:</h4> 
+                <p>
+                  {actor.birthday}, {actor.place_of_birth}
+                </p>
+              </>
+            }
 
             {actor.biography &&
               <section>
@@ -60,9 +66,8 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
           </div>
         </section>
 
-
         {images && images.length > 1 &&
-          <div className="movie-slider-title-container">
+          <div className="movie-slider-title-container no-hover-effect">
             <h3 className="image-slider-title-no-link">Images: </h3>
             <ImageSlider>
               {images.map(image => {

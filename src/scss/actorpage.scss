@@ -1,3 +1,5 @@
+@import './mixin-var.scss';
+
 .actor-page-container {
   @media (min-width: 1024px) {
     display: flex;
@@ -13,10 +15,8 @@
   }
 
   h4 {
-    font-size: 14px;
-    margin: 5px 0;
-    color: #008c83;
-  }
+    @include details-title;
+   }
 
   img {
     width: 40%;

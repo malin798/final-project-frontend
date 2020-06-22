@@ -17,6 +17,7 @@
 
   .imdb-title-container {
     display: flex;
+    align-items: center;
   }
 
   .movie-overview-container {
@@ -45,13 +46,11 @@
         padding: 20px 20px;
       }
   
-
       @media (min-width: 1500px) {
         width: 45%;
         padding: 0px 80px;
         flex-direction: column;
       }
-
     }
   }
 
@@ -60,11 +59,7 @@
   }
 
   h4 {
-    font-size: 14px;
-    margin-right: 5px;
-    font-family: Roboto;
-    margin-top: 10px;
-    color: $accent-color-dark;
+   @include details-title;
   }
 
   .cast {
