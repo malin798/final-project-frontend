@@ -50,9 +50,15 @@ export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
             return (
               <div className="movie-wrapper" key={item.id}>
                 <Link className="movie-link" to={`/movie/${item.id}`}>
+<<<<<<< HEAD
                   <img 
                     className="movie-image"
                     src={src}>
+=======
+                  <img src={src}
+                    className="movie-image"
+                  >
+>>>>>>> styling
                   </img>
                   <div className='movie-details'>
 
@@ -73,7 +79,7 @@ export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
             )
           })}
 
-        < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL}/>
+          < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL} />
 
         </div>
 

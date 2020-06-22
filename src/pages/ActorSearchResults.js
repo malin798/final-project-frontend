@@ -20,11 +20,11 @@ export const ActorSearchResults = ({ API_KEY }) => {
   useEffect(() => {
     setLoading(true)
     fetch(URL)
-    .then(res => res.json())
-    .then(res => {
-      setActors(res.results)
-      setLoading(false)
-    })
+      .then(res => res.json())
+      .then(res => {
+        setActors(res.results)
+        setLoading(false)
+      })
   }, [URL])
 
   if (loading) {
@@ -41,17 +41,19 @@ export const ActorSearchResults = ({ API_KEY }) => {
 
             let src = `https://image.tmdb.org/t/p/w500/${item.profile_path}`
 
-            if (item.profile_path == null || item.profile_path === undefined ) {
+            if (item.profile_path == null || item.profile_path === undefined) {
               src = standingPlaceholder
-            } 
+            }
             return (
               <div className="movie-wrapper" key={item.id}>
                 <Link className="movie-link" to={`/actor/${item.id}`}>
-                  <img 
+                  <img
                     className="movie-image"
+
                     src={src}>
+
                   </img>
-                  <div className='movie-details'> 
+                  <div className='movie-details'>
 
                     <h5>
                       {item.name}
@@ -66,7 +68,7 @@ export const ActorSearchResults = ({ API_KEY }) => {
             )
           })}
 
-        < Pagination page={page} setPage={setPage} allPages={allPages} movies={actors} setMovies={setActors} URL={URL}/>
+          < Pagination page={page} setPage={setPage} allPages={allPages} movies={actors} setMovies={setActors} URL={URL} />
 
         </div>
       </section>

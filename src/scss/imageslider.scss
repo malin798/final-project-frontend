@@ -1,6 +1,15 @@
 .movie-slider-title-container {
   color: white;
 
+  &.no-hover-effect {
+    .react-multi-carousel-item {
+      &:hover .movie-image {
+        opacity: 1;
+      }
+    }
+  }
+
+
   .image-slider-title-no-link {
     font-size: 16px;
     margin-left: 2px;
@@ -22,7 +31,8 @@
     &:hover+.right-arrow-container {
       margin-left: 8px;
     }
-}
+  }
+
   a {
     text-decoration: none;
     display: flex;
