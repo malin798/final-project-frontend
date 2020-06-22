@@ -89,8 +89,8 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
 
       <section className="movie-item">
          <h2>
-              {movie.title} {movie.release_date && <span className="thin">&#40;{movie.release_date}&#41;</span>}
-            </h2>
+            {movie.title} {movie.release_date && <span className="thin">&#40;{movie.release_date}&#41;</span>}
+          </h2>
         <section className="movie-overview-container">
           <section className="movie-image-container">
 
@@ -130,41 +130,41 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             }
             <h4 >Movie overview:</h4>
 
-            <div>
+            <p>
               {movie.overview}
-            </div>
+            </p>
 
             < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
 
             <h4>Director:</h4>
-            <div>
+            <p>
               {directors.map((item, index) => (
                 <>
                   {item}
                   {directors.length - 1 > index && ", "}
                 </>
               ))}
-            </div>
+            </p>
 
             <h4>Produced by:</h4>
-            <div>
+            <p>
               {productionCompany.map((company, index) => (
                 <>
                   {company.name}
                   {productionCompany.length - 1 > index && ", "}
                 </>
               ))}
-            </div>
+            </p>
 
             <h4>Production country:</h4>
-            <div>
+            <p>
               {productionCountry.map((country, index) => (
                 <>
                   {country.name}
                   {productionCountry.length - 1 > index && ", "}
                 </>
               ))}
-            </div>
+            </p>
 
             <h4>Genre:</h4>
             <div className="movie-genre">

@@ -6,7 +6,6 @@
   }
 
   h2 {
-    font-family: Roboto;
     font-size: 20px;
     font-weight: 600;
     margin-top: 0px;
@@ -37,37 +36,5 @@
     @media (max-width: 1024px) {
       margin-top: 15px;
     }
-  }
-
-  h3 {
-    font-size: 14px;
-    margin-right: 5px;
-    font-family: Roboto;
-    margin-bottom: 2px;
-    color: $accent-color-dark;
-  }
-
-  div {
-    font-size: 13px;
-    font-family: Roboto;
-  }
-
-  p {
-    font-size: 13px;
-    font-family: Roboto;
-    line-height: 146x;
-  }
-
-  .svgarrow {
-    margin-top: 3px;
-  }
-
-  h4 {
-    font-size: 16px;
-    margin-bottom: 1px;
-  }
-
-  .images-title {
-    margin-bottom: 1px;
   }
 }
