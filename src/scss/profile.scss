@@ -43,6 +43,7 @@
     margin-top: 20px;
     width: 100%;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .emoji {
@@ -72,6 +73,7 @@
 
   .movie-link {
     text-decoration: none;
+    display: flex;
   }
 
   a {
@@ -136,8 +138,6 @@
   }
 
   .movie-image {
-    display: flex;
-    flex-direction: column;
     border: solid 4px rgb(0, 0, 0);
     background-color: rgb(0, 0, 0);
     box-shadow: 3px 4px 4px rgb(130, 155, 160);

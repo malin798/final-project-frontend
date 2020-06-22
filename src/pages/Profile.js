@@ -52,8 +52,9 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
 
             {list.map(item => (
               <>
-                <Link className="movie-link" to={`/movie/${item.showId}`}>
-                  <section className="watch-item" key={item.showId}>
+                <section className="watch-item" key={item.showId}>
+
+                  <Link className="movie-link" to={`/movie/${item.showId}`}>
 
                     {item.poster === undefined || item.poster === null ?
 
@@ -79,9 +80,11 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
                       <p className="overview">{item.overview}</p>
 
                     </div>
-                  </section>
-                </Link>
-                <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button> 🍿
+                  </Link>
+
+                  <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button> 🍿
+                </section>
+
               </>
             ))}
           </section>
