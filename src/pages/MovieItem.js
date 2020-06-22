@@ -128,13 +128,11 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             {loggedIn &&
               < WatchlistButtonExtended item={movie} />
             }
-            <h4 >Movie overview:</h4>
+            <h4 className="imdb-title-container" >Movie overview: < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} /></h4>
 
             <p>
               {movie.overview}
             </p>
-
-            < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} />
 
             <h4>Director:</h4>
             <p>
@@ -209,7 +207,6 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
                   <Link to={`/actor/${actor.id}`}>
                     <img
                       className="movie-image"
-                      // style={{height: "470px"}}
                       src={src}
                     >
                     </img>
