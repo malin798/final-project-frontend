@@ -76,7 +76,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
       .then(res => res.json())
       .then(json => {
         setTrailer(json.results)
-        setLoading(false)
+        // setLoading(false)
       })
   }, [URL_MOVIE])
 
