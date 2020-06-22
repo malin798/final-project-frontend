@@ -48,39 +48,44 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
           </div>
           <h6>Here is your watchlist. Which are your favourite movies? Keep track of the movies you want to see but haven't seen yet! </h6>
 
-          {list.map(item => (
-            <section className="watch-list-container" key={item.showId}>
-              <Link className="movie-link" to={`/movie/${item.showId}`}>
-                <section className="watch-item">
+          <section className="watchlist-container">
 
-                  {item.poster === undefined || item.poster === null ?
+            {list.map(item => (
+              <>
+                <Link className="movie-link" to={`/movie/${item.showId}`}>
+                  <section className="watch-item" key={item.showId}>
 
-                    <img className="movie-image"
-                      alt={item.title}
-                      src={layingPlaceholder}
-                    >
-                    </img>
-                    :
-                    <img className="movie-image"
-                      alt={item.title}
-                      src={`https://image.tmdb.org/t/p/w342/${item.poster}`}
-                    >
-                    </img>
-                  }
-                  <div className="right-container">
-                    <div className="movie-title">{item.title}
-                      <p className="year">{item.year.slice(0, 4)}</p>
+                    {item.poster === undefined || item.poster === null ?
+
+                      <img className="movie-image"
+                        alt={item.title}
+                        src={layingPlaceholder}
+                      >
+                      </img>
+                      :
+                      <img className="movie-image"
+                        alt={item.title}
+                        src={`https://image.tmdb.org/t/p/w342/${item.poster}`}
+                      >
+                      </img>
+                    }
+                    <div className="right-container">
+                      <h5 className="movie-title">
+                        {item.title}
+                        <span className="year">
+                          &#40;{item.year.slice(0, 4)}&#41;
+                        </span>
+                      </h5>
+                      <p className="overview">{item.overview}</p>
+
                     </div>
-                    <p className="overview">{item.overview}<span>...</span></p>
-
-                  </div>
-                </section>
-              </Link>
-              <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button> 🍿
-            </section>
-          ))
-          }
-          < div  >
+                  </section>
+                </Link>
+                <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button> 🍿
+              </>
+            ))}
+          </section>
+          <div >
             <button className="logout" onClick={() => handleLogOut()}>LOG OUT</button>
           </div>
         </section >
@@ -88,21 +93,4 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     )
   }
 }
-/*<h4>Production country:</h4>
-                    <div>
-                      {productionCountry.map((country, index) => (
-                        <>
-                          {country.name}
-                          {productionCountry.length - 1 > index && ", "}
-                        </>
-                      ))}
-                    </div>*/
 
-
-/*  "production_countries": [
-    {
-      "iso_3166_1": "US",
-      "name": "United States of America"
-    }
-  ],
-*/
