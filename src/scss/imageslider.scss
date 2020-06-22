@@ -1,5 +1,14 @@
 .movie-slider-title-container {
 
+  &.no-hover-effect {
+    .react-multi-carousel-item {
+      &:hover .movie-image {
+        opacity: 1;
+      }
+    }
+  }
+
+
   .image-slider-title-no-link {
     font-size: 16px;
     margin-left: 2px;

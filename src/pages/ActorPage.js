@@ -46,7 +46,7 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
           </img>
           <div className="actor-info-container">
             <h2>{actor.name}</h2>
-            <h4>Born:</h4> 
+            <h4>Born:</h4>
             <p>
               {actor.birthday}, {actor.place_of_birth}
             </p>
@@ -62,9 +62,9 @@ export const ActorPage = ({ API_KEY, loggedIn }) => {
 
 
         {images && images.length > 1 &&
-          <div className="movie-slider-title-container">
+          <div className="movie-slider-title-container no-hover-effect">
             <h3 className="image-slider-title-no-link">Images: </h3>
-            <ImageSlider>
+            <ImageSlider >
               {images.map(image => {
                 return (
                   <div className="movie-wrapper">
