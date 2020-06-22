@@ -191,43 +191,44 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           </section>
         </section>
         }
+        <div className="movie-slider-title-container">
+          <h3 className="image-slider-title-no-link">Cast: </h3>
 
-        <h4 className="cast">Cast: </h4>
+          <ImageSlider>
 
-        <ImageSlider>
+            {cast.slice(0, 10).map(actor => {
 
-          {cast.slice(0, 10).map(actor => {
+              let src = `https://image.tmdb.org/t/p/w300/${actor.profile_path}`
 
-            let src = `https://image.tmdb.org/t/p/w300/${actor.profile_path}`
+              if (actor.profile_path == null || actor.profile_path === undefined) {
+                src = standingPlaceholder
+              }
 
-            if (actor.profile_path == null || actor.profile_path === undefined) {
-              src = standingPlaceholder
-            }
-
-            return (
-              <div className="movie-wrapper">
-                <Link to={`/actor/${actor.id}`}>
-                  <img
-                    className="movie-image"
-                    // style={{height: "470px"}}
-                    src={src}
-                  >
-                  </img>
-                  <div className="movie-details">
-                    <div>
-                      <h5>
-                        {actor.name}
-                      </h5>
-                      <p>
-                        as {actor.character}
-                      </p>
+              return (
+                <div className="movie-wrapper">
+                  <Link to={`/actor/${actor.id}`}>
+                    <img
+                      className="movie-image"
+                      // style={{height: "470px"}}
+                      src={src}
+                    >
+                    </img>
+                    <div className="movie-details">
+                      <div>
+                        <h5>
+                          {actor.name}
+                        </h5>
+                        <p>
+                          as {actor.character}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </div>
-            )
-          })}
-        </ImageSlider>
+                  </Link>
+                </div>
+              )
+            })}
+          </ImageSlider>
+        </div>
 
         < MovieSlider fetchtitle="Similar movies:" titlelink={`/similar-movies/${movie.id}`} fetchlink={URL_SIMILARMOVIES} placeholder={layingPlaceholder} loggedIn={loggedIn} />
 

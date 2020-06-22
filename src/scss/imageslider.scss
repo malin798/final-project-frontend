@@ -1,5 +1,12 @@
 .movie-slider-title-container {
 
+  .image-slider-title-no-link {
+    font-size: 16px;
+    margin-left: 2px;
+    margin-bottom: 8px;
+    color: white;
+  }
+  
   .image-slider-title {
     font-size: 16px;
     margin-left: 2px;
@@ -57,12 +64,6 @@
 
   .movie-link {
     text-decoration: none;
-  }
-
-  h5 {
-    font-size: 16px;
-    color: white;
-    margin-bottom: 0px;
   }
 
   p {

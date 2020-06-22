@@ -52,7 +52,6 @@
 
   &.visible {
     height: 400px;
-    margin-bottom: 12px;
     transition: height 0.4s ease-in-out;
   }
 
@@ -93,10 +92,9 @@
     color: #1eb3b1;
     font-size: 13px;
     font-weight: 400;
-    opacity: 1;
     padding-left: 15px;
     line-height: 8px;
-    margin-top: 4px;
+    margin: 11px 0;
     letter-spacing: 0.2px;
 
     &:hover {
