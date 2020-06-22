@@ -103,25 +103,24 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
               </img>
             }
 
-            {
-              trailer.map(item => {
-                if (item.site === "YouTube") {
-                  return (
-                    <iframe
-                      className="trailer"
-                      width="560" height="315"
-                      src={`https://www.youtube.com/embed/${item.key}`}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    >
-                    </iframe>
-                  )
-                }
-              })[0]
-            }
           </section>
+        <section className="movie-overview">
 
-          <section className="movie-overview">
+        {trailer.map(item => {
+          if (item.site === "YouTube") {
+            return (
+              <iframe
+                className="trailer"
+                width="560" height="315"
+                src={`https://www.youtube.com/embed/${item.key}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              >
+              </iframe>
+            )
+          }
+        })[0]}
+          <section>
             <h2>
               {movie.title} {movie.release_date && <span className="thin">&#40;{movie.release_date}&#41;</span>}
             </h2>
@@ -177,10 +176,10 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
                 </>
               ))}
             </div>
-
           </section>
-        </section>
 
+        </section>
+        </section>
 
         {reviews.length > 0 &&
         <>

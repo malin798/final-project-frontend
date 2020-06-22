@@ -28,28 +28,39 @@
     align-items: flex-start;
 
     @media (min-width: 1024px) {
-      padding: 0px 160px;
+      padding: 0 50px;
     }
 
     .movie-image-container {
 
       @media (min-width: 1024px) {
-        width: 60%;
+        width: 50%;
       }
     }
 
     .movie-overview {
+      display: flex;
+      flex-direction: column-reverse;
+      /* justify-content: center; */
+      /* align-items: center; */
+
+      @media (min-width: 668px) {
+        padding: 20px 20px;
+      }
+  
+
       @media (min-width: 1024px) {
         width: 40%;
-        padding-left: 16px;
+        padding: 0px 80px;
+        flex-direction: column;
       }
 
     }
   }
 
-  .trailer {
-    width: 100%;
-  }
+  // .trailer {
+  //   width: 100%;
+  // }
 
   .movie-overview-title {
     display: inline;
@@ -127,13 +138,17 @@
   }
 
   iframe {
+    width: 100%;
+    margin-top: 20px;
 
-    @media (max-width: 668px) {
-      width: 100%;
-    }
+    // @media (min-width: 668px) {
+    //   width: 100%;
+    // }
 
     @media (min-width: 1024px) {
-      width: 60%;
+      // width: 50%;
+      margin-top: 0px;
+      padding: 0 50px;
     }
   } 
 }
