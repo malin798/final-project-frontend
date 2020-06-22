@@ -1,12 +1,15 @@
 .imdbRatingPlugin {
+  width: fit-content;
+  display: inline-flex;
+  margin: 10px 0;
 
-  p {
-    font-size: 12px;
-    font-family: Roboto;
-    margin-bottom: 0px;
+  a {
+    margin-right: 5px;
   }
 
-  .imdb-logo {
-    margin-right: 18px;
+  p {
+    margin: 0;
+    display: inline;
+    font-size: 13px;
   }
 }

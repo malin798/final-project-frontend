@@ -77,22 +77,6 @@
     display: flex;
   }
 
-  .imdbRatingPlugin {
-    width: fit-content;
-    display: inline-flex;
-    align-items: flex-end;
-    margin: 10px 0;
-
-    a {
-      margin-right: 5px;
-    }
-
-    p {
-      display: inline;
-      font-size: 13px;
-    }
-  }
-
   .movie-genre {
     display: flex;
     flex-wrap: wrap;
