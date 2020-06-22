@@ -42,10 +42,10 @@
   h3 {
     font-family: Monoton;
     font-weight: 400;
-    font-size: 25px;
+    font-size: 24px;
     color: rgb(86, 242, 219);
     text-decoration-color: black;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 
     @media (min-width: 1024px) {
       font-size: 28px;
@@ -76,7 +76,12 @@
 
   .signin {
     margin-right: 4px;
-    margin-bottom: 2px;
+    display: none;
+    position: relative;
+
+    @media (min-width: 667px) {
+      display: block;
+    }
   }
 
   .signin:hover {
@@ -97,6 +102,12 @@
     fill: rgb(86, 242, 219);
     display: flex;
     align-items: center;
+    top: 34px;
+    right: 17px;
+
+    @media (max-width: 667px) {
+      position: absolute;
+    }
   }
 
   .right-arrow-container:hover {
