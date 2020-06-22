@@ -1,72 +1,55 @@
 @import './mixin-var.scss';
 
-.searchbar-and-filter {
-  display: flex;
+.searchbar-container {
   position: relative;
-  height: 20px;
-  margin-right: 24px;
+  width: 220px;
 
-  button {
-    background-color: $search-field-gray;
-    border: none;
-    border-radius: 0 1px 1px 0;
+  &.mobile-hamburger-menu {
+    margin-top: 25px;
+    width: 108px;
 
-    :focus {
-      outline: none;
+    @media (min-width: 668px) {
+      display: none;
     }
   }
 
-  .search-SVG {
-    height: 13px;
+  &.desktop-navbar-menu {
+    margin-right: 30px;
 
-    svg {
-      height: 13px;
+    @media (max-width: 668px) {
+      display: none;
     }
   }
 
-  select {
-    width: 20px;
-    border-radius: 1px 0 0 1px;
-    background-color: $search-field-gray;
-    border: none;
-    border-right: 1px solid rgb(133, 177, 174);
-  }
-
-  input {
-    @include colors(rgb(0, 0, 0), $search-field-gray);
-    border: none;
-    width: -webkit-fill-available;
-
-    &:focus {
-      outline: none;
-      border: 1px solid $accent-color;
-    }
-  }
-
-  a {
-    background-color: inherit;
+  .searchbar-and-filter {
     display: flex;
-    align-items: center;
-    padding: 4px;
-    width: 100%;
-    border-bottom: 1px solid white;
-
-    &:hover {
-      color: $accent-color;
+    height: 20px;
+  
+    select {
+      width: 20px;
+      border-radius: 1px 0 0 1px;
+      background-color: $search-field-gray;
+      border: none;
+      border-right: 1px solid rgb(133, 177, 174);
     }
-  }
-
-  .right-arrow-container {
-    display: inline;
-    margin-left: 4px;
-    width: 14px;
-    height: 14px;
-    margin-bottom: 11px;
-  }
-
-  .svgarrow {
-    fill: rgb(86, 242, 219);
-    margin-top: 7px;
+  
+    input {
+      @include colors(rgb(0, 0, 0), $search-field-gray);
+      border: none;
+      width: -webkit-fill-available;
+  
+      &:focus {
+        outline: none;
+        border: 1px solid $accent-color;
+      }
+    }
+  
+    .search-emoji {
+      background-color: $search-field-gray;
+      padding-right: 2px;
+      font-size: 12px;
+      padding-top: 1px;
+    }
   }
 
   .search-results {
@@ -76,46 +59,60 @@
     height: 0px;
     width: 0px;
     overflow: hidden;
-
+  
     &.visible {
       position: absolute;
       top: 20px;
       background-color: #3f3f3f;
       color: black;
       height: fit-content;
-      width: 100%;
+      width: 146px;
       z-index: 50;
 
+      @media (min-width: 668px) {
+        width: 220px;
+      }
+  
       button {
-        background-color: $search-field-gray;
+        @include colors(white, $accent-color-dark);
         width: fit-content;
+        border: none;
         border-radius: 5px;
         margin: 5px;
         padding: 3px 8px;
       }
     }
-  }
 
-  .search-emoji {
-    background-color: $search-field-gray;
-    padding-right: 7px;
-    font-size: 12px;
-    padding-top: 0px;
-  }
+    a {
+      background-color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 6px;
+      width: 100%;
+      border-bottom: 1px solid white;
+      font-size: 12px;
+  
+      &:hover {
+        color: $accent-color;
+      }
 
-  &.mobile-hamburger-menu {
-    margin-top: 25px;
+      .right-arrow-container {
+        display: inline;
+        position: unset;
+        margin-left: 4px;
+        width: 14px;
+        height: 14px;
 
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  }
-
-  &.desktop-navbar-menu {
-    margin-right: 30px;
-
-    @media (max-width: 1024px) {
-      display: none;
+        svg {
+          fill: rgb(86, 242, 219);
+          margin-top: 7px;
+          width: 14px;
+          height: 14px;
+        }
+      }
     }
   }
 }
+
+

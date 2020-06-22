@@ -5,7 +5,7 @@ export const Review = ({ review }) => {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    if (review.content.length > 2000) {
+    if (review.content.length > 1000) {
       setVisible(false)
     }
   }, [])
@@ -13,7 +13,7 @@ export const Review = ({ review }) => {
 
   return (
     <>
-      <section className="review-container">
+      <section className="review-item">
         <div className={`review ${visible ? "show" : "hide"}`}>
           {review.content}
         </div>
@@ -21,10 +21,10 @@ export const Review = ({ review }) => {
           <a
             className="show-more-less-link"
             onClick={() => setVisible(true)}>
-            Read more
+            Show more
           </a>
         }
-        {review.content.length > 2000 && visible &&
+        {review.content.length > 1000 && visible &&
           <a
             className="show-more-less-link"
             onClick={() => setVisible(false)}>

@@ -74,6 +74,7 @@
   padding-top: 90px;
   width: 230px;
   height: 100vh;
+  overflow-y: auto;
   list-style-type: none;
   background-color: black;
   box-shadow: 0 0 10px $search-field-gray;
@@ -146,6 +147,7 @@
 
     .right-arrow-container {
       margin-left: 8px;
+      position: unset;
 
       svg {
         height: 13px;

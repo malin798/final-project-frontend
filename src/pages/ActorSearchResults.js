@@ -47,7 +47,9 @@ export const ActorSearchResults = ({ API_KEY }) => {
             return (
               <div className="movie-wrapper" key={item.id}>
                 <Link className="movie-link" to={`/actor/${item.id}`}>
-                  <img src={src}>
+                  <img 
+                    className="movie-image"
+                    src={src}>
                   </img>
                   <div className='movie-details'> 
 

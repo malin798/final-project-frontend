@@ -21,10 +21,12 @@ export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
   const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchValue}&include_adult=false&page=${page}`
 
   useEffect(() => {
+    setLoading(true)
     fetch(URL)
     .then(res => res.json())
     .then(res => {
       setMovies(res.results)
+      setLoading(false)
     })
   }, [URL])
 
@@ -48,7 +50,9 @@ export const MovieSearchResults = ({ API_KEY, loggedIn }) => {
             return (
               <div className="movie-wrapper" key={item.id}>
                 <Link className="movie-link" to={`/movie/${item.id}`}>
-                  <img src={src}>
+                  <img 
+                    className="movie-image"
+                    src={src}>
                   </img>
                   <div className='movie-details'>
 

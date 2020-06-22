@@ -59,7 +59,8 @@ export const Searchbar = ({ API_KEY, className }) => {
   }
 
   return (
-    <section className={`searchbar-and-filter ${className ? className : ""}`}>
+    <section className={`searchbar-container ${className ? className : ""}`}>
+      <div className="searchbar-and-filter">
       <select
         onChange={(event) => { setOptionValue(event.target.value); setVisible(false) }}
       >
@@ -81,6 +82,8 @@ export const Searchbar = ({ API_KEY, className }) => {
         type="text"
       >
       </input>
+      <span className="search-emoji"> 🔍 </span>
+      </div>
       {optionValue === "title" ?
         <div className={`search-results ${visible ? "visible" : ""}`}>
           {results.map(item => {
@@ -106,7 +109,7 @@ export const Searchbar = ({ API_KEY, className }) => {
           <button onClick={(event) => handleClick(event)}>To all results</button>
         </div>
       }
-      <span className="search-emoji"> 🔍 </span>
+      
     </section>
 
 

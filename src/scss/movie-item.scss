@@ -135,42 +135,5 @@
     @media (min-width: 1024px) {
       width: 60%;
     }
-  }
-
-  .review-container {
-    margin-bottom: 20px;
-
-    @media (min-width: 1024px) {
-      padding-left: 150px;
-      padding-right: 150px;
-    }
-
-
-    .hide {
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 6;
-      -webkit-box-orient: vertical;
-    }
-
-    .author {
-      color: $accent-color;
-      display: block;
-      font-weight: bold;
-      margin-left: 15px;
-      margin-top: 10px;
-
-      span {
-        color: white;
-        font-size: 13px;
-        font-style: italic;
-        font-weight: lighter;
-      }
-    }
-
-    .show-more-less-link {
-      font-size: 14px;
-      text-decoration: underline;
-    }
-  }
+  } 
 }
