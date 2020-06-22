@@ -88,6 +88,9 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
     return (
 
       <section className="movie-item">
+         <h2>
+              {movie.title} {movie.release_date && <span className="thin">&#40;{movie.release_date}&#41;</span>}
+            </h2>
         <section className="movie-overview-container">
           <section className="movie-image-container">
 
@@ -121,9 +124,6 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
           }
         })[0]}
           <section>
-            <h2>
-              {movie.title} {movie.release_date && <span className="thin">&#40;{movie.release_date}&#41;</span>}
-            </h2>
 
             {loggedIn &&
               < WatchlistButtonExtended item={movie} />
@@ -182,14 +182,14 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
         </section>
 
         {reviews.length > 0 &&
-        <>
+        <section className="review-container">
           <h4> Reviews:</h4>
-          <section className="review-container">
+          <section className="review-all-items">
             {reviews.slice(0, 4).map(review => (
               < Review review={review} />
             ))}
           </section>
-        </>
+        </section>
         }
 
         <h4 className="cast">Cast: </h4>
