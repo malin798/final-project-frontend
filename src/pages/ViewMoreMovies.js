@@ -79,7 +79,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
 
   if (loading) {
     return (
-        < LoadingAnimation />
+      < LoadingAnimation />
     )
   } else {
     return (
@@ -87,40 +87,40 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
         <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
 
         {type === "genres" &&
-        <select onChange={(event) => {setOptionValue(event.target.value)}}>
+          <select onChange={(event) => { setOptionValue(event.target.value) }}>
             <optgroup label="Popularity">
-            <option value="popularity.desc" selected={optionValue === "popularity.desc"}>
-              high-to-low
+              <option value="popularity.desc" selected={optionValue === "popularity.desc"}>
+                high-to-low
             </option>
 
-            <option value="popularity.asc" selected={optionValue === "popularity.asc"}>
-              low-to-high
+              <option value="popularity.asc" selected={optionValue === "popularity.asc"}>
+                low-to-high
             </option>
-          </optgroup>
+            </optgroup>
 
-          <optgroup label="Vote average">
-            <option value="vote_average.desc" selected={optionValue === "vote_average.desc"}>
-              high-to-low
-            </option>
-
-            <option value="vote_average.asc" selected={optionValue === "vote_average.asc"}>
-              low-to-high
-            </option>
-          </optgroup>
-
-          <optgroup label="Release date">
-            <option value="release.desc" selected={optionValue === "release.desc"}>
-              newest first
+            <optgroup label="Vote average">
+              <option value="vote_average.desc" selected={optionValue === "vote_average.desc"}>
+                high-to-low
             </option>
 
-            <option value="release.asc"  selected={optionValue === "release.asc"}>
-              oldest first
+              <option value="vote_average.asc" selected={optionValue === "vote_average.asc"}>
+                low-to-high
             </option>
-          </optgroup>
-        </select>
+            </optgroup>
+
+            <optgroup label="Release date">
+              <option value="release.desc" selected={optionValue === "release.desc"}>
+                newest first
+            </option>
+
+              <option value="release.asc" selected={optionValue === "release.asc"}>
+                oldest first
+            </option>
+            </optgroup>
+          </select>
         }
-       
-    
+
+
         <div className="movie-wrapper-container">
           {movies.map(item => {
 

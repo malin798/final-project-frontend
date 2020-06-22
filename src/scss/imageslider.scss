@@ -6,7 +6,7 @@
     margin-bottom: 8px;
     color: white;
   }
-  
+
   .image-slider-title {
     font-size: 16px;
     margin-left: 2px;
@@ -21,7 +21,8 @@
     &:hover+.right-arrow-container {
       margin-left: 8px;
     }
-}
+  }
+
   a {
     text-decoration: none;
     display: flex;
