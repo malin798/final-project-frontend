@@ -33,14 +33,6 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
     dispatch(logout(setLoggedIn))
   }
 
-  //const abstractYear = (year) => {
-  //return year.substring(0, 4)
-  //}
-
-  //{abstractYear(movie.release_date)} 
-
-
-
   if (!loggedIn || userId === null || userId === null || accessToken === null) {
     return (
       <div>
@@ -57,7 +49,6 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
           <h6>Here is your watchlist. Which are your favourite movies? Keep track of the movies you want to see but haven't seen yet! </h6>
 
           {list.map(item => (
-
             <section className="watch-list-container" key={item.showId}>
               <Link className="movie-link" to={`/movie/${item.showId}`}>
                 <section className="watch-item">
@@ -76,25 +67,22 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
                     >
                     </img>
                   }
-                  <div className="right-container">{item.title}
-                    <p className="year">{item.year.slice(0, 4)}</p>
-
+                  <div className="right-container">
+                    <div className="movie-title">{item.title}
+                      <p className="year">{item.year.slice(0, 4)}</p>
+                    </div>
                     <p className="overview">{item.overview}<span>...</span></p>
 
                   </div>
-
                 </section>
               </Link>
               <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button> 🍿
             </section>
-
           ))
           }
-
           < div  >
             <button className="logout" onClick={() => handleLogOut()}>LOG OUT</button>
           </div>
-
         </section >
       </>
     )

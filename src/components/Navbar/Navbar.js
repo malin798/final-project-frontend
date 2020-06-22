@@ -43,12 +43,14 @@ export const Navbar = ({ loggedIn, API_KEY }) => {
           }
 
           {loggedIn &&
-            <section className="signin">
-              <Link to="/profile">
-                <UserImage />
+            <Link className="signin-container" to="/profile">
+              <section className="signin">
                 {userName.toUpperCase()}
-              </Link>
-            </section>
+              </section>
+              <div className="right-arrow-container">
+                <UserImage className="user-image" />
+              </div>
+            </Link>
           }
         </div>
 

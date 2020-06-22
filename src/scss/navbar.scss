@@ -60,10 +60,12 @@
 
   .signin-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-direction: row;
-    width: 75px;
+    width: fit-content;
     align-items: center;
+    margin-right: 10px;
+    align-self: center;
   }
 
   a {
@@ -102,11 +104,11 @@
     fill: rgb(86, 242, 219);
     display: flex;
     align-items: center;
-    top: 34px;
-    right: 17px;
 
     @media (max-width: 667px) {
       position: absolute;
+      top: 33px;
+      right: 17px;
     }
   }
 
