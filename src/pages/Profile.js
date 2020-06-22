@@ -68,10 +68,10 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
                     </img>
                   }
                   <div className="right-container">
-                    <div className="movie-title">{item.title}
-                      <p className="year">{item.year.slice(0, 4)}</p>
-                    </div>
-                    <p className="overview">{item.overview}<span>...</span></p>
+                    <h5 className="movie-title">{item.title}
+                      <span className="year">&#40;{item.year.slice(0, 4)}&#41;</span>
+                    </h5>
+                    <p className="overview">{item.overview}</p>
 
                   </div>
                 </section>

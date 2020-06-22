@@ -26,3 +26,15 @@ $accent-orange: #ff3246;
   margin-top: 10px;
   color: #008c83;
 }
+
+@mixin button($border-radius, $padding) {
+  border: none;
+  border-radius: $border-radius;
+  padding: $padding;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Roboto;
+  width: fit-content;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
