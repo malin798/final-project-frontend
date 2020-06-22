@@ -16,125 +16,93 @@
   @media (min-width: 1024px) {
     margin-top: 40px;
   }
+}
 
-  .welcome {
-    font-size: 26px;
-    font-family: monospace;
-    font-weight: 500;
-    text-align: center;
-  }
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 26px;
+  font-family: monospace;
+  font-weight: 500;
+  text-align: center;
 
   h6 {
     font-size: 13px;
-    font-family: monospace;
     font-weight: 500;
     margin-bottom: 30px;
     margin-top: 16px;
-    text-align: center;
     width: 80%;
     line-height: 18px;
   }
+}
 
-  .watchlist-container {
-    border: 0px solid rgb(4, 121, 121);
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .emoji {
-    font-size: 24px;
-  }
-
-  .watch-item {
-    display: flex;
-    justify-content: flex-start;
-    width: 300px;
-    border-radius: 0px;
-    background-color: $search-field-gray;
-    margin-bottom: 20px;
-    padding: 20px;
-    height: 310px;
-    flex-direction: column;
-    position: relative;
-
-
-    @media (min-width: 1024px) {
-      flex-direction: row;
-      height: 170px;
-      width: 520px;
-      justify-content: space-between;
-    }
-  }
+.watchlist-container {
+  border: 0px solid rgb(4, 121, 121);
+  border-radius: 5px;
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 
   .movie-link {
     text-decoration: none;
     display: flex;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .right-container {
-    display: flex;
     flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    max-height: 90px;
 
     @media (min-width: 1024px) {
-      width: 47%;
-      justify-content: flex-start;
-      max-height: 120px;
-
-    }
-
-    .movie-title {
-      color: rgb(0, 83, 92);
-      font-size: 10px;
-      font-family: "Roboto";
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      margin: 0;
-    }
-
-    .year {
-      margin-top: 2px;
-      font-weight: 500;
-      margin-left: 4px;
-    }
-
-    p {
-      margin-bottom: 0px;
-      font-family: "Roboto", sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      color: black;
-      overflow: hidden;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      display: -webkit-box;
-      line-height: 14px;
-      text-decoration: none;
+      flex-direction: row;
     }
   }
 
-  .remove-button {
-    @include button(2px, 3px 8px);
-    @include colors(white, $accent-orange);
-    width: fit-content;
-    font-size: 11px;
-    position: absolute;
-    right: 15px;
-    bottom: 55px;
+  p {
+    margin-bottom: 0px;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: black;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    line-height: 14px;
+    text-decoration: none;
+
+    @media (min-width: 1024px) {
+      -webkit-line-clamp: 4;
+    }
+  }
+}
+
+.watch-item {
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+  border-radius: 0px;
+  background-color: $search-field-gray;
+  margin-bottom: 20px;
+  padding: 20px;
+  //height: 310px;
+  flex-direction: column;
+  position: relative;
+  margin: 15px;
+
+  @media (min-width: 667px) {
+    width: 40%;
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    //height: 170px;
+    width: 40%;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1500px) {
+    width: 30%;
   }
 
   .movie-image {
@@ -148,14 +116,56 @@
       height: 130px;
     }
   }
+}
 
-  .logout {
-    @include button(2px, 3px 8px);
-    @include colors($accent-color, transparent);
-    font-size: 11px;
-    text-align: end;
-    font-weight: 600;
-    margin-top: 15px;
-    z-index: 99;
+.right-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  max-height: 90px;
+  margin-bottom: 15px;
+
+  @media (min-width: 1024px) {
+    width: 50%;
+    justify-content: flex-start;
+    max-height: 120px;
+    margin-left: 12px;
   }
+
+  .movie-title {
+    color: rgb(0, 83, 92);
+    font-size: 10px;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 0;
+  }
+
+  .year {
+    margin-top: 2px;
+    font-weight: 500;
+    margin-left: 4px;
+  }
+}
+
+.remove-button {
+  @include button(2px, 3px 8px);
+  @include colors(white, $accent-orange);
+  width: fit-content;
+  font-size: 11px;
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+}
+
+.logout {
+  @include button(2px, 3px 8px);
+  @include colors($accent-color, transparent);
+  font-size: 11px;
+  text-align: end;
+  font-weight: 600;
+  margin-top: 15px;
+  z-index: 99;
 }

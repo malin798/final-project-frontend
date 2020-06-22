@@ -44,9 +44,10 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
       <>
         <section class="welcome-container">
           <div className="welcome">
-            Welcome {capitalizeFirstLetter(userName)}!
+            Welcome {capitalizeFirstLetter(userName)}! 🍿
+            <h6>Here is your watchlist. Which are your favourite movies? Keep track of the movies you want to see but haven't seen yet! </h6>
+
           </div>
-          <h6>Here is your watchlist. Which are your favourite movies? Keep track of the movies you want to see but haven't seen yet! </h6>
 
           <section className="watchlist-container">
 
@@ -82,7 +83,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
                     </div>
                   </Link>
 
-                  <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button> 🍿
+                  <button className="remove-button" onClick={() => dispatch(removeItem(item.showId, setList, userId, accessToken))}>REMOVE</button>
                 </section>
 
               </>
