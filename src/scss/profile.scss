@@ -55,6 +55,10 @@
   flex-wrap: wrap;
   justify-content: center;
 
+  section:last-child {
+    float: left;
+  }
+
   .movie-link {
     text-decoration: none;
     display: flex;
@@ -67,7 +71,7 @@
     margin-bottom: 0px;
     font-family: "Roboto", sans-serif;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     color: black;
     overflow: hidden;
     overflow-wrap: break-word;
@@ -157,4 +161,9 @@
   font-weight: 600;
   margin-top: 15px;
   z-index: 99;
+  border: solid 1px $accent-color-dark;
+
+  &:hover {
+    color: $accent-color-yellow;
+  }
 }
