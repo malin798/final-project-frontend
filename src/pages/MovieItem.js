@@ -90,6 +90,9 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
       <section className="movie-item">
         <h2>
           {movie.title} {movie.release_date && <span className="thin">&#40;{movie.release_date}&#41;</span>}
+          {loggedIn &&
+                < WatchlistButtonExtended item={movie} />
+              }
         </h2>
         <section className="movie-overview-container">
           <section className="movie-image-container">
@@ -125,9 +128,6 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             })[0]}
             <section>
 
-              {loggedIn &&
-                < WatchlistButtonExtended item={movie} />
-              }
               <h4 className="imdb-title-container" >Movie overview: < IMDBRatingPlugin imdbId={movie.imdb_id} title={movie.title} rating={movie.vote_average} /></h4>
 
               <p>

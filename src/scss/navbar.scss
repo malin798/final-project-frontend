@@ -1,23 +1,18 @@
 .navbar {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  height: 70px;
+  @include display(row, space-between, flex-end);
   position: fixed;
-  width: 100%;
   top: 0;
   left: 0;
-  padding-left: 20px;
-  padding-right: 20px;
+  height: 60px;
+  width: 100%;
+  padding: 0 20px;
   z-index: 2000;
   border-bottom: 5px solid rgb(0, 24, 22);
   background-color: black;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-direction: row;
-  justify-content: space-between;
 
-  @media (min-width: 1024px) {}
+  @media (min-width: 667px) {
+    height: 70px;
+  }
 
   .navleft {
     display: flex;
@@ -42,7 +37,7 @@
   h3 {
     font-family: Monoton;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 22px;
     color: rgb(86, 242, 219);
     text-decoration-color: black;
     margin-bottom: 3px;
@@ -58,56 +53,34 @@
     text-decoration-color: black;
   }
 
-  .signin-container {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
+  .navbar-signin-login {
+    @include display(row, flex-end, center);
     width: fit-content;
-    align-items: center;
     margin-right: 10px;
     align-self: center;
+
+    &:hover {
+      color: rgb(86, 242, 219);
+    }
+
+    @media (max-width: 667px) {
+      display: none;
+    }
+
+    .right-arrow-container {
+      display: none;
+      
+      @media (min-width: 667px) {
+        display: inline;
+      }
+    }
   }
 
   a {
+    font-family: "Roboto", sans-serif;
     color: white;
     text-decoration: none;
-    font-family: arial;
     font-weight: 700;
     font-size: 13px;
-  }
-
-  .signin {
-    margin-right: 4px;
-    display: none;
-    position: relative;
-
-    @media (min-width: 667px) {
-      display: block;
-    }
-  }
-
-  .signin:hover {
-    color: rgb(86, 242, 219);
-  }
-
-  .right-arrow-container {
-    border-radius: 60%;
-    width: 20px;
-    height: 18px;
-    margin-left: 1px;
-    cursor: pointer;
-    fill: rgb(86, 242, 219);
-    display: flex;
-    align-items: center;
-
-    @media (max-width: 667px) {
-      position: absolute;
-      top: 33px;
-      right: 17px;
-    }
-  }
-
-  .right-arrow-container:hover {
-    transition: 0.3s;
   }
 }
