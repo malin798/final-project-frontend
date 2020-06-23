@@ -87,6 +87,19 @@
     transition: transform 0.5s ease-in-out;
   }
 
+  .hamburger-signin-login {
+    display: none;
+
+    &:hover {
+      color: rgb(86, 242, 219);
+    }
+
+    @media (max-width: 667px) {
+      margin-bottom: 15px;
+      display: flex;
+    }
+  }
+
   p {
     text-decoration: none;
     color: #1eb3b1;

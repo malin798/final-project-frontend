@@ -18,14 +18,13 @@
   }
 
   .header-description {
+    @include colors(rgb(255, 255, 255),  rgb(29, 33, 33));
     text-align: center;
     font-family: Helvetica Neue, sans-serif;
     font-size: 1em;
     font-weight: 500;
     letter-spacing: 1px;
-    background-color: rgb(29, 33, 33);
     border-bottom: 0.5px solid #0bc4b8;
-    color: rgb(255, 255, 255);
 
     @media (min-width: 667px) {
       font-size: 1.2em;
@@ -59,9 +58,9 @@
   }
 
   label {
-    align-self: center;
     @include colors(#666666, white);
     width: 90%;
+    align-self: center;
     padding: 5px 10px;
     border-radius: 3px;
     margin-bottom: 5px;
@@ -81,17 +80,11 @@
   }
 
   button {
+    @include button(2px, 5px 60px);
+    @include colors(white, rgb(33, 81, 154));
     align-self: center;
-    border: none;
     font-size: 12px;
     margin: 10px 0;
-    padding: 5px 60px;
-    border-radius: 2px;
-    background-color: rgb(33, 81, 154);
-    color: white;
-    font-weight: 500;
-    font-family: "Roboto";
-    letter-spacing: 1px;
 
     @media (min-width: 667px) {
       font-size: 12px;

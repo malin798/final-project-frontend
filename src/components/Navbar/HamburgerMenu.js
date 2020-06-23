@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { RightArrow } from '../RightArrow'
 import { RandomMovieGenerator } from '../RandomMovieGenerator'
 import { Searchbar } from './Searchbar'
+import { SigninLogin } from './SigninLogin'
 
-export const HamburgerMenu = ({ API_KEY }) => {
+export const HamburgerMenu = ({ API_KEY, loggedIn }) => {
 
   const [visible, setVisible] = useState(false)
   const [show, setShow] = useState(false)
@@ -27,6 +27,9 @@ export const HamburgerMenu = ({ API_KEY }) => {
         <div className="hamburger-div-3"></div>
       </div>
       <ul className={`hamburger-menu ${show ? "visible" : ""}`}>
+
+        < SigninLogin loggedIn={loggedIn} className="hamburger-signin-login" />
+
         <NavLink exact to="/"> <li>Home</li></NavLink>
         <li className="genres" onClick={() => handleClick()}>Genres
           < RightArrow visible={visible} />

@@ -63,7 +63,6 @@ export const WatchlistButton = ({ item }) => {
           className={`${added ? "added" : ""}`}
           onMouseOver={() => setActive(true)}
           onMouseOut={() => setActive(false)}
-        // onClick={(event) => handleClick(event, item.title, item.id)}
         >
 
           {active && "Added to watchlist "}
@@ -74,4 +73,3 @@ export const WatchlistButton = ({ item }) => {
     </>
   )
 }
-//{cutOutDate(movie.release_date)}

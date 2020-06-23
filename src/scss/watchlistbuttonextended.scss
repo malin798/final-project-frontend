@@ -2,22 +2,14 @@
 
 .watchlistbuttonextended {
   button {
+    @include button(2px, 3px 8px);
+    @include colors(white, $accent-color-dark);
     text-transform: uppercase;
-    font-family: Roboto;
-    font-weight: 600;
-    background-color: $accent-color-dark;
-    border-radius: 2px;
-    border: none;
-    color: white;
-    padding: 3px 8px;
-    padding-bottom: 2px;
     letter-spacing: 0.5px;
     font-size: 11px;
-    cursor: pointer;
-    margin-left: 1.5px;
 
     &.added {
-      background-color: $accent-orange;
+      @include colors(white, $accent-color-yellow);
     }
   }
 
