@@ -90,7 +90,7 @@
         font-weight: 500;
 
         &:hover {
-          color: $search-field-gray;
+          background-color: $accent-color-button;
         }
       }
     }
@@ -118,7 +118,6 @@
         margin-left: 4px;
         width: 14px;
         height: 14px;
-
 
         svg {
           fill: rgb(86, 242, 219);

@@ -18,13 +18,13 @@
   }
 
   .header-description {
-    @include colors(rgb(255, 255, 255),  rgb(29, 33, 33));
+    @include colors(rgb(255, 255, 255), rgb(29, 33, 33));
     text-align: center;
     font-family: Helvetica Neue, sans-serif;
     font-size: 1em;
     font-weight: 500;
     letter-spacing: 1px;
-    border-bottom: 0.5px solid #0bc4b8;
+    border-bottom: 0.5px solid $accent-color-dark;
 
     @media (min-width: 667px) {
       font-size: 1.2em;
@@ -80,8 +80,8 @@
   }
 
   button {
-    @include button(2px, 5px 60px);
-    @include colors(white, rgb(33, 81, 154));
+    @include button(4px, 5px 60px);
+    @include colors(white, $accent-color-yellow);
     align-self: center;
     font-size: 12px;
     margin: 10px 0;
@@ -93,33 +93,32 @@
 
   .link-section {
     font-size: 14px;
-    text-align: center;
-    background-color: #0bc4b8;
+    background-color: $accent-color-dark;
     margin: 0;
-    padding: 6px;
-    padding-left: 20px;
-    padding-top: 14px;
+    padding: 24px;
 
     @media (min-width: 667px) {
       font-size: 17px;
     }
-  }
 
-  a {
-    margin-left: 3px;
-    text-decoration: none;
-    color: rgb(34, 70, 111);
-    font-size: 14px;
-    font-weight: 500;
-  }
+    p {
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+    }
 
-  p {
-    font-size: 14px;
-    font-weight: 500;
+    a {
+      margin-left: 3px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      border-bottom: 1px solid $accent-color-yellow;
 
-  }
-
-  a:hover {
-    border-bottom: 1px solid coral;
+      &:hover {
+        border-bottom: 1px solid $accent-color-yellow;
+        color: $accent-color-yellow;
+      }
+    }
   }
 }

@@ -1,8 +1,10 @@
 $accent-color: #56f2db;
+$accent-color-button: rgb(48, 181, 167);
 $accent-color-dark: rgb(0, 140, 131);
 $search-field-gray: #d9fef4d2;
 $accent-orange: #ff3246;
 $accent-color-yellow: #e3901e;
+
 
 @mixin colors($color, $background) {
   color: $color;
