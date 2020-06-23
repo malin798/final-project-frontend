@@ -6,7 +6,7 @@
 
   &.mobile-hamburger-menu {
     margin-top: 25px;
-    width: 108px;
+    width: 104px;
 
     @media (min-width: 668px) {
       display: none;
@@ -24,6 +24,10 @@
   .searchbar-and-filter {
     display: flex;
     height: 20px;
+
+    @media (min-width: 1024px) {
+      height: 24px;
+    }
 
     select {
       width: 20px;
@@ -46,9 +50,9 @@
 
     .search-emoji {
       background-color: $search-field-gray;
-      padding-right: 2px;
+      padding-right: 10px;
       font-size: 12px;
-      padding-top: 1px;
+      border-radius: 0 5px 5px 0;
     }
   }
 

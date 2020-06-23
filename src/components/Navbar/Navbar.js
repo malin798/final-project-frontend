@@ -6,12 +6,12 @@ import { RandomMovieGenerator } from '../RandomMovieGenerator'
 import { SigninLogin } from './SigninLogin'
 
 export const Navbar = ({ loggedIn, API_KEY }) => {
-  
+
   return (
     <>
       <div className="navbar">
         <div className="navleft">
-          < HamburgerMenu API_KEY={API_KEY} loggedIn={loggedIn}/>
+          < HamburgerMenu API_KEY={API_KEY} loggedIn={loggedIn} />
           <div className="logo">
             <Link to="/">
               <h3><span>I</span><span className="find">FIND</span><span>MOVIES</span></h3>
@@ -21,10 +21,9 @@ export const Navbar = ({ loggedIn, API_KEY }) => {
 
         <div className="navright">
 
+          < RandomMovieGenerator API_KEY={API_KEY} className="desktop-navbar-menu" />
 
           < Searchbar API_KEY={API_KEY} className="desktop-navbar-menu" />
-
-          < RandomMovieGenerator API_KEY={API_KEY} className="desktop-navbar-menu" />
 
           < SigninLogin loggedIn={loggedIn} className="navbar-signin-login" />
           {/* {!loggedIn &&
