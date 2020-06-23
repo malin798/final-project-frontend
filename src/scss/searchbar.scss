@@ -50,9 +50,12 @@
 
     .search-emoji {
       background-color: $search-field-gray;
-      padding-right: 10px;
+      padding-right: 8px;
       font-size: 12px;
       border-radius: 0 5px 5px 0;
+      display: flex;
+      align-items: center;
+      padding-bottom: 2px;
     }
   }
 
