@@ -13,6 +13,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
   const [page, setPage] = useState(1)
   const [allPages, setAllPages] = useState()
   const [optionValue, setOptionValue] = useState("popularity.desc")
+  
   let URL;
 
   switch (type) {

@@ -13,21 +13,18 @@ export const ActorSearchResults = ({ API_KEY }) => {
   const allPages = useSelector((store) => store.user.searchResultsAllPages)
   const [actors, setActors] = useState([])
   const [page, setPage] = useState(1)
-  const [loading, setLoading] = useState(false)
 
   const URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&include_adult=false&page=${page}`
 
   useEffect(() => {
-    setLoading(true)
     fetch(URL)
       .then(res => res.json())
       .then(res => {
         setActors(res.results)
-        setLoading(false)
       })
   }, [URL])
 
-  if (loading) {
+  if (!actors) {
     return (
       < LoadingAnimation />
     )
