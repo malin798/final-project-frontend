@@ -33,7 +33,7 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
   const [productionCountry, setProductionCountry] = useState([])
 
   let src = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
-
+ 
   if (!movie.backdrop_path) {
     src = layingPlaceholder
   }
@@ -189,12 +189,13 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
             </section>
           </section>
         }
-        <div className="movie-slider-title-container">
-          <h3 className="image-slider-title-no-link">Cast: </h3>
+        {cast.length > 0 &&
+          <div className="movie-slider-title-container">
+            <h3 className="image-slider-title-no-link">Cast: </h3>
 
-          <ImageSlider>
+            <ImageSlider>
 
-            {cast.slice(0, 10).map(actor => {
+              {cast.slice(0, 10).map(actor => {
 
               let src = `https://image.tmdb.org/t/p/w300/${actor.profile_path}`
 
@@ -223,9 +224,10 @@ export const MovieItem = ({ API_KEY, loggedIn }) => {
                   </Link>
                 </div>
               )
-            })}
-          </ImageSlider>
-        </div>
+              })}
+            </ImageSlider>
+          </div>
+        }
 
         < MovieSlider fetchtitle="Similar movies:" titlelink={`/similar-movies/${movie.id}`} fetchlink={URL_SIMILARMOVIES} placeholder={layingPlaceholder} loggedIn={loggedIn} />
 
