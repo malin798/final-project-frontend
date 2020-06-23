@@ -58,7 +58,7 @@
   a {
     &.active {
       p {
-        color: white;
+        color: rgb(193, 32, 32);
       }
     }
   }
@@ -90,13 +90,15 @@
   .hamburger-signin-login {
     display: none;
 
+
     &:hover {
       color: rgb(86, 242, 219);
     }
 
     @media (max-width: 667px) {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       display: flex;
+      align-items: center;
     }
   }
 
@@ -152,16 +154,17 @@
   }
 
   .genres {
-    margin-bottom: -3px;
+    display: flex;
+    align-items: center;
 
     .right-arrow-container {
       margin-left: 8px;
       position: unset;
 
+
       svg {
-        height: 13px;
-        margin-bottom: 3px;
         transition: 0.2s ease-in-out;
+
 
         &.rotate {
           transform: rotate(90deg);
