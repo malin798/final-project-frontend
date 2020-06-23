@@ -13,31 +13,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
   const [page, setPage] = useState(1)
   const [allPages, setAllPages] = useState()
   const [optionValue, setOptionValue] = useState("popularity.desc")
-  const [loading, setLoading] = useState(false)
-  console.log(optionValue)
   let URL;
-  // let filteredBy;
-
-  // switch(optionValue) {
-  //   case "popularity.desc":
-  //     filteredBy = "popularity high-to-low"
-  //     break;
-  //   case "popularity.asc":
-  //     filteredBy = "popularity low-to-high"
-  //     break;
-  //   case "vote_average.desc":
-  //     filteredBy = "vote average high-to-low"
-  //     break;
-  //   case "vote_average.asc":
-  //     filteredBy = "vote-average low-to-high"
-  //     break;
-  //   case "release.desc":
-  //     filteredBy = "release date - newest first"
-  //     break;
-  //   case "release.asc":
-  //     filteredBy = "release date - oldest first"
-  //     break;
-  // }
 
   switch (type) {
     case "genres":
@@ -67,59 +43,59 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
   }
 
   useEffect(() => {
-    setLoading(true)
     fetch(URL)
       .then(res => res.json())
       .then(res => {
         setAllPages(res.total_pages)
         setMovies(res.results)
-        setLoading(false)
       })
   }, [URL])
 
-  if (loading) {
+  if (!movies) {
     return (
       < LoadingAnimation />
     )
-  } else {
+  }
+  else {
     return (
       <section>
-        <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
+        <section className="genre-header">
+          <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
 
-        {type === "genres" &&
-          <select onChange={(event) => { setOptionValue(event.target.value) }}>
-            <optgroup label="Popularity">
-              <option value="popularity.desc" selected={optionValue === "popularity.desc"}>
-                high-to-low
+          {type === "genres" &&
+            <select onChange={(event) => { setOptionValue(event.target.value) }}>
+              <optgroup label="Popularity">
+                <option value="popularity.desc" selected={optionValue === "popularity.desc"}>
+                  high-to-low
             </option>
 
-              <option value="popularity.asc" selected={optionValue === "popularity.asc"}>
-                low-to-high
+                <option value="popularity.asc" selected={optionValue === "popularity.asc"}>
+                  low-to-high
             </option>
-            </optgroup>
+              </optgroup>
 
-            <optgroup label="Vote average">
-              <option value="vote_average.desc" selected={optionValue === "vote_average.desc"}>
-                high-to-low
-            </option>
-
-              <option value="vote_average.asc" selected={optionValue === "vote_average.asc"}>
-                low-to-high
-            </option>
-            </optgroup>
-
-            <optgroup label="Release date">
-              <option value="release.desc" selected={optionValue === "release.desc"}>
-                newest first
+              <optgroup label="Vote average">
+                <option value="vote_average.desc" selected={optionValue === "vote_average.desc"}>
+                  high-to-low
             </option>
 
-              <option value="release.asc" selected={optionValue === "release.asc"}>
-                oldest first
+                <option value="vote_average.asc" selected={optionValue === "vote_average.asc"}>
+                  low-to-high
             </option>
-            </optgroup>
-          </select>
-        }
+              </optgroup>
 
+              <optgroup label="Release date">
+                <option value="release.desc" selected={optionValue === "release.desc"}>
+                  newest first
+            </option>
+
+                <option value="release.asc" selected={optionValue === "release.asc"}>
+                  oldest first
+            </option>
+              </optgroup>
+            </select>
+          }
+        </section>
 
         <div className="movie-wrapper-container">
           {movies.map(item => {

@@ -59,17 +59,19 @@
     margin-right: 10px;
     align-self: center;
 
+
     &:hover {
       color: rgb(86, 242, 219);
     }
 
     @media (max-width: 667px) {
       display: none;
+
     }
 
     .right-arrow-container {
       display: none;
-      
+
       @media (min-width: 667px) {
         display: inline;
       }

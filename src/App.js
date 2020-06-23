@@ -22,9 +22,6 @@ import standingPlaceholder from './images/placeholderS.png'
 import { MovieSearchResults } from './pages/MovieSearchResults'
 import { ActorSearchResults } from './pages/ActorSearchResults'
 
-
-//const API_KEY = process.env.REACT_APP_API_KEY
-
 dotenv.config()
 
 const reducer = combineReducers({ user: user.reducer });
@@ -91,7 +88,7 @@ export const App = () => {
             />
           </Route>
 
-           {/* Genre routes below  */}
+          {/* Genre routes below  */}
 
           <Route exact path="/genres" >
             < MovieSlider

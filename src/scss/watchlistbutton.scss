@@ -2,7 +2,7 @@
 
 .movie-details {
   button {
-    @include button(2px, 2px 6px);
+    @include button(5px, 4px 10px);
     @include colors(white, $accent-color-dark);
     position: absolute;
     top: 10px;

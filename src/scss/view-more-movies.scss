@@ -1,5 +1,42 @@
 @import './mixin-var.scss';
 
+.genre-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-right: 16px;
+
+  select {
+    width: 120px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: $search-field-gray;
+    border: none;
+    border-right: 1px solid rgb(133, 177, 174);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    font-family: "Roboto";
+    font-size: 11px;
+  }
+
+  h4 {
+    margin-top: 0px;
+
+  }
+
+}
+
+input {
+  @include colors(rgb(0, 0, 0), $search-field-gray);
+  border: none;
+  width: -webkit-fill-available;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $accent-color;
+  }
+}
+
 .movie-wrapper-container {
   display: flex;
   flex-wrap: wrap;
@@ -35,6 +72,15 @@
     width: 19%;
     margin: 5px;
     overflow: hidden;
+    width: 45%;
+
+    @media (min-width: 667px) {
+      width: 29%
+    }
+
+    @media (min-width: 1024px) {
+      width: 19%;
+    }
 
     .added-button {
       height: 9px;
@@ -65,7 +111,7 @@
       bottom: 0;
       opacity: 0;
       color: white;
-      width: 90%;
+      width: 100%;
       height: 100%;
       opacity: 0;
       padding: 5px 10px;
