@@ -46,7 +46,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
             Welcome {capitalizeFirstLetter(userName)}! 🍿
 
             {list.length === 0 ?
-              <h6>Your watchlist is empty. Add your favourite movies and keep track of the movies you want to see, but haven't seen yet! </h6>
+              <h6>Your watchlist is empty. Add your favourite movies and keep track of the movies you want to see but haven't seen yet! </h6>
               :
               <h6>This is your watchlist. Add more of your favourite movies and keep track of the movies you want to see but haven't seen yet! </h6>
             }
