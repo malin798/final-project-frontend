@@ -11,7 +11,6 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const userId = useSelector((store) => store.user.login.userId)
   const [list, setList] = useState([])
-  //const [productionCountry, setProductionCountry] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:8080/users/${userId}/watchlist`, {
@@ -25,7 +24,6 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
         const sortedList = json.watchlist.reverse()
         dispatch(replaceWatchlist(sortedList))
         setList(sortedList)
-        //setProductionCountry(json.production_countries)
       })
   }, [])
 
@@ -44,9 +42,14 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
       <>
         <section class="welcome-container">
           <div className="welcome">
-            Welcome {capitalizeFirstLetter(userName)}! 🍿
-            <h6>Here is your watchlist. Which are your favourite movies? Keep track of the movies you want to see but haven't seen yet! </h6>
 
+            Welcome {capitalizeFirstLetter(userName)}! 🍿
+
+            {list.length === 0 ?
+              <h6>Your watchlist is empty. Add your favourite movies and keep track of the movies you want to see, but haven't seen yet! </h6>
+              :
+              <h6>This is your watchlist. Add more of your favourite movies and keep track of the movies you want to see but haven't seen yet! </h6>
+            }
           </div>
 
           <section className="watchlist-container">
