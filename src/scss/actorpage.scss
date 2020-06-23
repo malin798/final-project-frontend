@@ -16,7 +16,7 @@
 
   h4 {
     @include details-title;
-   }
+  }
 
   img {
     width: 40%;
@@ -30,6 +30,10 @@
   }
 
   .actor-info-container {
+
+    p {
+      line-height: 18px;
+    }
 
     @media (min-width: 1024px) {
       display: flex;
