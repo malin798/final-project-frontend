@@ -74,7 +74,7 @@ export const addToWatchlist = (title, id, poster) => {
 
 export const removeItem = (showId, setList, userId, accessToken) => {
   return async (dispatch) => {
-   const res = await fetch(`http://localhost:8080/users/${userId}/watchlist`, {
+   const res = await fetch(`https://final-project-db.herokuapp.com/users/${userId}/watchlist`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -91,7 +91,7 @@ export const removeItem = (showId, setList, userId, accessToken) => {
 }
 
 export const handleSignup = (name, email, password, setErrorMessage, setLoggedIn) => {
-  const SIGNUP_URL = 'http://localhost:8080/users'
+  const SIGNUP_URL = 'https://final-project-db.herokuapp.com/users'
 
   return async (dispatch) => {
     await fetch(SIGNUP_URL, {
@@ -129,7 +129,7 @@ export const handleSignup = (name, email, password, setErrorMessage, setLoggedIn
 }
 
 export const handleLogin = (name, password, setErrorMessage, setLoggedIn) => {
-  const LOGIN_URL = 'http://localhost:8080/sessions';
+  const LOGIN_URL = 'https://final-project-db.herokuapp.com/sessions';
   return (dispatch) => {
     fetch(LOGIN_URL, {
       method: 'POST',
