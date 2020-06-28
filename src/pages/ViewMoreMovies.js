@@ -68,31 +68,31 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, loggedIn }) => {
               <optgroup label="Popularity">
                 <option value="popularity.desc" selected={optionValue === "popularity.desc"}>
                   high-to-low
-            </option>
+                </option>
 
                 <option value="popularity.asc" selected={optionValue === "popularity.asc"}>
                   low-to-high
-            </option>
+                </option>
               </optgroup>
 
               <optgroup label="Vote average">
                 <option value="vote_average.desc" selected={optionValue === "vote_average.desc"}>
                   high-to-low
-            </option>
+                </option>
 
                 <option value="vote_average.asc" selected={optionValue === "vote_average.asc"}>
                   low-to-high
-            </option>
+                </option>
               </optgroup>
 
               <optgroup label="Release date">
                 <option value="release_date.desc" selected={optionValue === "release.desc"}>
                   newest first
-            </option>
+                </option>
 
                 <option value="release_date.asc" selected={optionValue === "release.asc"}>
                   oldest first
-            </option>
+                </option>
               </optgroup>
             </select>
           }
