@@ -12,6 +12,7 @@
     font-size: 15px;
     margin-top: 0px;
     margin-right: 17px;
+    line-height: 23px;
 
     @media (min-width: 667px) {
       font-size: 20px;
@@ -79,6 +80,7 @@
   h4 {
     @include details-title;
   }
+
 
   .cast {
     font-size: 16px;
