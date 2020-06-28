@@ -248,7 +248,6 @@ export const App = () => {
           <Route exact path='/genres/:genreName/:genreId' >
             < ViewMoreMovies
               API_KEY={API_KEY}
-              placeholder={standingPlaceholder}
               loggedIn={loggedIn}
               type="genres"
             />
@@ -261,7 +260,6 @@ export const App = () => {
               API_KEY={API_KEY}
               loggedIn={loggedIn}
               fetchtitle="Now playing"
-              placeholder={standingPlaceholder}
               type="now-playing"
             />
           </Route>
@@ -271,7 +269,6 @@ export const App = () => {
               API_KEY={API_KEY}
               loggedIn={loggedIn}
               fetchtitle="Upcoming"
-              placeholder={standingPlaceholder}
               type="upcoming"
             />
           </Route>
@@ -281,7 +278,6 @@ export const App = () => {
               API_KEY={API_KEY}
               loggedIn={loggedIn}
               fetchtitle="Top rated"
-              placeholder={standingPlaceholder}
               type="top-rated"
             />
           </Route>
@@ -291,7 +287,6 @@ export const App = () => {
               API_KEY={API_KEY}
               loggedIn={loggedIn}
               fetchtitle="Trending this week"
-              placeholder={standingPlaceholder}
               type="trending-week"
             />
           </Route>
@@ -301,7 +296,6 @@ export const App = () => {
               API_KEY={API_KEY}
               loggedIn={loggedIn}
               fetchtitle="Trending today"
-              placeholder={standingPlaceholder}
               type="trending-today"
             />
           </Route>
@@ -311,7 +305,6 @@ export const App = () => {
               API_KEY={API_KEY}
               loggedIn={loggedIn}
               fetchtitle="Similar movies"
-              placeholder={standingPlaceholder}
               type="similar-movies"
             />
           </Route>

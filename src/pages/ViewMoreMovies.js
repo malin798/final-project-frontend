@@ -6,7 +6,7 @@ import { capitalizeFirstLetter } from '../utils/StringUtils'
 import { LoadingAnimation } from '../components/Loadinganimation/LoadingAnimation'
 import standingPlaceholder from '../images/placeholderS.png'
 
-export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, loggedIn }) => {
+export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, loggedIn }) => {
 
   const params = useParams()
   const [movies, setMovies] = useState([])
@@ -20,7 +20,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
     case "genres":
       const genreId = params.genreId
       const genreName = params.genreName
-      fetchtitle = genreName
+      fetchtitle = genreName    
       URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${optionValue}&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
       break;
     case "now-playing":
@@ -64,7 +64,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
           <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
 
           {type === "genres" &&
-            <select onChange={(event) => {setOptionValue(event.target.value)}}>
+            <select onChange={(event) => setOptionValue(event.target.value)}>
               <optgroup label="Popularity">
                 <option value="popularity.desc" selected={optionValue === "popularity.desc"}>
                   high-to-low
