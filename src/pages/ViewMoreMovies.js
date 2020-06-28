@@ -14,34 +14,34 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, loggedIn }) => {
   const [allPages, setAllPages] = useState()
   const [optionValue, setOptionValue] = useState("popularity.desc")
   
-  let URL;
-
-  switch (type) {
-    case "genres":
-      const genreId = params.genreId
-      const genreName = params.genreName
-      fetchtitle = genreName    
-      URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${optionValue}&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
-      break;
-    case "now-playing":
-      URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "upcoming":
-      URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "top-rated":
-      URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "trending-week":
-      URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "trending-today":
-      URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "similar-movies":
-      const movieId = params.movieId
-      URL = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=${page}`
+  let fetchKey = type;
+  
+  const pagedUrlFactory = (page) => {
+    switch (type) {
+      case "genres":
+        const genreId = params.genreId
+        const genreName = params.genreName
+        fetchtitle = genreName
+        fetchKey = genreId;
+        
+        return `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${optionValue}&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
+      case "now-playing":
+        return `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "upcoming":
+        return `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "top-rated":
+        return `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "trending-week":
+        return `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "trending-today":
+        return `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "similar-movies":
+        const movieId = params.movieId
+        return `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=${page}`
+    }
   }
+
+  let URL = pagedUrlFactory(page);
 
   useEffect(() => {
     fetch(URL)
@@ -50,7 +50,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, loggedIn }) => {
         setAllPages(res.total_pages)
         setMovies(res.results)
       })
-  }, [URL, optionValue])
+  }, [fetchKey, optionValue])
 
   if (!movies) {
     return (
@@ -64,7 +64,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, loggedIn }) => {
           <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
 
           {type === "genres" &&
-            <select onChange={(event) => setOptionValue(event.target.value)}>
+            <select onChange={(event) => {setOptionValue(event.target.value); setPage(1)}}>
               <optgroup label="Popularity">
                 <option value="popularity.desc" selected={optionValue === "popularity.desc"}>
                   high-to-low
@@ -134,7 +134,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, loggedIn }) => {
             )
           })}
 
-          < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL} />
+          < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} urlFactoryFunction={pagedUrlFactory} />
 
         </div>
 

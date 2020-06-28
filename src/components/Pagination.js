@@ -1,16 +1,15 @@
 import React from 'react'
 
-export const Pagination = ({ page, setPage, allPages, movies, setMovies, URL }) => {
+export const Pagination = ({ page, setPage, allPages, movies, setMovies, urlFactoryFunction }) => {
 
   const showMoreMovies = (event) => {
     event.preventDefault()
-    setPage(page + 1);
-
-    fetch(URL)
+    fetch(urlFactoryFunction(page+1))
       .then(res => res.json())
       .then(res => {
         const allMovies = movies.concat(res.results)
         setMovies(allMovies)
+        setPage(page+1)
       })
   }
 

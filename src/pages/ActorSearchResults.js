@@ -14,7 +14,11 @@ export const ActorSearchResults = ({ API_KEY }) => {
   const [actors, setActors] = useState([])
   const [page, setPage] = useState(1)
 
-  const URL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&include_adult=false&page=${page}`
+  const pagedUrlFactory = (page) => {
+    return `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${searchValue}&include_adult=false&page=${page}`
+  }
+
+  const URL = pagedUrlFactory(page)
 
   useEffect(() => {
     fetch(URL)
@@ -22,7 +26,7 @@ export const ActorSearchResults = ({ API_KEY }) => {
       .then(res => {
         setActors(res.results)
       })
-  }, [URL])
+  }, [searchValue])
 
   if (!actors) {
     return (
@@ -65,7 +69,7 @@ export const ActorSearchResults = ({ API_KEY }) => {
             )
           })}
 
-          < Pagination page={page} setPage={setPage} allPages={allPages} movies={actors} setMovies={setActors} URL={URL} />
+          < Pagination page={page} setPage={setPage} allPages={allPages} movies={actors} setMovies={setActors} urlFactoryFunction={pagedUrlFactory} />
 
         </div>
       </section>
