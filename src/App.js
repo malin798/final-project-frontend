@@ -341,7 +341,7 @@ export const App = () => {
           </Route>
 
           <Route exact path='/register' >
-            < Register />
+            {loggedIn ? <Redirect to="/profile" /> : < Register loggedIn={setLoggedIn} setLoggedIn={setLoggedIn} />}
           </Route>
 
           <Route exact path='/profile' >

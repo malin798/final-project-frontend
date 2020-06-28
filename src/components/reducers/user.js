@@ -90,7 +90,7 @@ export const removeItem = (showId, setList, userId, accessToken) => {
   }
 }
 
-export const handleSignup = (name, email, password, setErrorMessage) => {
+export const handleSignup = (name, email, password, setErrorMessage, setLoggedIn) => {
   const SIGNUP_URL = 'http://localhost:8080/users'
 
   return async (dispatch) => {
@@ -119,6 +119,7 @@ export const handleSignup = (name, email, password, setErrorMessage) => {
             })
           )
           dispatch(user.actions.setUserId({ userId: json.userId }))
+          dispatch(handleLogin(name, password, setErrorMessage, setLoggedIn))
         }
       })
       .catch((err) => {

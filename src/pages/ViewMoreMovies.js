@@ -50,7 +50,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
         setAllPages(res.total_pages)
         setMovies(res.results)
       })
-  }, [URL])
+  }, [URL, optionValue])
 
   if (!movies) {
     return (
@@ -64,7 +64,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
           <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
 
           {type === "genres" &&
-            <select onChange={(event) => { setOptionValue(event.target.value) }}>
+            <select onChange={(event) => {setOptionValue(event.target.value)}}>
               <optgroup label="Popularity">
                 <option value="popularity.desc" selected={optionValue === "popularity.desc"}>
                   high-to-low
@@ -86,11 +86,11 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
               </optgroup>
 
               <optgroup label="Release date">
-                <option value="release.desc" selected={optionValue === "release.desc"}>
+                <option value="release_date.desc" selected={optionValue === "release.desc"}>
                   newest first
             </option>
 
-                <option value="release.asc" selected={optionValue === "release.asc"}>
+                <option value="release_date.asc" selected={optionValue === "release.asc"}>
                   oldest first
             </option>
               </optgroup>

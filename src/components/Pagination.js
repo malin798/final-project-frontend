@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 export const Pagination = ({ page, setPage, allPages, movies, setMovies, URL }) => {
 
